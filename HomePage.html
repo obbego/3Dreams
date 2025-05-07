@@ -7,54 +7,69 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="HomePage.css" rel="stylesheet"> <!-- Collegamento al file CSS esterno -->
 </head>
+
 <body>
-
-<!-- Barra di navigazione -->
-<div class="navbar-custom">
-  <div class="logo">
-    <strong>3Dreams</strong>
-    <small><a href="#" class="text-white ms-3">Chi siamo</a></small>
-    <small><a href="#" class="text-white ms-2">Aiuto</a></small>
-  </div>
-  
-  <div class="navbar-right">
-    <input type="text" class="search-bar" placeholder="Cerca...">
-    <button class="icon-btn">👤</button>
-    <img src="C:\Users\Studente\Desktop\3Dreams\Carrello.webp" alt="Carrello" class="cart-icon" />
-  </div>
-</div>
-
-<!-- Titolo principale -->
-<div class="main-title">
-  Richiedi la tua<br>stampa 3D personalizzata
-</div>
-
-<!-- Griglia prodotti -->
-<div class="container-fluid product-grid">
-  <div class="row g-3">
-    <div class="col-6">
-      <div class="card-custom">
-        <div class="heart-icon">♡</div>
-        <div class="product-info">
-          <small class="text-muted">PVC</small><br>
-          <strong>Bombardilo Crocodilo</strong><br>
-          <span>$120</span>
-        </div>
-      </div>
+    <!-- Barra di navigazione -->
+    <div class="navbar-custom">
+    <div class="logo">
+        <strong>3Dreams</strong>
+        <!-- I link sono ora cliccabili con gli href -->
+        <small><a href="#chi-siamo" class="text-white ms-3">Chi siamo</a></small>
+        <small><a href="#catalogo" class="text-white ms-2">Catalogo</a></small>
+        <small><a href="#aiuto" class="text-white ms-2">Aiuto</a></small>
     </div>
-    <!-- Altri prodotti... -->
-  </div>
-</div>
+    
+    <div class="navbar-right">
+        <input type="text" class="search-bar" placeholder="Cerca..." />
+      
+        <!-- Carrello -->
+        <div class="icon-wrapper" id="cart-icon-wrapper">
+          <div class="icon-background"></div>
+          <a href="#carrello">
+            <img src="C:\Users\Studente\Desktop\3Dreams\cart.svg" alt="Carrello" class="cart-icon" />
+          </a>
+        </div>
+      
+        <!-- Account -->
+        <div class="icon-wrapper" id="account-icon-wrapper">
+          <div class="icon-background"></div>
+          <a href="#account">
+            <img src="C:\Users\Studente\Desktop\3Dreams\person-circle.svg" alt="Account" class="account-icon" />
+          </a>
+        </div>
+    </div>
 
-<!-- See More -->
-<div class="see-more">
-  <a href="#" class="text-white text-decoration-none">See more...</a>
-</div>
+    </div>
+    <!-- Titolo principale -->
+    <div class="main-title">
+    Richiedi la tua<br>stampa 3D personalizzata
+    </div>
 
-<!-- Script per la barra di ricerca e altre interazioni -->
-<script>
-  // Eventi o funzionalità Javascript, se necessari
-</script>
+    <!-- Griglia prodotti -->
+    <div class="container-fluid product-grid">
+    <div class="row g-3">
+        <div class="col-6">
+        <div class="card-custom">
+            <div class="heart-icon">♡</div>
+            <div class="product-info">
+            <small class="text-muted">PVC</small><br>
+            <strong>Bombardilo Crocodilo</strong><br>
+            <span>$120</span>
+            </div>
+        </div>
+        </div>
+        <!-- Altri prodotti... -->
+    </div>
+    </div>
 
+    <!-- See More -->
+    <div class="see-more">
+    <a href="#" class="text-white text-decoration-none">See more...</a>
+    </div>
+
+    <!-- Script per la barra di ricerca e altre interazioni -->
+    <script>
+    // Eventi o funzionalità Javascript, se necessari
+    </script>
 </body>
 </html>
