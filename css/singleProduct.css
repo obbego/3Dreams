@@ -1,0 +1,101 @@
+/* ===== Banner Promozionale ===== */
+.promo-banner {
+  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+  color: white;
+  font-weight: bold;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border-radius: 0 0 8px 8px;
+}
+
+/* ===== Struttura Base ===== */ 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+  margin: 0;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* ===== Card Prodotto ===== */
+.product-page {
+  background-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Stile testo prodotto */
+.product-brand,
+.product-title,
+.product-description,
+.product-price {
+  color: #ffffff;
+}
+
+/* === BOTTONE COME NELLA TUA PRIMA VERSIONE === */
+.btn-add-to-cart {
+  width: 100%;
+  padding: 16px 0;
+  background-color: #000000; /* Nero pieno */
+  color: #ffffff; /* Testo bianco */
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #333333; /* Nero più chiaro */
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Centra e ridimensiona l'immagine */
+.product-image-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.product-image {
+  max-width: 60%;
+  height: auto;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+/* Versione desktop */
+@media (min-width: 768px) {
+  .promo-banner {
+    font-size: 18px;
+    padding: 15px 20px;
+  }
+  
+  .product-page {
+    max-width: 900px;
+    margin: 40px auto;
+  }
+  
+  /* Immagine più grande su desktop */
+  .product-image {
+    max-width: 50%;
+  }
+}
+
+/* Versione mobile */
+@media (max-width: 576px) {
+  .product-image {
+    max-width: 80%;
+  }
+}
