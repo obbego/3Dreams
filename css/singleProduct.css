@@ -99,3 +99,179 @@ body {
     max-width: 80%;
   }
 }
+
+/* Barra di navigazione */
+.navbar-custom {
+  background-color: #1c1c1c; /* Colore di sfondo della barra */
+  display: flex;
+  justify-content: space-between; /* Spazia gli elementi */
+  align-items: center;
+  padding: 1rem 2rem; /* Spaziatura */
+}
+
+.navbar-right a {
+  margin-right: 15px; /* Spazio tra carrello e account */
+  position: relative; /* Posizione relativa per il posizionamento del quadrato */
+}
+
+.cart-icon{
+  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
+}
+
+.account-icon{
+  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
+}
+
+.navbar-custom .logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-custom .logo strong {
+  font-size: 1.8rem;
+  color: white;
+}
+
+.navbar-custom .logo small {
+  font-size: 0.9rem;
+}
+
+.navbar-custom .logo small a {
+  color: white;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem; /* Aggiunge spazio interno */
+  font-size: 1rem;         /* Ingrandisce leggermente il testo */
+  display: inline-block;   /* Rende il padding cliccabile */
+  border-radius: 5px;      /* (Facoltativo) Rende i bordi arrotondati */
+  transition: background-color 0.3s; /* Per un effetto al passaggio del mouse */
+}
+.navbar-custom .logo small a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Evidenzia al passaggio */
+}
+
+.navbar-custom .navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  border-radius: 15px;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  margin-right: 1rem;
+  background-color: #333;
+  color: white;
+  width: 200px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.cart-icon {
+  width: 25px;
+  height: 25px;
+}
+
+/* Titolo principale */
+.main-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 1.2rem 1rem;
+  text-align: center;
+}
+
+/* Griglia prodotti */
+.product-grid {
+  padding: 1rem;
+}
+
+/* Card personalizzate per i prodotti */
+.card-custom {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 1rem;
+  color: white;
+  height: 180px;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.heart-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.product-info {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+/* Link per "See more" */
+.see-more {
+  text-align: right;
+  font-weight: bold;
+  padding: 0 1rem 1rem;
+}
+
+
+
+
+
+
+
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.icon-wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sposta SOLO il carrello a destra */
+#cart-icon-wrapper {
+  margin-left: 15px;
+}
+
+/* Sposta SOLO l'account ancora più a destra */
+#account-icon-wrapper {
+  margin-left: 15px;
+}
+
+.icon-background {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #804AF2;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transform: translateX(-20%);
+}
+
+.cart-icon,
+.account-icon {
+  width: 25px;
+  height: 25px;
+  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
+  z-index: 1;
+}
