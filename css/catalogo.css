@@ -1,67 +1,73 @@
-/* Corpo della pagina */
+/* Corpo della pagina: imposta margini, font e un gradiente scuro di sfondo */
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom right, #111111, #333); /* Gradiente di sfondo */
+  background: linear-gradient(to bottom right, #111111, #333); /* Gradiente diagonale dal nero al grigio scuro */
   color: white;
-  min-height: 100vh;
+  min-height: 100vh; /* Altezza minima a tutta finestra */
 }
 
-/* Barra di navigazione */
+/* Barra di navigazione personalizzata */
 .navbar-custom {
-  background-color: #1c1c1c; /* Colore di sfondo della barra */
+  background-color: #1c1c1c; /* Colore di sfondo scuro */
   display: flex;
-  justify-content: space-between; /* Spazia gli elementi */
+  justify-content: space-between; /* Spaziatura tra logo e icone */
   align-items: center;
-  padding: 1rem 2rem; /* Spaziatura */
+  padding: 1rem 2rem; /* Spaziatura interna */
 }
 
+/* Spaziatura tra link nella navbar (carrello, account) */
 .navbar-right a {
-  margin-right: 15px; /* Spazio tra carrello e account */
-  position: relative; /* Posizione relativa per il posizionamento del quadrato */
+  margin-right: 15px;
+  position: relative; /* Necessaria per posizionare elementi figli come icone */
 }
 
-.cart-icon{
+/* Filtri per invertire e uniformare l’aspetto delle icone su sfondo scuro */
+.cart-icon,
+.account-icon {
   filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
 }
 
-.account-icon{
-  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-}
-
+/* Stile del contenitore logo */
 .navbar-custom .logo {
   display: flex;
   align-items: center;
 }
 
+/* Titolo principale del logo */
 .navbar-custom .logo strong {
   font-size: 1.8rem;
   color: white;
 }
 
+/* Testi minori vicino al logo */
 .navbar-custom .logo small {
   font-size: 0.9rem;
 }
 
+/* Link sotto il logo: stile e interazione */
 .navbar-custom .logo small a {
   color: white;
   text-decoration: none;
-  padding: 0.4rem 0.8rem; /* Aggiunge spazio interno */
-  font-size: 1rem;         /* Ingrandisce leggermente il testo */
-  display: inline-block;   /* Rende il padding cliccabile */
-  border-radius: 5px;      /* (Facoltativo) Rende i bordi arrotondati */
-  transition: background-color 0.3s; /* Per un effetto al passaggio del mouse */
+  padding: 0.4rem 0.8rem; /* Spaziatura interna */
+  font-size: 1rem;
+  display: inline-block; /* Permette clic su tutto il blocco */
+  border-radius: 5px;
+  transition: background-color 0.3s; /* Effetto hover */
 }
 
+/* Effetto al passaggio del mouse */
 .navbar-custom .logo small a:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Evidenzia al passaggio */
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Contenitore per carrello, account e barra di ricerca */
 .navbar-custom .navbar-right {
   display: flex;
   align-items: center;
 }
 
+/* Barra di ricerca stilizzata */
 .search-bar {
   border-radius: 15px;
   padding: 0.5rem;
@@ -72,6 +78,7 @@ body {
   width: 200px;
 }
 
+/* Pulsanti icona generici (se usati per funzioni extra) */
 .icon-btn {
   background: none;
   border: none;
@@ -81,17 +88,13 @@ body {
   cursor: pointer;
 }
 
+/* Dimensioni specifiche delle icone */
 .cart-icon {
   width: 25px;
   height: 25px;
 }
 
-/* Barra della ricerca */
-.navbar-custom .navbar-right {
-  display: flex;
-  align-items: center;
-}
-
+/* Wrapper delle icone (carrello, account) */
 .icon-wrapper {
   position: relative;
   width: 40px;
@@ -102,64 +105,59 @@ body {
   justify-content: center;
 }
 
-/* Sposta SOLO il carrello a destra */
+/* Spazio a sinistra per il carrello */
 #cart-icon-wrapper {
   margin-left: 15px;
 }
 
-/* Sposta SOLO l'account ancora più a destra */
+/* Spazio a sinistra per l'account */
 #account-icon-wrapper {
   margin-left: 15px;
 }
 
+/* Sfondo colorato dietro ogni icona */
 .icon-background {
   position: absolute;
   width: 40px;
   height: 40px;
-  background-color: #804AF2;
+  background-color: #804AF2; /* Viola acceso */
   border-radius: 8px;
   top: 0;
   left: 0;
-  z-index: 0;
-  transform: translateX(-20%);
+  z-index: 0; /* Dietro l'icona */
+  transform: translateX(-20%); /* Sposta leggermente a sinistra */
 }
 
-.cart-icon,
-.account-icon {
-  width: 25px;
-  height: 25px;
-  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-  z-index: 1;
-}
-
-/* Banner in alto con gradiente */
+/* Banner promozionale visivo */
 .promo-banner {
-  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5); /* Gradiente rosa-viola-azzurro */
   font-weight: bold;
 }
 
-/* Sezione principale con gradiente diagonale */
+/* Sezione catalogo: sfondo colorato diagonale */
 .catalogo-section {
-  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+  background: linear-gradient(120deg, #121212 60%, #d946ef 100%); /* Nero sfumato in viola */
   min-height: 100vh;
 }
 
-/* Card prodotto con effetto vetro e ombra */
+/* Card del prodotto con effetto vetro e interazione */
 .prodotto-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05); /* Trasparenza per effetto vetro */
+  backdrop-filter: blur(10px); /* Sfocatura dello sfondo dietro la card */
   border-radius: 20px;
   overflow: hidden;
   position: relative;
   border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
-  transition: transform 0.3s;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5); /* Ombra per profondità */
+  transition: transform 0.3s; /* Animazione al passaggio */
 }
 
+/* Effetto sollevamento al passaggio del mouse */
 .prodotto-card:hover {
   transform: translateY(-5px);
 }
 
+/* Immagine prodotto: mantiene proporzioni, centrata */
 .prodotto-card img.card-img-top {
   width: 100%;
   height: 200px;
@@ -167,7 +165,7 @@ body {
   padding: 10px;
 }
 
-/* Cuore in alto a destra */
+/* Icona cuore in alto a destra */
 .heart-icon {
   position: absolute;
   top: 10px;
