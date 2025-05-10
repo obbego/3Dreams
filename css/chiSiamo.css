@@ -85,3 +85,164 @@ body {
   filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
   z-index: 1;
 }
+
+/* ===== Sezione Chi Siamo ===== */
+.container h1 {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 2.5rem;
+  border-bottom: 2px solid #d946ef;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.lead {
+  color: #dddddd;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.col-md-4 {
+  margin-top: 2rem;
+}
+
+.col-md-4 h5 {
+  color: #ffffff;
+  margin-top: 1rem;
+}
+
+.col-md-4 p {
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+/* Immagini del team */
+.rounded-circle {
+  border: 3px solid #d946ef;
+  box-shadow: 0 4px 10px rgba(217, 70, 239, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.rounded-circle:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Giustifica il testo nella sezione Chi siamo */
+.lead {
+  text-align: justify;
+  text-justify: inter-word;
+  /* Per migliorare la distribuzione delle parole */
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+@keyframes rainbow-border {
+  0% {
+    border-color: rgb(255, 0, 0);
+    /* Rosso */
+  }
+
+  12.5% {
+    border-color: rgb(255, 165, 0);
+    /* Arancione */
+  }
+
+  25% {
+    border-color: rgb(255, 255, 0);
+    /* Giallo */
+  }
+
+  37.5% {
+    border-color: rgb(0, 255, 0);
+    /* Verde */
+  }
+
+  50% {
+    border-color: rgb(0, 255, 255);
+    /* Ciano */
+  }
+
+  62.5% {
+    border-color: rgb(0, 0, 255);
+    /* Blu */
+  }
+
+  75% {
+    border-color: rgb(75, 0, 130);
+    /* Indaco */
+  }
+
+  87.5% {
+    border-color: rgb(238, 130, 238);
+    /* Viola (violet) */
+  }
+
+  100% {
+    border-color: rgb(255, 0, 0);
+    /* Torna al rosso */
+  }
+}
+
+
+.rounded-circle {
+  border: 3px solid rgb(255, 0, 0);
+  /* Inizializza con un bordo rosso */
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4);
+  /* Ombra del colore iniziale */
+  transition: transform 0.3s ease;
+  animation: rainbow-border 4s infinite;
+  /* Applica l'animazione */
+}
+
+.rounded-circle:hover {
+  transform: scale(1.05);
+}
+
+/* Card del prodotto con effetto vetro e interazione */
+.prodotto-card {
+  background: rgba(255, 255, 255, 0.05);
+  /* Trasparenza per effetto vetro */
+  backdrop-filter: blur(10px);
+  /* Sfocatura dello sfondo dietro la card */
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  /* Ombra per profonditÃ  */
+  transition: transform 0.3s;
+  /* Animazione al passaggio */
+}
+
+/* Nascondi la card inizialmente */
+#toggle-partnership:not(:checked)~.partnership-card {
+  display: none;
+}
+
+/* Mostra la card se la checkbox è attiva */
+#toggle-partnership:checked~.partnership-card {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Effetto fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
