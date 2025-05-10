@@ -4,72 +4,135 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>3Dreams</title>
+  <!-- Inclusione del framework Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/HomePage.css" rel="stylesheet"> <!-- Collegamento al file CSS esterno -->
+  <!-- Collegamento al file CSS personalizzato -->
+  <link href="css/HomePage.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Barra di navigazione -->
-    <div class="navbar-custom">
+
+  <!-- Navbar personalizzata -->
+  <div class="navbar-custom">
     <div class="logo">
-        <strong>3Dreams</strong>
-        <!-- I link sono ora cliccabili con gli href -->
-        <small><a href="chiSiamo.html" class="text-white ms-3">Chi siamo</a></small>
-        <small><a href="catalogo.html" class="text-white ms-2">Catalogo</a></small>
-        <small><a href="aiuto.html" class="text-white ms-2">Aiuto</a></small>
+      <strong>3Dreams</strong>
+      <!-- Collegamenti a pagine informative -->
+      <small><a href="chiSiamo.html" class="text-white ms-3">Chi siamo</a></small>
+      <small><a href="catalogo.html" class="text-white ms-2">Catalogo</a></small>
+      <small><a href="aiuto.html" class="text-white ms-2">Aiuto</a></small>
     </div>
-    
+
     <div class="navbar-right">
-        <input type="text" class="search-bar" placeholder="Cerca..." />
-      
-        <!-- Carrello -->
-        <div class="icon-wrapper" id="cart-icon-wrapper">
-          <div class="icon-background"></div>
-          <a href="#carrello">
-            <img src="assets/icons/cart.svg" alt="Carrello" class="cart-icon" />
-          </a>
-        </div>
-      
-        <!-- Account -->
-        <div class="icon-wrapper" id="account-icon-wrapper">
-          <div class="icon-background"></div>
-          <a href="#account">
-            <img src="assets/icons/person-circle.svg" alt="Account" class="account-icon" />
-          </a>
-        </div>
-    </div>
+      <!-- Barra di ricerca -->
+      <input type="text" class="search-bar" placeholder="Cerca..." />
 
-    </div>
-    <!-- Titolo principale -->
-    <div class="main-title">
-    Richiedi la tua<br>stampa 3D personalizzata
-    </div>
+      <!-- Icona carrello -->
+      <div class="icon-wrapper" id="cart-icon-wrapper">
+        <div class="icon-background"></div>
+        <a href="#carrello">
+          <img src="assets/icons/cart.svg" alt="Carrello" class="cart-icon" />
+        </a>
+      </div>
 
-    <!-- Griglia prodotti -->
-    <div class="container-fluid product-grid">
-    <div class="row g-3">
-        <div class="col-6">
-        <div class="card-custom">
-            <div class="heart-icon">♡</div>
-            <div class="product-info">
-            <small class="text-muted">PVC</small><br>
-            <strong>Bombardilo Crocodilo</strong><br>
-            <span>$120</span>
-            </div>
+      <!-- Icona account -->
+      <div class="icon-wrapper" id="account-icon-wrapper">
+        <div class="icon-background"></div>
+        <a href="#account">
+          <img src="assets/icons/person-circle.svg" alt="Account" class="account-icon" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+   <!-- Banner promozionale visivo -->
+   <div class="promo-banner text-white text-center py-2">
+    Spedizione gratuita per ordini sopra i 100 €
+  </div>
+
+    <!-- Sezione principale suddivisa in due colonne -->
+  <div class="container py-5">
+    <div class="row align-items-start">
+
+      <!-- Colonna sinistra: testi -->
+      <div class="col-lg-6 text-white mb-4">
+        <div class="text-start">
+          <h4 class="mb-2">Se in catalogo non trovi<br>cosa ti serve...</h4>
+          <h2 class="gradient-text gradient-underline">Richiedi la tua<br>stampa 3D personalizzata</h2>
         </div>
+      </div>
+
+      <!-- Colonna destra: prodotti in evidenza -->
+      <div class="col-lg-6">
+        <h3 class="mb-2">Prodotti in evidenza</h3>
+        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3">
+
+          <!-- 1° prodotto -->
+          <div class="col">
+            <a href="singleProduct.html" class="text-decoration-none">
+              <div class="card prodotto-card text-white">
+                <img src="assets/img/prodotto1.png" class="card-img-top" alt="Prodotto">
+                <div class="card-body p-2">
+                  <p class="card-subtitle text-muted small mb-1">Materiale</p>
+                  <h6 class="card-title fw-bold small">Bombardilo Crocodilo</h6>
+                  <p class="card-text small">$ 120</p>
+                </div>
+                <i class="fas fa-heart heart-icon"></i>
+              </div>
+            </a>
+          </div>
+
+          <!-- 2° prodotto -->
+          <div class="col">
+            <a href="singleProduct.html" class="text-decoration-none">
+              <div class="card prodotto-card text-white">
+                <img src="assets/img/prodotto2.png" class="card-img-top" alt="Prodotto">
+                <div class="card-body p-2">
+                  <p class="card-subtitle text-muted small mb-1">Materiale</p>
+                  <h6 class="card-title fw-bold small">Crocodilo Volante</h6>
+                  <p class="card-text small">$ 150</p>
+                </div>
+                <i class="fas fa-heart heart-icon"></i>
+              </div>
+            </a>
+          </div>
+
+          <!-- 3° prodotto -->
+          <div class="col">
+            <a href="singleProduct.html" class="text-decoration-none">
+              <div class="card prodotto-card text-white">
+                <img src="assets/img/prodotto3.png" class="card-img-top" alt="Prodotto">
+                <div class="card-body p-2">
+                  <p class="card-subtitle text-muted small mb-1">Materiale</p>
+                  <h6 class="card-title fw-bold small">Tigre Galattica</h6>
+                  <p class="card-text small">$ 180</p>
+                </div>
+                <i class="fas fa-heart heart-icon"></i>
+              </div>
+            </a>
+          </div>
+
+          <!-- 4° prodotto -->
+          <div class="col">
+            <a href="singleProduct.html" class="text-decoration-none">
+              <div class="card prodotto-card text-white">
+                <img src="assets/img/prodotto4.png" class="card-img-top" alt="Prodotto">
+                <div class="card-body p-2">
+                  <p class="card-subtitle text-muted small mb-1">Materiale</p>
+                  <h6 class="card-title fw-bold small">Unicorno Celestiale</h6>
+                  <p class="card-text small">$ 200</p>
+                </div>
+                <i class="fas fa-heart heart-icon"></i>
+              </div>
+            </a>
+          </div>
+
         </div>
-        <!-- Altri prodotti... -->
+      </div>
     </div>
-    </div>
+  </div>
 
-    <!-- See More -->
-    <div class="see-more">
-    <a href="#" class="text-white text-decoration-none">See more...</a>
-    </div>
 
-    <!-- Script per la barra di ricerca e altre interazioni -->
-    <script>
-    // Eventi o funzionalità Javascript, se necessari
-    </script>
+</main>
+
 </body>
 </html>
