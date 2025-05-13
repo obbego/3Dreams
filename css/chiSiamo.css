@@ -146,60 +146,29 @@ footer {
 
 @keyframes rainbow-border {
   0% {
-    border-color: rgb(255, 0, 0);
-    /* Rosso */
+    border-color: rgb(85, 0, 255);
+    /* Indaco */
   }
-
-  12.5% {
-    border-color: rgb(255, 165, 0);
-    /* Arancione */
+  43% {
+    border-color: rgb(75, 0, 130);
+    /* Indaco */
   }
-
-  25% {
-    border-color: rgb(255, 255, 0);
-    /* Giallo */
-  }
-
-  37.5% {
-    border-color: rgb(0, 255, 0);
-    /* Verde */
-  }
-
-  50% {
-    border-color: rgb(0, 255, 255);
-    /* Ciano */
-  }
-
-  62.5% {
-    border-color: rgb(0, 0, 255);
-    /* Blu */
-  }
-
-  75% {
+  234% {
     border-color: rgb(75, 0, 130);
     /* Indaco */
   }
 
-  87.5% {
-    border-color: rgb(238, 130, 238);
-    /* Viola (violet) */
-  }
-
-  100% {
-    border-color: rgb(255, 0, 0);
-    /* Torna al rosso */
-  }
 }
 
 
 .rounded-circle {
-  border: 3px solid rgb(255, 0, 0);
+  border: 3px solid rgb(255, 0, 255);
   /* Inizializza con un bordo rosso */
   border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4);
+  box-shadow: 0 4px 10px rgba(255, 0, 255, 0.4);
   /* Ombra del colore iniziale */
   transition: transform 0.3s ease;
-  animation: rainbow-border 4s infinite;
+  animation: rainbow-border 10s infinite;
   /* Applica l'animazione */
 }
 
@@ -219,17 +188,17 @@ footer {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   /* Ombra per profonditÃ  */
-  transition: transform 0.3s;
+  transition: transform 0.4s;
   /* Animazione al passaggio */
 }
 
 /* Nascondi la card inizialmente */
-#toggle-partnership:not(:checked)~.partnership-card {
+#toggle-founders:not(:checked)~.founders-card {
   display: none;
 }
 
 /* Mostra la card se la checkbox è attiva */
-#toggle-partnership:checked~.partnership-card {
+#toggle-founders:checked~.founders-card {
   display: block;
   animation: fadeIn 0.5s ease;
 }
