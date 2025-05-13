@@ -1,87 +1,62 @@
-/* Corpo della pagina */
+/* ===== Body ===== */
 body {
-  margin: 0; /* Rimuove il margine predefinito del browser */
-  font-family: 'Arial', sans-serif; /* Imposta un font leggibile e di fallback */
-  background: linear-gradient(to bottom right, #111111, #333); /* Sfondo con gradiente scuro */
-  color: white; /* Testo bianco su sfondo scuro */
-  min-height: 100vh; /* Assicura che il body copra almeno l’intera altezza della finestra */
+  margin: 0; 
+  font-family: 'Arial', sans-serif; 
+  background: linear-gradient(to bottom right, #111111, #333); 
+  color: white; 
+  min-height: 100vh; 
 }
 
-/* -------------------------------------- */
-/* Barra di navigazione personalizzata */
+/* ===== Barra Navigazione ===== */
 .navbar-custom {
-  background-color: #1c1c1c; /* Sfondo scuro per la navbar */
-  display: flex; /* Layout flessibile orizzontale */
-  justify-content: space-between; /* Spazio tra logo e icone */
-  align-items: center; /* Allineamento verticale centrato */
-  padding: 1rem 2rem; /* Spaziatura interna */
+  background-color: #1c1c1c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .navbar-custom .logo {
   display: flex;
-  align-items: center; /* Allineamento verticale del testo/logo/link */
+  align-items: center;
 }
 
-.navbar-custom .logo strong {
+.navbar-custom .logo strong a {
   font-size: 1.8rem;
   color: white;
-}
-
-.navbar-custom .logo small {
-  font-size: 0.9rem;
+  text-decoration: none;
 }
 
 .navbar-custom .logo small a {
   color: white;
-  text-decoration: none; /* Nessuna sottolineatura */
-  padding: 0.4rem 0.8rem; /* Spaziatura interna cliccabile */
+  text-decoration: none;
+  margin-left: 15px;
   font-size: 1rem;
-  display: inline-block; /* Consente padding cliccabile */
-  border-radius: 5px; /* Angoli arrotondati */
-  transition: background-color 0.3s; /* Effetto hover fluido */
+  transition: background-color 0.3s;
+  padding: 3px 8px;
+  border-radius: 5px;
 }
 
 .navbar-custom .logo small a:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Barra di ricerca */
-.search-bar {
-  border-radius: 15px; /* Bordo arrotondato */
-  padding: 0.5rem;
-  border: 1px solid #ddd; /* Bordo chiaro */
-  margin-right: 1rem;
-  background-color: #333; /* Colore coerente con lo sfondo */
-  color: white;
-  width: 200px; /* Larghezza fissa */
-}
-
-/* Sezione destra della navbar: contenitore delle icone */
-.navbar-custom .navbar-right {
+.navbar-right {
   display: flex;
   align-items: center;
 }
 
-/* Stile per i bottoni-icona */
-.icon-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.3rem;
+.search-bar {
+  border-radius: 15px;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
   margin-right: 1rem;
-  cursor: pointer; /* Puntatore mano */
+  background-color: #333;
+  color: white;
+  width: 200px;
 }
 
-/* Icone (Carrello e Account) */
-.cart-icon,
-.account-icon {
-  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-  width: 25px;
-  height: 25px;
-  z-index: 1;
-}
-
-/* Wrapper delle icone account e carrello */
 .icon-wrapper {
   position: relative;
   width: 40px;
@@ -92,7 +67,6 @@ body {
   justify-content: center;
 }
 
-/* Sfondo colorato dietro ogni icona */
 .icon-background {
   position: absolute;
   width: 40px;
@@ -104,68 +78,71 @@ body {
   z-index: 0;
 }
 
-/* -------------------------------------- */
-/* Banner promozionale */
-.promo-banner {
-  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5); /* Gradiente accattivante orizzontale */
-  font-weight: bold; /* Testo in grassetto per risalto */
+.cart-icon,
+.account-icon {
+  width: 25px;
+  height: 25px;
+  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
+  z-index: 1;
 }
 
-/* -------------------------------------- */
-/* Sezione principale e layout */
+/* ===== Banner Promozionale ===== */
+.promo-banner {
+  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+  font-weight: bold;
+}
+
+/* ===== Sezione principale e layout ===== */
 #col-texts {
   display: flex;
-  flex-direction: column; /* Organizza i testi in colonna */
-  justify-content: center; /* Centra verticalmente il contenuto */
-  align-items: center; /* Centra orizzontalmente il contenuto */
-  height: 50vh; /* Assicura che la colonna occupi tutta l'altezza disponibile */
-  text-align: center; /* Centra il testo orizzontalmente all'interno del contenitore */
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  height: 50vh; 
+  text-align: center; 
 }
 
 #text-start h4, #text-start h2 {
-  margin: 0; /* Rimuovi eventuali margini predefiniti */
-  padding: 0; /* Rimuovi eventuali padding */
+  margin: 0; 
+  padding: 0; 
 }
 
 .small-text {
-  font-size: 0.75rem; /* Riduce la dimensione del font rispetto a un titolo standard */
+  font-size: 0.75rem;
 }
 
-/* -------------------------------------- */
-/* Sezione catalogo e card prodotto */
+/* ===== Sezione catalogo e card prodotto ===== */
 .catalogo-section {
-  background: linear-gradient(120deg, #121212 60%, #d946ef 100%); /* Nero sfumato in viola */
+  background: linear-gradient(120deg, #121212 60%, #d946ef 100%); 
   min-height: 100vh;
 }
 
 /* Card prodotto */
 .prodotto-card {
-  background: rgba(255, 255, 255, 0.05); /* Trasparenza per effetto vetro */
-  backdrop-filter: blur(10px); /* Sfocatura dello sfondo dietro la card */
+  background: rgba(255, 255, 255, 0.05); 
+  backdrop-filter: blur(10px); 
   border-radius: 20px;
   overflow: hidden;
   position: relative;
   border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.5); /* Ombra per profondità */
-  transition: transform 0.3s; /* Animazione al passaggio */
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5); 
+  transition: transform 0.3s;
 }
-/* Imposta un'altezza fissa per le card dei prodotti */
+
 .prodotto-card {
-  height: 300px; /* Imposta un'altezza fissa */
+  height: 300px; 
   display: flex;
-  flex-direction: column; /* Allinea il contenuto in colonna */
-  justify-content: space-between; /* Spaziatura uniforme tra le voci */
+  flex-direction: column; 
+  justify-content: space-between; 
 }
 
-/* Imposta le immagini in modo che si adattino correttamente */
 .prodotto-card img.card-img-top {
-  height: 200px; /* Imposta un'altezza fissa per le immagini */
-  object-fit: cover; /* Adatta l'immagine senza deformarla */
+  height: 200px; 
+  object-fit: cover; 
 }
-
 
 .prodotto-card:hover {
-  transform: translateY(-5px); /* Effetto sollevamento al passaggio del mouse */
+  transform: translateY(-5px); 
 }
 
 .prodotto-card img.card-img-top {
@@ -185,8 +162,7 @@ body {
   color: white !important;
 }
 
-/* -------------------------------------- */
-/* Testo con gradiente */
+/* ===== Testo con gradiente ===== */
 .gradient-text {
   background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
   -webkit-background-clip: text;
@@ -210,8 +186,7 @@ body {
   border-radius: 2px;
 }
 
-/* -------------------------------------- */
-/* Sezione "vedi altri prodotti" */
+/* ===== Sezione 'altri prodotti' ===== */
 .see-more {
   text-align: right;
   font-weight: bold;
