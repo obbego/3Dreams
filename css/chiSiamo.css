@@ -149,10 +149,12 @@ footer {
     border-color: rgb(85, 0, 255);
     /* Indaco */
   }
+
   43% {
     border-color: rgb(75, 0, 130);
     /* Indaco */
   }
+
   234% {
     border-color: rgb(75, 0, 130);
     /* Indaco */
@@ -214,4 +216,13 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+h1 i {
+  font-size: 1.6rem;
+  /* Modifica la dimensione della freccia */
+  color: #ffffff;
+  /* Cambia il colore della freccia */
+  margin-left: px;
+  /* Aggiungi distanza tra il testo e la freccia */
 }
