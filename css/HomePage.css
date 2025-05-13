@@ -7,6 +7,7 @@ body {
   min-height: 100vh; /* Assicura che il body copra almeno l’intera altezza della finestra */
 }
 
+/* -------------------------------------- */
 /* Barra di navigazione personalizzata */
 .navbar-custom {
   background-color: #1c1c1c; /* Sfondo scuro per la navbar */
@@ -16,42 +17,20 @@ body {
   padding: 1rem 2rem; /* Spaziatura interna */
 }
 
-/* Banner promozionale colorato */
-.promo-banner {
-  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5); /* Gradiente accattivante orizzontale */
-  font-weight: bold; /* Testo in grassetto per risalto */
-}
-
-/* Sezione destra della navbar: stile dei link/icone */
-.navbar-right a {
-  margin-right: 15px; /* Spazio tra le icone */
-  position: relative; /* Necessario per il posizionamento del contenuto interno (es. badge) */
-}
-
-/* Filtro sulle icone per renderle visibili su sfondo scuro */
-.cart-icon,
-.account-icon {
-  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-}
-
-/* Sezione logo: contenitore */
 .navbar-custom .logo {
   display: flex;
   align-items: center; /* Allineamento verticale del testo/logo/link */
 }
 
-/* Titolo "3Dreams" nel logo */
 .navbar-custom .logo strong {
   font-size: 1.8rem;
   color: white;
 }
 
-/* Link secondari accanto al logo */
 .navbar-custom .logo small {
   font-size: 0.9rem;
 }
 
-/* Stile per i link accanto al logo */
 .navbar-custom .logo small a {
   color: white;
   text-decoration: none; /* Nessuna sottolineatura */
@@ -62,15 +41,8 @@ body {
   transition: background-color 0.3s; /* Effetto hover fluido */
 }
 
-/* Effetto al passaggio del mouse sui link della navbar */
 .navbar-custom .logo small a:hover {
   background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Sezione destra della navbar: contenitore delle icone */
-.navbar-custom .navbar-right {
-  display: flex;
-  align-items: center;
 }
 
 /* Barra di ricerca */
@@ -84,6 +56,12 @@ body {
   width: 200px; /* Larghezza fissa */
 }
 
+/* Sezione destra della navbar: contenitore delle icone */
+.navbar-custom .navbar-right {
+  display: flex;
+  align-items: center;
+}
+
 /* Stile per i bottoni-icona */
 .icon-btn {
   background: none;
@@ -94,66 +72,16 @@ body {
   cursor: pointer; /* Puntatore mano */
 }
 
-/* Icona carrello - dimensioni */
-.cart-icon {
+/* Icone (Carrello e Account) */
+.cart-icon,
+.account-icon {
+  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
   width: 25px;
   height: 25px;
-}
-
-/* Titolo principale della pagina */
-.main-title {
-  font-size: 1.6rem;
-  font-weight: bold;
-  padding: 1.2rem 1rem;
-  text-align: center;
-}
-
-/* Contenitore griglia prodotti */
-.product-grid {
-  padding: 1rem;
-}
-
-/* Card visiva per ciascun prodotto */
-.card-custom {
-  background: rgba(255, 255, 255, 0.06); /* Colore semitrasparente per effetto glassmorphism */
-  border-radius: 20px;
-  padding: 1rem;
-  color: white;
-  height: 180px;
-  position: relative;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Ombra moderna */
-  backdrop-filter: blur(10px); /* Sfocatura dietro il contenuto */
-}
-
-/* Icona "cuore" posizionata in alto a destra */
-.heart-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.2rem;
-  color: white;
-}
-
-/* Informazioni del prodotto posizionate in basso a sinistra */
-.product-info {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-}
-
-/* Sezione "vedi altri prodotti" */
-.see-more {
-  text-align: right;
-  font-weight: bold;
-  padding: 0 1rem 1rem;
+  z-index: 1;
 }
 
 /* Wrapper delle icone account e carrello */
-.navbar-right {
-  display: flex;
-  align-items: center;
-}
-
 .icon-wrapper {
   position: relative;
   width: 40px;
@@ -164,35 +92,53 @@ body {
   justify-content: center;
 }
 
-/* Margine sinistro aggiuntivo per separare le icone */
-#cart-icon-wrapper {
-  margin-left: 15px;
-}
-
-#account-icon-wrapper {
-  margin-left: 15px;
-}
-
 /* Sfondo colorato dietro ogni icona */
 .icon-background {
   position: absolute;
   width: 40px;
   height: 40px;
-  background-color: #804AF2; /* Colore accattivante */
+  background-color: #804AF2;
   border-radius: 8px;
   top: 0;
   left: 0;
-  z-index: 0; /* Dietro l’icona */
-  transform: translateX(-20%); /* Sposta leggermente a sinistra per effetto estetico */
+  z-index: 0;
 }
 
-/* Sezione catalogo: sfondo colorato diagonale */
+/* -------------------------------------- */
+/* Banner promozionale */
+.promo-banner {
+  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5); /* Gradiente accattivante orizzontale */
+  font-weight: bold; /* Testo in grassetto per risalto */
+}
+
+/* -------------------------------------- */
+/* Sezione principale e layout */
+#col-texts {
+  display: flex;
+  flex-direction: column; /* Organizza i testi in colonna */
+  justify-content: center; /* Centra verticalmente il contenuto */
+  align-items: center; /* Centra orizzontalmente il contenuto */
+  height: 50vh; /* Assicura che la colonna occupi tutta l'altezza disponibile */
+  text-align: center; /* Centra il testo orizzontalmente all'interno del contenitore */
+}
+
+#text-start h4, #text-start h2 {
+  margin: 0; /* Rimuovi eventuali margini predefiniti */
+  padding: 0; /* Rimuovi eventuali padding */
+}
+
+.small-text {
+  font-size: 0.75rem; /* Riduce la dimensione del font rispetto a un titolo standard */
+}
+
+/* -------------------------------------- */
+/* Sezione catalogo e card prodotto */
 .catalogo-section {
   background: linear-gradient(120deg, #121212 60%, #d946ef 100%); /* Nero sfumato in viola */
   min-height: 100vh;
 }
 
-/* Card del prodotto con effetto vetro e interazione */
+/* Card prodotto */
 .prodotto-card {
   background: rgba(255, 255, 255, 0.05); /* Trasparenza per effetto vetro */
   backdrop-filter: blur(10px); /* Sfocatura dello sfondo dietro la card */
@@ -203,13 +149,25 @@ body {
   box-shadow: 0 4px 30px rgba(0,0,0,0.5); /* Ombra per profondità */
   transition: transform 0.3s; /* Animazione al passaggio */
 }
-
-/* Effetto sollevamento al passaggio del mouse */
-.prodotto-card:hover {
-  transform: translateY(-5px);
+/* Imposta un'altezza fissa per le card dei prodotti */
+.prodotto-card {
+  height: 300px; /* Imposta un'altezza fissa */
+  display: flex;
+  flex-direction: column; /* Allinea il contenuto in colonna */
+  justify-content: space-between; /* Spaziatura uniforme tra le voci */
 }
 
-/* Immagine prodotto: mantiene proporzioni, centrata */
+/* Imposta le immagini in modo che si adattino correttamente */
+.prodotto-card img.card-img-top {
+  height: 200px; /* Imposta un'altezza fissa per le immagini */
+  object-fit: cover; /* Adatta l'immagine senza deformarla */
+}
+
+
+.prodotto-card:hover {
+  transform: translateY(-5px); /* Effetto sollevamento al passaggio del mouse */
+}
+
 .prodotto-card img.card-img-top {
   width: 100%;
   height: 200px;
@@ -217,7 +175,7 @@ body {
   padding: 10px;
 }
 
-/* Cuore in alto a destra */
+/* Icona "cuore" */
 .heart-icon {
   position: absolute;
   top: 10px;
@@ -227,7 +185,8 @@ body {
   color: white !important;
 }
 
-/* Testo con gradiente nei caratteri (come il banner) */
+/* -------------------------------------- */
+/* Testo con gradiente */
 .gradient-text {
   background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
   -webkit-background-clip: text;
@@ -235,7 +194,6 @@ body {
   background-clip: text;
 }
 
-/* Sottolineatura con lo stesso gradiente */
 .gradient-underline {
   position: relative;
   display: inline-block;
@@ -250,4 +208,12 @@ body {
   height: 4px;
   background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
   border-radius: 2px;
+}
+
+/* -------------------------------------- */
+/* Sezione "vedi altri prodotti" */
+.see-more {
+  text-align: right;
+  font-weight: bold;
+  padding: 0 1rem 1rem;
 }
