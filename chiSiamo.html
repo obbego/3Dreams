@@ -11,17 +11,20 @@
 </head>
 
 <body>
-  <!-- Barra di navigazione -->
-  <div class="navbar-custom d-flex justify-content-between align-items-center px-3 py-2">
-    <div class="logo d-flex align-items-center">
+
+  <!-- Navbar personalizzata -->
+  <div class="navbar-custom">
+    <div class="logo">
       <strong><a href="HomePage.html" class="text-white text-decoration-none">3Dreams</a></strong>
+      <!-- Collegamenti a pagine informative -->
       <small><a href="chiSiamo.html" class="text-white ms-3">Chi siamo</a></small>
       <small><a href="catalogo.html" class="text-white ms-2">Catalogo</a></small>
       <small><a href="aiuto.html" class="text-white ms-2">Aiuto</a></small>
     </div>
 
-    <div class="navbar-right d-flex align-items-center">
-      <input type="text" class="form-control form-control-sm me-2" placeholder="Cerca..." style="width: 150px;" />
+    <div class="navbar-right">
+      <!-- Barra di ricerca -->
+      <input type="text" class="search-bar" placeholder="Cerca..." />
 
       <!-- Carrello -->
       <div class="icon-wrapper me-2">
@@ -72,13 +75,14 @@
 
 
     <!-- Toggle visibilità -->
-    <input type="checkbox" id="toggle-partnership" hidden>
-    <label for="toggle-partnership">
-      <h1 class="load text-center mb-4" style="cursor: pointer;">Partnership</h1>
+    <input type="checkbox" id="toggle-founders" hidden>
+    <label for="toggle-founders">
+      <h1 class="load text-center mb-4" style="cursor: pointer;">founders</h1>
+      F
     </label>
 
     <!-- Card visibile solo quando il checkbox è attivo -->
-    <div class="card prodotto-card text-white p-4 partnership-card">
+    <div class="card prodotto-card text-white p-4 founders-card">
       <div class="row">
         <div class="col-md-4 text-center">
           <img src="https://ui-avatars.com/api/?name=Francesco+Bego&background=0A0A0A&color=ffffff&size=150"
