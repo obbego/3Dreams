@@ -13,199 +13,198 @@
 
 <body>
   <!-- Barra di navigazione -->
-  <div class="navbar-custom">
-    <div class="logo">
-        <strong><a href="HomePage.html" class="text-white text-decoration-none">3Dreams</a></strong>
-        <!-- I link sono ora cliccabili con gli href -->
-        <small><a href="chiSiamo.html" class="text-white ms-3">Chi siamo</a></small>
-        <small><a href="catalogo.html" class="text-white ms-2">Catalogo</a></small>
-        <small><a href="aiuto.html" class="text-white ms-2">Aiuto</a></small>
+  <div class="navbar-custom" id="navbar-custom">
+    <div class="logo" id="logo">
+      <strong><a href="HomePage.html" class="text-white text-decoration-none" id="home-link">3Dreams</a></strong>
+      <small><a href="chiSiamo.html" class="text-white ms-3" id="about-link">Chi siamo</a></small>
+      <small><a href="catalogo.html" class="text-white ms-2" id="catalogo-link">Catalogo</a></small>
+      <small><a href="aiuto.html" class="text-white ms-2" id="help-link">Aiuto</a></small>
     </div>
-    
-    <div class="navbar-right">
-        <input type="text" class="search-bar" placeholder="Cerca..." />
-      
-        <!-- Carrello -->
-        <div class="icon-wrapper" id="cart-icon-wrapper">
-          <div class="icon-background"></div>
-          <a href="carrello.html">
-            <img src="assets/icons/cart.svg" alt="Carrello" class="cart-icon" />
-          </a>
-        </div>
-      
-        <!-- Account -->
-        <div class="icon-wrapper" id="account-icon-wrapper">
-          <div class="icon-background"></div>
-          <a href="account.html">
-            <img src="assets/icons/person-circle.svg" alt="Account" class="account-icon" />
-          </a>
-        </div>
+
+    <div class="navbar-right" id="navbar-right">
+      <input type="text" class="search-bar" placeholder="Cerca..." id="search-bar" />
+
+      <!-- Carrello -->
+      <div class="icon-wrapper" id="cart-icon-wrapper">
+        <div class="icon-background"></div>
+        <a href="carrello.html" id="cart-link">
+          <img src="assets/icons/cart.svg" alt="Carrello" class="cart-icon" id="cart-icon" />
+        </a>
+      </div>
+
+      <!-- Account -->
+      <div class="icon-wrapper" id="account-icon-wrapper">
+        <div class="icon-background"></div>
+        <a href="account.html" id="account-link">
+          <img src="assets/icons/person-circle.svg" alt="Account" class="account-icon" id="account-icon" />
+        </a>
+      </div>
     </div>
   </div>
 
   <!-- Banner promozionale -->
-  <div class="promo-banner text-white text-center py-2">
+  <div class="promo-banner text-white text-center py-2" id="promo-banner">
     Spedizione gratuita per ordini sopra i 100 €
   </div>
 
   <!-- Sfondo e griglia prodotti -->
-  <main class="catalogo-section py-5">
-    <div class="container">
-      <div class="row g-4 justify-content-center">
+  <main class="catalogo-section py-5" id="catalogo-section">
+    <div class="container" id="product-container">
+      <div class="row g-4 justify-content-center" id="product-row">
 
         <!-- Card prodotto -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <a href="singleProduct.html" class="text-decoration-none">
-            <div class="card prodotto-card text-white">
-              <img src="assets/img/prodotto1.png" class="card-img-top" alt="Prodotto">
-              <div class="card-body">
-                <h7 class="card-title">Materiale</h7>
-                <h5 class="card-title fw-bold">Bombardilo Crocodilo</h5>
-                <p class="card-text">$ 120</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-1">
+          <a href="singleProduct.html" class="text-decoration-none" id="product-link-1">
+            <div class="card prodotto-card text-white" id="card-1">
+              <img src="assets/img/prodotto1.png" class="card-img-top" alt="Prodotto" id="product-img-1">
+              <div class="card-body" id="product-body-1">
+                <h7 class="card-title" id="material-title-1">Materiale</h7>
+                <h5 class="card-title fw-bold" id="product-title-1">Bombardilo Crocodilo</h5>
+                <p class="card-text" id="product-price-1">$ 120</p>
               </div>
-              <i class="fas fa-heart heart-icon"></i>
+              <i class="fas fa-heart heart-icon" id="heart-icon-1"></i>
             </div>
           </a>
-        </div>        
+        </div>
 
         <!-- Altri prodotti (duplicati) -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card prodotto-card text-white">
-            <img src="assets/img/prodotto2.png" class="card-img-top" alt="Prodotto">
-            <div class="card-body">
-              <h7 class="card-title">Materiale</h7>
-              <h5 class="card-title fw-bold">Crocodilo Volante</h5>
-              <p class="card-text">$ 150</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-2">
+          <div class="card prodotto-card text-white" id="card-2">
+            <img src="assets/img/prodotto2.png" class="card-img-top" alt="Prodotto" id="product-img-2">
+            <div class="card-body" id="product-body-2">
+              <h7 class="card-title" id="material-title-2">Materiale</h7>
+              <h5 class="card-title fw-bold" id="product-title-2">Crocodilo Volante</h5>
+              <p class="card-text" id="product-price-2">$ 150</p>
             </div>
-            <i class="fas fa-heart heart-icon"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-2"></i>
           </div>
         </div>
 
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card prodotto-card text-white">
-            <img src="assets/img/prodotto3.png" class="card-img-top" alt="Prodotto">
-            <div class="card-body">
-              <h7 class="card-title">Materiale</h7>
-              <h5 class="card-title fw-bold">Tigre Galattica</h5>
-              <p class="card-text">$ 180</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-3">
+          <div class="card prodotto-card text-white" id="card-3">
+            <img src="assets/img/prodotto3.png" class="card-img-top" alt="Prodotto" id="product-img-3">
+            <div class="card-body" id="product-body-3">
+              <h7 class="card-title" id="material-title-3">Materiale</h7>
+              <h5 class="card-title fw-bold" id="product-title-3">Tigre Galattica</h5>
+              <p class="card-text" id="product-price-3">$ 180</p>
             </div>
-            <i class="fas fa-heart heart-icon"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-3"></i>
           </div>
         </div>
 
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card prodotto-card text-white">
-            <img src="assets/img/prodotto4.png" class="card-img-top" alt="Prodotto">
-            <div class="card-body">
-              <h7 class="card-title">Materiale</h7>
-              <h5 class="card-title fw-bold">Unicorno Celestiale</h5>
-              <p class="card-text">$ 200</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-4">
+          <div class="card prodotto-card text-white" id="card-4">
+            <img src="assets/img/prodotto4.png" class="card-img-top" alt="Prodotto" id="product-img-4">
+            <div class="card-body" id="product-body-4">
+              <h7 class="card-title" id="material-title-4">Materiale</h7>
+              <h5 class="card-title fw-bold" id="product-title-4">Unicorno Celestiale</h5>
+              <p class="card-text" id="product-price-4">$ 200</p>
             </div>
-            <i class="fas fa-heart heart-icon"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-4"></i>
           </div>
         </div>
 
         <!-- 5° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card prodotto-card text-white">
-            <img src="assets/img/prodotto5.png" class="card-img-top" alt="Prodotto">
-            <div class="card-body">
-              <h7 class="card-title">Materiale</h7>
-              <h5 class="card-title fw-bold">Lupo Astronauta</h5>
-              <p class="card-text">$ 220</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-5">
+          <div class="card prodotto-card text-white" id="card-5">
+            <img src="assets/img/prodotto5.png" class="card-img-top" alt="Prodotto" id="product-img-5">
+            <div class="card-body" id="product-body-5">
+              <h7 class="card-title" id="material-title-5">Materiale</h7>
+              <h5 class="card-title fw-bold" id="product-title-5">Lupo Astronauta</h5>
+              <p class="card-text" id="product-price-5">$ 220</p>
             </div>
-            <i class="fas fa-heart heart-icon"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-5"></i>
           </div>
         </div>
 
         <!-- 6° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card prodotto-card text-white">
-            <img src="assets/img/prodotto6.png" class="card-img-top" alt="Prodotto">
-            <div class="card-body">
-              <h7 class="card-title">Materiale</h7>
-              <h5 class="card-title fw-bold">Leone Solare</h5>
-              <p class="card-text">$ 250</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-6">
+          <div class="card prodotto-card text-white" id="card-6">
+            <img src="assets/img/prodotto6.png" class="card-img-top" alt="Prodotto" id="product-img-6">
+            <div class="card-body" id="product-body-6">
+              <h7 class="card-title" id="material-title-6">Materiale</h7>
+              <h5 class="card-title fw-bold" id="product-title-6">Leone Solare</h5>
+              <p class="card-text" id="product-price-6">$ 250</p>
             </div>
-            <i class="fas fa-heart heart-icon"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-6"></i>
           </div>
         </div>
 
         <!-- 7° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card prodotto-card text-white">
-            <img src="assets/img/prodotto7.png" class="card-img-top" alt="Prodotto">
-            <div class="card-body">
-              <h7 class="card-title">Materiale</h7>
-              <h5 class="card-title fw-bold">Canguro Magico</h5>
-              <p class="card-text">$ 130</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-7">
+          <div class="card prodotto-card text-white" id="card-7">
+            <img src="assets/img/prodotto7.png" class="card-img-top" alt="Prodotto" id="product-img-7">
+            <div class="card-body" id="product-body-7">
+              <h7 class="card-title" id="material-title-7">Materiale</h7>
+              <h5 class="card-title fw-bold" id="product-title-7">Canguro Magico</h5>
+              <p class="card-text" id="product-price-7">$ 130</p>
             </div>
-            <i class="fas fa-heart heart-icon"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-7"></i>
           </div>
         </div>
 
         <!-- 8° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card prodotto-card text-white">
-            <img src="assets/img/prodotto8.png" class="card-img-top" alt="Prodotto">
-            <div class="card-body">
-              <h7 class="card-title">Materiale</h7>
-              <h5 class="card-title fw-bold">Serpente Argenteo</h5>
-              <p class="card-text">$ 210</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-8">
+          <div class="card prodotto-card text-white" id="card-8">
+            <img src="assets/img/prodotto8.png" class="card-img-top" alt="Prodotto" id="product-img-8">
+            <div class="card-body" id="product-body-8">
+              <h7 class="card-title" id="material-title-8">Materiale</h7>
+              <h5 class="card-title fw-bold" id="product-title-8">Serpente Argenteo</h5>
+              <p class="card-text" id="product-price-8">$ 210</p>
             </div>
-            <i class="fas fa-heart heart-icon"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-8"></i>
           </div>
         </div>
 
         <!-- 9° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card prodotto-card text-white">
-            <img src="assets/img/prodotto9.png" class="card-img-top" alt="Prodotto">
-            <div class="card-body">
-              <h7 class="card-title">Materiale</h7>
-              <h5 class="card-title fw-bold">Elefante Cosmico</h5>
-              <p class="card-text">$ 280</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-9">
+          <div class="card prodotto-card text-white" id="card-9">
+            <img src="assets/img/prodotto9.png" class="card-img-top" alt="Prodotto" id="product-img-9">
+            <div class="card-body" id="product-body-9">
+              <h7 class="card-title" id="material-title-9">Materiale</h7>
+              <h5 class="card-title fw-bold" id="product-title-9">Elefante Cosmico</h5>
+              <p class="card-text" id="product-price-9">$ 280</p>
             </div>
-            <i class="fas fa-heart heart-icon"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-9"></i>
           </div>
         </div>
 
         <!-- 10° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card prodotto-card text-white">
-            <img src="assets/img/prodotto10.png" class="card-img-top" alt="Prodotto">
-            <div class="card-body">
-              <h7 class="card-title">Materiale</h7>
-              <h5 class="card-title fw-bold">Pantera Stellare</h5>
-              <p class="card-text">$ 300</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-10">
+          <div class="card prodotto-card text-white" id="card-10">
+            <img src="assets/img/prodotto10.png" class="card-img-top" alt="Prodotto" id="product-img-10">
+            <div class="card-body" id="product-body-10">
+              <h7 class="card-title" id="material-title-10">Materiale</h7>
+              <h5 class="card-title fw-bold" id="product-title-10">Pantera Stellare</h5>
+              <p class="card-text" id="product-price-10">$ 300</p>
             </div>
-            <i class="fas fa-heart heart-icon"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-10"></i>
           </div>
         </div>
 
         <!-- 11° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card prodotto-card text-white">
-            <img src="assets/img/prodotto11.png" class="card-img-top" alt="Prodotto">
-            <div class="card-body">
-              <h7 class="card-title">Materiale</h7>
-              <h5 class="card-title fw-bold">Pinguino Cosmico</h5>
-              <p class="card-text">$ 170</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-11">
+          <div class="card prodotto-card text-white" id="card-11">
+            <img src="assets/img/prodotto11.png" class="card-img-top" alt="Prodotto" id="product-img-11">
+            <div class="card-body" id="product-body-11">
+              <h7 class="card-title" id="material-title-11">Materiale</h7>
+              <h5 class="card-title fw-bold" id="product-title-11">Pinguino Cosmico</h5>
+              <p class="card-text" id="product-price-11">$ 170</p>
             </div>
-            <i class="fas fa-heart heart-icon"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-11"></i>
           </div>
         </div>
 
         <!-- 12° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card prodotto-card text-white">
-            <img src="assets/img/prodotto12.png" class="card-img-top" alt="Prodotto">
-            <div class="card-body">
-              <h7 class="card-title">Materiale</h7>
-              <h5 class="card-title fw-bold">Pappagallo Virtuale</h5>
-              <p class="card-text">$ 160</p>
+        <div class="col-6 col-md-4 col-lg-3" id="product-card-12">
+          <div class="card prodotto-card text-white" id="card-12">
+            <img src="assets/img/prodotto12.png" class="card-img-top" alt="Prodotto" id="product-img-12">
+            <div class="card-body" id="product-body-12">
+              <h7 class="card-title" id="material-title-12">Materiale</h7>
+              <h5 class="card-title fw-bold" id="product-title-12">Pappagallo Virtuale</h5>
+              <p class="card-text" id="product-price-12">$ 160</p>
             </div>
-            <i class="fas fa-heart heart-icon"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-12"></i>
           </div>
         </div>
 
