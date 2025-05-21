@@ -26,15 +26,16 @@
 
       <!-- Carrello -->
       <div class="icon-wrapper" id="cart-icon-wrapper">
-        <div class="icon-background"></div>
+        <div class="icon-background" id="cart-icon-background"></div>
         <a href="carrello.html" id="cart-link">
           <img src="assets/icons/cart.svg" alt="Carrello" class="cart-icon" id="cart-icon" />
+          <span class="cart-count" id="cart-count">0</span>
         </a>
       </div>
 
       <!-- Account -->
       <div class="icon-wrapper" id="account-icon-wrapper">
-        <div class="icon-background"></div>
+        <div class="icon-background" id="account-icon-background"></div>
         <a href="account.html" id="account-link">
           <img src="assets/icons/person-circle.svg" alt="Account" class="account-icon" id="account-icon" />
         </a>
@@ -47,170 +48,222 @@
     Spedizione gratuita per ordini sopra i 100 €
   </div>
 
+  <!-- Filtri e ordinamento -->
+  <div class="container-fluid filters-container py-3" id="filters-container">
+    <div class="row" id="filters-row">
+      <div class="col-md-6" id="category-filters">
+        <select class="form-select filter-select" id="category-filter">
+          <option value="all">Tutte le categorie</option>
+          <option value="animals">Animali</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="space">Spazio</option>
+        </select>
+      </div>
+      <div class="col-md-6" id="sort-filters">
+        <select class="form-select filter-select" id="sort-filter">
+          <option value="default">Ordina per</option>
+          <option value="price-asc">Prezzo: crescente</option>
+          <option value="price-desc">Prezzo: decrescente</option>
+          <option value="name-asc">Nome: A-Z</option>
+          <option value="name-desc">Nome: Z-A</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
   <!-- Sfondo e griglia prodotti -->
   <main class="catalogo-section py-5" id="catalogo-section">
     <div class="container" id="product-container">
       <div class="row g-4 justify-content-center" id="product-row">
 
         <!-- Card prodotto -->
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-1">
-          <a href="singleProduct.html" class="text-decoration-none" id="product-link-1">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-1" data-category="animals" data-price="120" data-name="Bombardilo Crocodilo">
+          <a href="singleProduct.html" class="text-decoration-none product-link" id="product-link-1">
             <div class="card prodotto-card text-white" id="card-1">
-              <img src="assets/img/prodotto1.png" class="card-img-top" alt="Prodotto" id="product-img-1">
-              <div class="card-body" id="product-body-1">
-                <h7 class="card-title" id="material-title-1">Materiale</h7>
-                <h5 class="card-title fw-bold" id="product-title-1">Bombardilo Crocodilo</h5>
-                <p class="card-text" id="product-price-1">$ 120</p>
+              <img src="assets/img/prodotto1.png" class="card-img-top product-image" alt="Prodotto" id="product-img-1">
+              <div class="card-body product-body" id="product-body-1">
+                <h7 class="card-title material-title" id="material-title-1">Materiale</h7>
+                <h5 class="card-title fw-bold product-name" id="product-title-1">Bombardilo Crocodilo</h5>
+                <p class="card-text product-price" id="product-price-1">$ 120</p>
               </div>
-              <i class="fas fa-heart heart-icon" id="heart-icon-1"></i>
+              <i class="fas fa-heart heart-icon" id="heart-icon-1" data-product-id="1"></i>
+              <button class="btn add-to-cart-btn" id="add-to-cart-1">Aggiungi al carrello</button>
             </div>
           </a>
         </div>
 
         <!-- Altri prodotti (duplicati) -->
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-2">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-2" data-category="fantasy" data-price="150" data-name="Crocodilo Volante">
           <div class="card prodotto-card text-white" id="card-2">
-            <img src="assets/img/prodotto2.png" class="card-img-top" alt="Prodotto" id="product-img-2">
-            <div class="card-body" id="product-body-2">
-              <h7 class="card-title" id="material-title-2">Materiale</h7>
-              <h5 class="card-title fw-bold" id="product-title-2">Crocodilo Volante</h5>
-              <p class="card-text" id="product-price-2">$ 150</p>
+            <img src="assets/img/prodotto2.png" class="card-img-top product-image" alt="Prodotto" id="product-img-2">
+            <div class="card-body product-body" id="product-body-2">
+              <h7 class="card-title material-title" id="material-title-2">Materiale</h7>
+              <h5 class="card-title fw-bold product-name" id="product-title-2">Crocodilo Volante</h5>
+              <p class="card-text product-price" id="product-price-2">$ 150</p>
             </div>
-            <i class="fas fa-heart heart-icon" id="heart-icon-2"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-2" data-product-id="2"></i>
+            <button class="btn add-to-cart-btn" id="add-to-cart-2">Aggiungi al carrello</button>
           </div>
         </div>
 
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-3">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-3" data-category="space" data-price="180" data-name="Tigre Galattica">
           <div class="card prodotto-card text-white" id="card-3">
-            <img src="assets/img/prodotto3.png" class="card-img-top" alt="Prodotto" id="product-img-3">
-            <div class="card-body" id="product-body-3">
-              <h7 class="card-title" id="material-title-3">Materiale</h7>
-              <h5 class="card-title fw-bold" id="product-title-3">Tigre Galattica</h5>
-              <p class="card-text" id="product-price-3">$ 180</p>
+            <img src="assets/img/prodotto3.png" class="card-img-top product-image" alt="Prodotto" id="product-img-3">
+            <div class="card-body product-body" id="product-body-3">
+              <h7 class="card-title material-title" id="material-title-3">Materiale</h7>
+              <h5 class="card-title fw-bold product-name" id="product-title-3">Tigre Galattica</h5>
+              <p class="card-text product-price" id="product-price-3">$ 180</p>
             </div>
-            <i class="fas fa-heart heart-icon" id="heart-icon-3"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-3" data-product-id="3"></i>
+            <button class="btn add-to-cart-btn" id="add-to-cart-3">Aggiungi al carrello</button>
           </div>
         </div>
 
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-4">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-4" data-category="fantasy" data-price="200" data-name="Unicorno Celestiale">
           <div class="card prodotto-card text-white" id="card-4">
-            <img src="assets/img/prodotto4.png" class="card-img-top" alt="Prodotto" id="product-img-4">
-            <div class="card-body" id="product-body-4">
-              <h7 class="card-title" id="material-title-4">Materiale</h7>
-              <h5 class="card-title fw-bold" id="product-title-4">Unicorno Celestiale</h5>
-              <p class="card-text" id="product-price-4">$ 200</p>
+            <img src="assets/img/prodotto4.png" class="card-img-top product-image" alt="Prodotto" id="product-img-4">
+            <div class="card-body product-body" id="product-body-4">
+              <h7 class="card-title material-title" id="material-title-4">Materiale</h7>
+              <h5 class="card-title fw-bold product-name" id="product-title-4">Unicorno Celestiale</h5>
+              <p class="card-text product-price" id="product-price-4">$ 200</p>
             </div>
-            <i class="fas fa-heart heart-icon" id="heart-icon-4"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-4" data-product-id="4"></i>
+            <button class="btn add-to-cart-btn" id="add-to-cart-4">Aggiungi al carrello</button>
           </div>
         </div>
 
         <!-- 5° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-5">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-5" data-category="space" data-price="220" data-name="Lupo Astronauta">
           <div class="card prodotto-card text-white" id="card-5">
-            <img src="assets/img/prodotto5.png" class="card-img-top" alt="Prodotto" id="product-img-5">
-            <div class="card-body" id="product-body-5">
-              <h7 class="card-title" id="material-title-5">Materiale</h7>
-              <h5 class="card-title fw-bold" id="product-title-5">Lupo Astronauta</h5>
-              <p class="card-text" id="product-price-5">$ 220</p>
+            <img src="assets/img/prodotto5.png" class="card-img-top product-image" alt="Prodotto" id="product-img-5">
+            <div class="card-body product-body" id="product-body-5">
+              <h7 class="card-title material-title" id="material-title-5">Materiale</h7>
+              <h5 class="card-title fw-bold product-name" id="product-title-5">Lupo Astronauta</h5>
+              <p class="card-text product-price" id="product-price-5">$ 220</p>
             </div>
-            <i class="fas fa-heart heart-icon" id="heart-icon-5"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-5" data-product-id="5"></i>
+            <button class="btn add-to-cart-btn" id="add-to-cart-5">Aggiungi al carrello</button>
           </div>
         </div>
 
         <!-- 6° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-6">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-6" data-category="animals" data-price="250" data-name="Leone Solare">
           <div class="card prodotto-card text-white" id="card-6">
-            <img src="assets/img/prodotto6.png" class="card-img-top" alt="Prodotto" id="product-img-6">
-            <div class="card-body" id="product-body-6">
-              <h7 class="card-title" id="material-title-6">Materiale</h7>
-              <h5 class="card-title fw-bold" id="product-title-6">Leone Solare</h5>
-              <p class="card-text" id="product-price-6">$ 250</p>
+            <img src="assets/img/prodotto6.png" class="card-img-top product-image" alt="Prodotto" id="product-img-6">
+            <div class="card-body product-body" id="product-body-6">
+              <h7 class="card-title material-title" id="material-title-6">Materiale</h7>
+              <h5 class="card-title fw-bold product-name" id="product-title-6">Leone Solare</h5>
+              <p class="card-text product-price" id="product-price-6">$ 250</p>
             </div>
-            <i class="fas fa-heart heart-icon" id="heart-icon-6"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-6" data-product-id="6"></i>
+            <button class="btn add-to-cart-btn" id="add-to-cart-6">Aggiungi al carrello</button>
           </div>
         </div>
 
         <!-- 7° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-7">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-7" data-category="fantasy" data-price="130" data-name="Canguro Magico">
           <div class="card prodotto-card text-white" id="card-7">
-            <img src="assets/img/prodotto7.png" class="card-img-top" alt="Prodotto" id="product-img-7">
-            <div class="card-body" id="product-body-7">
-              <h7 class="card-title" id="material-title-7">Materiale</h7>
-              <h5 class="card-title fw-bold" id="product-title-7">Canguro Magico</h5>
-              <p class="card-text" id="product-price-7">$ 130</p>
+            <img src="assets/img/prodotto7.png" class="card-img-top product-image" alt="Prodotto" id="product-img-7">
+            <div class="card-body product-body" id="product-body-7">
+              <h7 class="card-title material-title" id="material-title-7">Materiale</h7>
+              <h5 class="card-title fw-bold product-name" id="product-title-7">Canguro Magico</h5>
+              <p class="card-text product-price" id="product-price-7">$ 130</p>
             </div>
-            <i class="fas fa-heart heart-icon" id="heart-icon-7"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-7" data-product-id="7"></i>
+            <button class="btn add-to-cart-btn" id="add-to-cart-7">Aggiungi al carrello</button>
           </div>
         </div>
 
         <!-- 8° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-8">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-8" data-category="animals" data-price="210" data-name="Serpente Argenteo">
           <div class="card prodotto-card text-white" id="card-8">
-            <img src="assets/img/prodotto8.png" class="card-img-top" alt="Prodotto" id="product-img-8">
-            <div class="card-body" id="product-body-8">
-              <h7 class="card-title" id="material-title-8">Materiale</h7>
-              <h5 class="card-title fw-bold" id="product-title-8">Serpente Argenteo</h5>
-              <p class="card-text" id="product-price-8">$ 210</p>
+            <img src="assets/img/prodotto8.png" class="card-img-top product-image" alt="Prodotto" id="product-img-8">
+            <div class="card-body product-body" id="product-body-8">
+              <h7 class="card-title material-title" id="material-title-8">Materiale</h7>
+              <h5 class="card-title fw-bold product-name" id="product-title-8">Serpente Argenteo</h5>
+              <p class="card-text product-price" id="product-price-8">$ 210</p>
             </div>
-            <i class="fas fa-heart heart-icon" id="heart-icon-8"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-8" data-product-id="8"></i>
+            <button class="btn add-to-cart-btn" id="add-to-cart-8">Aggiungi al carrello</button>
           </div>
         </div>
 
         <!-- 9° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-9">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-9" data-category="space" data-price="280" data-name="Elefante Cosmico">
           <div class="card prodotto-card text-white" id="card-9">
-            <img src="assets/img/prodotto9.png" class="card-img-top" alt="Prodotto" id="product-img-9">
-            <div class="card-body" id="product-body-9">
-              <h7 class="card-title" id="material-title-9">Materiale</h7>
-              <h5 class="card-title fw-bold" id="product-title-9">Elefante Cosmico</h5>
-              <p class="card-text" id="product-price-9">$ 280</p>
+            <img src="assets/img/prodotto9.png" class="card-img-top product-image" alt="Prodotto" id="product-img-9">
+            <div class="card-body product-body" id="product-body-9">
+              <h7 class="card-title material-title" id="material-title-9">Materiale</h7>
+              <h5 class="card-title fw-bold product-name" id="product-title-9">Elefante Cosmico</h5>
+              <p class="card-text product-price" id="product-price-9">$ 280</p>
             </div>
-            <i class="fas fa-heart heart-icon" id="heart-icon-9"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-9" data-product-id="9"></i>
+            <button class="btn add-to-cart-btn" id="add-to-cart-9">Aggiungi al carrello</button>
           </div>
         </div>
 
         <!-- 10° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-10">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-10" data-category="fantasy" data-price="300" data-name="Pantera Stellare">
           <div class="card prodotto-card text-white" id="card-10">
-            <img src="assets/img/prodotto10.png" class="card-img-top" alt="Prodotto" id="product-img-10">
-            <div class="card-body" id="product-body-10">
-              <h7 class="card-title" id="material-title-10">Materiale</h7>
-              <h5 class="card-title fw-bold" id="product-title-10">Pantera Stellare</h5>
-              <p class="card-text" id="product-price-10">$ 300</p>
+            <img src="assets/img/prodotto10.png" class="card-img-top product-image" alt="Prodotto" id="product-img-10">
+            <div class="card-body product-body" id="product-body-10">
+              <h7 class="card-title material-title" id="material-title-10">Materiale</h7>
+              <h5 class="card-title fw-bold product-name" id="product-title-10">Pantera Stellare</h5>
+              <p class="card-text product-price" id="product-price-10">$ 300</p>
             </div>
-            <i class="fas fa-heart heart-icon" id="heart-icon-10"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-10" data-product-id="10"></i>
+            <button class="btn add-to-cart-btn" id="add-to-cart-10">Aggiungi al carrello</button>
           </div>
         </div>
 
         <!-- 11° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-11">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-11" data-category="space" data-price="170" data-name="Pinguino Cosmico">
           <div class="card prodotto-card text-white" id="card-11">
-            <img src="assets/img/prodotto11.png" class="card-img-top" alt="Prodotto" id="product-img-11">
-            <div class="card-body" id="product-body-11">
-              <h7 class="card-title" id="material-title-11">Materiale</h7>
-              <h5 class="card-title fw-bold" id="product-title-11">Pinguino Cosmico</h5>
-              <p class="card-text" id="product-price-11">$ 170</p>
+            <img src="assets/img/prodotto11.png" class="card-img-top product-image" alt="Prodotto" id="product-img-11">
+            <div class="card-body product-body" id="product-body-11">
+              <h7 class="card-title material-title" id="material-title-11">Materiale</h7>
+              <h5 class="card-title fw-bold product-name" id="product-title-11">Pinguino Cosmico</h5>
+              <p class="card-text product-price" id="product-price-11">$ 170</p>
             </div>
-            <i class="fas fa-heart heart-icon" id="heart-icon-11"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-11" data-product-id="11"></i>
+            <button class="btn add-to-cart-btn" id="add-to-cart-11">Aggiungi al carrello</button>
           </div>
         </div>
 
         <!-- 12° Prodotto -->
-        <div class="col-6 col-md-4 col-lg-3" id="product-card-12">
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="product-card-12" data-category="fantasy" data-price="160" data-name="Pappagallo Virtuale">
           <div class="card prodotto-card text-white" id="card-12">
-            <img src="assets/img/prodotto12.png" class="card-img-top" alt="Prodotto" id="product-img-12">
-            <div class="card-body" id="product-body-12">
-              <h7 class="card-title" id="material-title-12">Materiale</h7>
-              <h5 class="card-title fw-bold" id="product-title-12">Pappagallo Virtuale</h5>
-              <p class="card-text" id="product-price-12">$ 160</p>
+            <img src="assets/img/prodotto12.png" class="card-img-top product-image" alt="Prodotto" id="product-img-12">
+            <div class="card-body product-body" id="product-body-12">
+              <h7 class="card-title material-title" id="material-title-12">Materiale</h7>
+              <h5 class="card-title fw-bold product-name" id="product-title-12">Pappagallo Virtuale</h5>
+              <p class="card-text product-price" id="product-price-12">$ 160</p>
             </div>
-            <i class="fas fa-heart heart-icon" id="heart-icon-12"></i>
+            <i class="fas fa-heart heart-icon" id="heart-icon-12" data-product-id="12"></i>
+            <button class="btn add-to-cart-btn" id="add-to-cart-12">Aggiungi al carrello</button>
           </div>
         </div>
 
       </div>
     </div>
   </main>
+
+  <!-- Paginazione -->
+  <div class="container pagination-container" id="pagination-container">
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center" id="pagination">
+        <li class="page-item disabled" id="prev-page">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Precedente</a>
+        </li>
+        <li class="page-item active" id="page-1"><a class="page-link" href="#">1</a></li>
+        <li class="page-item" id="page-2"><a class="page-link" href="#">2</a></li>
+        <li class="page-item" id="page-3"><a class="page-link" href="#">3</a></li>
+        <li class="page-item" id="next-page">
+          <a class="page-link" href="#">Successiva</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
