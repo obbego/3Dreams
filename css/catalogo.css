@@ -138,3 +138,127 @@ body {
   opacity: 0.8;
   color: white !important;
 }
+
+/* Filtri e ordinamento - stile glassmorphism come le card */
+.filters-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 2rem;
+}
+
+.filter-select {
+  background-color: rgba(51, 51, 51, 0.8) !important;
+  color: white !important;
+  border: 1px solid rgba(221, 221, 221, 0.3) !important;
+  border-radius: 15px !important;
+  padding: 0.5rem 1rem !important;
+  margin: 0.5rem 0;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.filter-select:focus {
+  box-shadow: 0 0 0 0.25rem rgba(128, 74, 242, 0.25);
+  border-color: #804AF2 !important;
+}
+
+/* Pulsanti "Aggiungi al carrello" - stile simile alla navbar */
+.add-to-cart-btn {
+  background-color: #804AF2;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem auto;
+  display: block;
+  width: calc(100% - 2rem);
+  transition: all 0.3s;
+  position: absolute;
+  bottom: 10px;
+  left: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.prodotto-card:hover .add-to-cart-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.add-to-cart-btn:hover {
+  background-color: #9060f5;
+  transform: translateY(-2px);
+}
+
+/* Contatore carrello */
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #FF3CAC;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/* Paginazione - stile glassmorphism */
+.pagination-container {
+  padding: 2rem 0;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.page-item .page-link {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0 5px;
+  border-radius: 10px !important;
+  transition: all 0.3s;
+}
+
+.page-item.active .page-link {
+  background-color: #804AF2;
+  border-color: #804AF2;
+}
+
+.page-item:not(.active) .page-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.page-item.disabled .page-link {
+  background-color: rgba(255, 255, 255, 0.02);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Effetto hover per icone */
+.icon-wrapper:hover .icon-background {
+  transform: scale(1.1);
+  background-color: #9060f5;
+}
+
+.icon-background {
+  transition: all 0.3s;
+}
+
+/* Responsive per filtri */
+@media (max-width: 768px) {
+  .filters-container {
+    padding: 0.5rem;
+  }
+  
+  .filter-select {
+    margin: 0.25rem 0;
+  }
+}
