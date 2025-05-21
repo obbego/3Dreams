@@ -2,7 +2,7 @@
 body {
   margin: 0; 
   font-family: 'Arial', sans-serif; 
-  background: linear-gradient(to bottom right, #111111, #333); 
+  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
   color: white; 
   min-height: 100vh; 
 }
@@ -97,10 +97,23 @@ body {
   display: flex;
   flex-direction: column; 
   justify-content: center; 
-  align-items: center; 
+  align-items: flex-start;  /* Allinea il contenuto a sinistra */
   height: 50vh; 
-  text-align: center; 
+  text-align: left;  
 }
+
+#text-start h4 {
+  font-size: 1.8rem; /* più grande del normale h4 */
+  font-weight: 500;
+  font-family: 'Arial', sans-serif;
+}
+
+#text-start h2 {
+  font-size: 2.5rem; /* ingrandisce il titolo principale */
+  font-weight: 700;
+  font-family: 'Arial', sans-serif;
+}
+
 
 #text-start h4, #text-start h2 {
   margin: 0; 
