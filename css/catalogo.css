@@ -269,4 +269,16 @@ body {
   .filter-select {
     margin: 0.25rem 0;
   }
+  /* ===== Fix colore link prodotti ===== */
+.product-link, 
+.product-link:hover, 
+.product-link:focus, 
+.product-link:active {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.card-body a {
+  color: white !important;
+}
 }
