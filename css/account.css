@@ -5,6 +5,8 @@ body {
   margin: 0;
   color: #ffffff;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===== Barra di navigazione ===== */
@@ -84,4 +86,36 @@ body {
   height: 25px;
   filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
   z-index: 1;
+}
+
+/* Container per la card (centrato verticalmente e orizzontalmente) */
+.card-container {
+  display: flex; /* Imposta il contenitore come flex */
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center; /* Centra verticalmente */
+  flex-grow: 1; /* Permette al contenitore di occupare tutto lo spazio disponibile */
+  height: 100%; /* Assicura che il contenitore abbia l'altezza completa della finestra */
+}
+
+/* Card del prodotto con effetto vetro e interazione */
+.prodotto-card {
+  background: rgba(255, 255, 255, 0.1); /* Effetto vetro */
+  backdrop-filter: blur(15px); /* Sfocatura maggiore per migliorare l'effetto */
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  width: 400px;  /* Aumenta la larghezza della card */
+  height: 600px; /* Aumenta l'altezza della card */
+  max-width: 100%; /* Assicura che la card non esca fuori dal contenitore */
+  max-height: 100%; /* Assicura che la card non esca fuori dal contenitore */
+}
+
+/* Effetto sollevamento al passaggio del mouse */
+.prodotto-card:hover {
+  transform: translateY(-5px);
 }
