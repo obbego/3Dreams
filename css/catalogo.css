@@ -183,13 +183,14 @@ body {
   border: none;
   border-radius: 15px;
   padding: 0.5rem 1rem;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: 20px auto 10px auto;
   width: calc(100% - 2rem);
   transition: all 0.3s;
   opacity: 0;
   transform: translateY(10px);
   align-self: center;
+  position: relative;
+  bottom: 15px;
 }
 
 .prodotto-card:hover .add-to-cart-btn {
