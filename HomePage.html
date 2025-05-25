@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>3Dreams</title>
-  <!-- Inclusione del framework Bootstrap 5 -->
+  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Collegamento al file CSS personalizzato -->
+  <!-- CSS personalizzato -->
   <link href="css/HomePage.css" rel="stylesheet">
 </head>
 
@@ -16,116 +16,112 @@
   <div class="navbar-custom" id="navbar-custom">
     <div class="logo" id="logo">
       <strong><a class="text-white text-decoration-none">3Dreams</a></strong>
-      <!-- Collegamenti a pagine informative -->
       <small><a href="chiSiamo.html" class="text-white ms-3" id="link-chi-siamo">Chi siamo</a></small>
       <small><a href="catalogo.html" class="text-white ms-2" id="link-catalogo">Catalogo</a></small>
       <small><a href="aiuto.html" class="text-white ms-2" id="link-aiuto">Aiuto</a></small>
     </div>
 
     <div class="navbar-right" id="navbar-right">
-      <!-- Barra di ricerca -->
       <input type="text" class="search-bar" id="search-bar" placeholder="Cerca..." />
-
-      <!-- Icona carrello -->
       <div class="icon-wrapper" id="cart-icon-wrapper">
         <div class="icon-background" id="cart-icon-background"></div>
-          <a href="carrello.html" id="link-carrello"> 
-            <img src="assets/icons/cart.svg" alt="Carrello" class="cart-icon" id="cart-icon" />
-          </a>
+        <a href="carrello.html"><img src="assets/icons/cart.svg" alt="Carrello" class="cart-icon" /></a>
       </div>
-
-      <!-- Icona account -->
       <div class="icon-wrapper" id="account-icon-wrapper">
         <div class="icon-background" id="account-icon-background"></div>
-          <a href="account.html" id="link-account">
-            <img src="assets/icons/person-circle.svg" alt="Account" class="account-icon" id="account-icon" />
-          </a>
+        <a href="account.html"><img src="assets/icons/person-circle.svg" alt="Account" class="account-icon" /></a>
       </div>
     </div>
   </div>
 
-   <!-- Banner promozionale visivo -->
-    <div class="promo-banner text-white text-center py-2" id="promo-banner">
-      Spedizione gratuita per ordini sopra i 100 €
-    </div>
+  <!-- Banner promozionale -->
+  <div class="promo-banner text-white text-center py-2">
+    Spedizione gratuita per ordini sopra i 100 €
+  </div>
 
-    <!-- Sezione principale suddivisa in due colonne -->
-    <div class="container py-5" id="container-main">
-      <div class="row align-items-start" id="row-main">
+  <!-- Contenuto principale -->
+  <div class="container py-5">
+    <!-- Sezione colonne -->
+    <div class="row align-items-start">
+      <!-- Colonna sinistra: testi centrati verticalmente e orizzontalmente -->
+      <div class="col-lg-6 text-white mb-4" id="col-texts">
+        <div id="text-start">
+          <h4 class="mb-2" id="text-1">
+            <strong>Se in catalogo non trovi</strong><br>
+            <strong>cosa ti serve...</strong>
+          </h4>
 
-        <!-- Colonna sinistra: testi -->
-        <div class="col-lg-6 text-white mb-4" id="col-texts">
-          <div class="text-start" id="text-start">
-            <h4 class="mb-2" id="text-1">
-              <strong>Se in catalogo non trovi</strong><br>
-              <strong>cosa ti serve...</strong>
-            </h4>
-
-            <h2 class="gradient-text gradient-underline" id="text-2">
-              <strong>Richiedi la tua</strong><br>
-              <strong>stampa 3D personalizzata</strong>
-            </h2>
-
-          </div>
+          <h2 class="gradient-text gradient-underline" id="text-2">
+            <strong>Richiedi la tua</strong><br>
+            <strong>stampa 3D personalizzata</strong>
+          </h2>
         </div>
+      </div>
 
-
-        <!-- Colonna destra: prodotti in evidenza -->
-        <div class="col-lg-6" id="col-products">
-          <h3 class="mb-2" id="title-prodotti">Prodotti in evidenza</h3>
-          <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3" id="row-products">
-            <!-- 1° prodotto -->
+      <!-- Colonna destra -->
+      <div class="col-lg-6">
+        <!-- Titolo Nuovi Arrivi -->
+        <div class="section-title-line my-5 d-flex align-items-center">
+          <div class="vertical-line me-3"></div>
+          <h3 class="mb-0 text-white"><strong>Prodotti in evidenza</strong></h3>
+        </div>
+        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3">
+          <!-- Prodotto 1 -->
           <div class="col">
-            <a href="singleProduct.html" class="text-decoration-none" id="link-product-1">
-              <div class="card prodotto-card text-white" id="card-product-1">
-                <img src="assets/img/prodotto1.png" class="card-img-top" alt="Prodotto" id="img-product-1">
-                <div class="card-body p-2" id="card-body-1">
+            <a href="singleProduct.html" class="text-decoration-none">
+              <div class="card prodotto-card text-white">
+                <img src="assets/img/prodotto1.png" class="card-img-top" alt="Prodotto">
+                <div class="card-body p-2">
                   <h7 class="card-title small-text">Materiale</h7>
-                  <h6 class="card-title fw-bold small-text" id="title-product-1">Bombardilo Crocodilo</h6>
-                  <p class="card-text small" id="price-product-1">$ 120</p>
+                  <h6 class="card-title fw-bold small-text">Bombardilo Crocodilo</h6>
+                  <p class="card-text small">$ 120</p>
                 </div>
-                <i class="fas fa-heart heart-icon" id="heart-icon-1"></i>
+                <i class="fas fa-heart heart-icon"></i>
+                <button class="btn add-to-cart-btn">Aggiungi al carrello</button>
               </div>
             </a>
           </div>
 
-          <!-- 2° prodotto -->
+          <!-- Prodotto 2 -->
           <div class="col">
-            <div class="card prodotto-card text-white" id="card-product-2">
-              <img src="assets/img/prodotto5.png" class="card-img-top" alt="Prodotto" id="img-product-2">
-              <div class="card-body" id="card-body-2">
-                <h7 class="card-title small-text" id="material-product-2">Materiale</h7>
-                <h6 class="card-title fw-bold small-text" id="title-product-2">Lupo Astronauta</h6>
-                <p class="card-text" id="price-product-2">$ 220</p>
+            <div class="card prodotto-card text-white">
+              <img src="assets/img/prodotto5.png" class="card-img-top" alt="Prodotto">
+              <div class="card-body">
+                <h7 class="card-title small-text">Materiale</h7>
+                <h6 class="card-title fw-bold small-text">Lupo Astronauta</h6>
+                <p class="card-text">$ 220</p>
               </div>
-              <i class="fas fa-heart heart-icon" id="heart-icon-2"></i>
+              <i class="fas fa-heart heart-icon"></i>
+              <button class="btn add-to-cart-btn">Aggiungi al carrello</button>
             </div>
           </div>
 
-          <!-- 3° prodotto -->
+          <!-- Prodotto 3 -->
           <div class="col">
-            <div class="card prodotto-card text-white" id="card-product-3">
-              <img src="assets/img/prodotto10.png" class="card-img-top" alt="Prodotto" id="img-product-3">
-              <div class="card-body" id="card-body-3">
-                <h7 class="card-title small-text" id="material-product-3">Materiale</h7>
-                <h6 class="card-title fw-bold small-text" id="title-product-3">Pantera Stellare</h6>
-                <p class="card-text" id="price-product-3">$ 300</p>
+            <div class="card prodotto-card text-white">
+              <img src="assets/img/prodotto10.png" class="card-img-top" alt="Prodotto">
+              <div class="card-body">
+                <h7 class="card-title small-text">Materiale</h7>
+                <h6 class="card-title fw-bold small-text">Pantera Stellare</h6>
+                <p class="card-text">$ 300</p>
               </div>
-              <i class="fas fa-heart heart-icon" id="heart-icon-3"></i>
+              <i class="fas fa-heart heart-icon"></i>
+              <button class="btn add-to-cart-btn">Aggiungi al carrello</button>
             </div>
           </div>
 
-          <!-- 4° prodotto -->
+          <!-- Prodotto 4 -->
           <div class="col">
-            <a href="singleProduct.html" class="text-decoration-none" id="link-product-4">
-              <div class="card prodotto-card text-white" id="card-product-4">
-                <img src="assets/img/prodotto4.png" class="card-img-top" alt="Prodotto" id="img-product-4">
-                <div class="card-body p-2" id="card-body-4">
-                  <h7 class="card-title small-text" id="material-product-4">Materiale</h7>
-                  <h6 class="card-title fw-bold small-text" id="title-product-4">Unicorno Celestiale</h6>
-                  <p class="card-text small" id="price-product-4">$ 200</p>
+            <a href="singleProduct.html" class="text-decoration-none">
+              <div class="card prodotto-card text-white">
+                <img src="assets/img/prodotto4.png" class="card-img-top" alt="Prodotto">
+                <div class="card-body p-2">
+                  <h7 class="card-title small-text">Materiale</h7>
+                  <h6 class="card-title fw-bold small-text">Unicorno Celestiale</h6>
+                  <p class="card-text small">$ 200</p>
                 </div>
-                <i class="fas fa-heart heart-icon" id="heart-icon-4"></i>
+                <i class="fas fa-heart heart-icon"></i>
+                <button class="btn add-to-cart-btn">Aggiungi al carrello</button>
               </div>
             </a>
           </div>
@@ -133,49 +129,40 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="promo-banner text-white text-center py-2" id="promo-banner">
-        Nuovi Arrivi
-      </div>
+    <!-- Titolo Nuovi Arrivi -->
+    <div class="section-title-line my-5 d-flex align-items-center">
+      <div class="vertical-line me-3"></div>
+      <h2 class="mb-0 text-white"><strong>Nuovi Arrivi</strong></h2>
+    </div>
 
-      <div class="container py-5" id="container-main">
-        <div class="row align-items-start" id="row-main">
-          <!-- Sezione Nuovi Arrivi -->
-          <div class="mt-5">
-      
-            <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3" id="row-nuovi-arrivi">
-              <!-- Prodotto 1 -->
-              <div class="col">
-                <div class="card prodotto-card text-white">
-                  <img src="assets/img/prodotto6.png" class="card-img-top" alt="Nuovo prodotto 1">
-                  <div class="card-body">
-                    <h7 class="card-title small-text">Materiale</h7>
-                    <h6 class="card-title fw-bold small-text">Drago Arcobaleno</h6>
-                    <p class="card-text">$ 180</p>
-                  </div>
-                  <i class="fas fa-heart heart-icon"></i>
-                </div>
-              </div>
-
-              <!-- Prodotto 2 -->
-              <div class="col">
-                <div class="card prodotto-card text-white">
-                  <img src="assets/img/prodotto7.png" class="card-img-top" alt="Nuovo prodotto 2">
-                  <div class="card-body">
-                    <h7 class="card-title small-text">Materiale</h7>
-                    <h6 class="card-title fw-bold small-text">Gatto Ninja</h6>
-                    <p class="card-text">$ 150</p>
-                  </div>
-                  <i class="fas fa-heart heart-icon"></i>
-                </div>
-              </div>
-            </div>
+    <!-- Griglia Nuovi Arrivi -->
+    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3">
+      <!-- Prodotto Nuovo 1 -->
+      <div class="col">
+        <div class="card prodotto-card text-white">
+          <img src="assets/img/prodotto6.png" class="card-img-top" alt="Nuovo prodotto 1">
+          <div class="card-body">
+            <h7 class="card-title small-text">Materiale</h7>
+            <h6 class="card-title fw-bold small-text">Drago Arcobaleno</h6>
+            <p class="card-text">$ 180</p>
           </div>
-
+          <i class="fas fa-heart heart-icon"></i>
         </div>
       </div>
-      
+
+      <!-- Prodotto Nuovo 2 -->
+      <div class="col">
+        <div class="card prodotto-card text-white">
+          <img src="assets/img/prodotto7.png" class="card-img-top" alt="Nuovo prodotto 2">
+          <div class="card-body">
+            <h7 class="card-title small-text">Materiale</h7>
+            <h6 class="card-title fw-bold small-text">Gatto Ninja</h6>
+            <p class="card-text">$ 150</p>
+          </div>
+          <i class="fas fa-heart heart-icon"></i>
+        </div>
+      </div>
     </div>
   </div>
 
