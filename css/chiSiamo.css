@@ -226,3 +226,20 @@ h1 i {
   margin-left: px;
   /* Aggiungi distanza tra il testo e la freccia */
 }
+
+.founders-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  height: auto;
+  /* importante per far crescere la card */
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.founders-card p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
