@@ -10,25 +10,47 @@
   border-radius: 0 0 8px 8px;
 }
 
-/* ===== Struttura Base ===== */ 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
-  margin: 0;
-  color: #ffffff;
-  min-height: 100vh;
+/* ===== Struttura Base ===== */
+html, body {
+  height: 100%;
 }
 
-/* ===== Card Prodotto ===== */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  color: #ffffff;
+  position: relative;
+  /* Per il padding-bottom per il pulsante "aggiungi al carrello" fisso su mobile */
+  padding-bottom: 0; /* Default a 0, sarà modificato da media query */
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+  z-index: -1;
+  background-attachment: fixed;
+}
+
+/* ===== Card Prodotto (contenitore principale della pagina del singolo prodotto) ===== */
 .product-page {
   background-color: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
-  padding: 20px;
+  padding: 20px; /* Padding base per desktop */
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-  max-width: 600px;
+  max-width: 600px; /* Larghezza massima per desktop */
   margin: 20px auto;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative; /* FONDAMENTALE: per posizionare il cuore e la freccia rispetto a questo contenitore */
+  
+  /* *** VALORE CRUCIALE: Aumenta questo se freccia/cuore si sovrappongono al brand/titolo *** */
+  /* Questo padding crea lo spazio in alto all'interno della card. */
+  padding-top: 70px; /* Aumentato per creare più spazio */
 }
 
 /* Stile testo prodotto */
@@ -39,12 +61,12 @@ body {
   color: #ffffff;
 }
 
-/* === BOTTONE COME NELLA TUA PRIMA VERSIONE === */
+/* === BOTTONE AGGIUNGI AL CARRELLO === */
 .btn-add-to-cart {
   width: 100%;
   padding: 16px 0;
-  background-color: #000000; /* Nero pieno */
-  color: #ffffff; /* Testo bianco */
+  background-color: #000000;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -57,7 +79,7 @@ body {
 }
 
 .btn-add-to-cart:hover {
-  background-color: #333333; /* Nero più chiaro */
+  background-color: #333333;
   transform: translateY(-2px);
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
@@ -75,50 +97,224 @@ body {
   border-radius: 8px;
 }
 
-/* Versione desktop */
+/* Stile per l'icona del cuore nella pagina del singolo prodotto */
+.heart-icon-single-product {
+  position: absolute;
+  top: 20px; /* Distanza dall'alto della card (all'interno del padding-top) */
+  right: 20px; /* Distanza da destra della card */
+  font-size: 2rem;
+  color: #ccc;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s ease-in-out;
+}
+
+.heart-icon-single-product.text-danger {
+  color: #dc3545;
+}
+
+/* Stile per la freccia "Torna al Catalogo" all'interno della card */
+.back-to-catalog-arrow-in-card {
+  position: absolute; /* Posizionamento assoluto rispetto a .product-page */
+  top: 20px; /* Distanza dall'alto della card (all'interno del padding-top) */
+  left: 20px;
+  font-size: 1.8rem;
+  color: #ffffff;
+  text-decoration: none;
+  z-index: 15;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  display: flex; /* Per allineare icona e testo su desktop */
+  align-items: center;
+  
+  /* *** VALORE CHIAVE: Aumenta questo per distanziare la freccia dal contenuto sottostante (il brand) *** */
+  /* Questo margin-bottom sarà effettivo sul contenuto che segue la freccia nel flusso HTML. */
+  margin-bottom: 20px; /* Aumentato per maggiore spazio sotto la freccia */
+}
+
+.back-to-catalog-arrow-in-card:hover {
+  color: #ccc;
+}
+
+/* Modifica il product-brand: Impostalo a 0 o un valore molto piccolo */
+/* Se il margin-bottom della freccia crea già lo spazio necessario, questo può essere minimo. */
+.product-brand {
+  margin-top: 0; /* Impostato a 0 per evitare doppi margini */
+  color: #ffffff;
+}
+
+
+/* ===== Responsive Design: MEDIA QUERIES ===== */
+
+/* --- Desktop / Tablet orizzontale (min-width: 768px) --- */
 @media (min-width: 768px) {
   .promo-banner {
     font-size: 18px;
     padding: 15px 20px;
   }
-  
+
   .product-page {
     max-width: 900px;
     margin: 40px auto;
+    padding-top: 60px; /* Regola anche per desktop */
   }
-  
-  /* Immagine più grande su desktop */
+
   .product-image {
     max-width: 50%;
   }
-}
 
-/* Versione mobile */
-@media (max-width: 576px) {
-  .product-image {
-    max-width: 80%;
+  .heart-icon-single-product {
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+  }
+
+  .back-to-catalog-arrow-in-card {
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    top: 20px;
+    left: 20px;
+    /* Margin-bottom anche per desktop, per distanziare dal brand/titolo */
+    margin-bottom: 20px; /* Regola per desktop */
+  }
+
+  .product-brand {
+    margin-top: 0; /* Assicurati che non ci sia margine top qui */
   }
 }
 
-/* Barra di navigazione */
+/* --- Tablet verticale / Smartphone (max-width: 767.98px) --- */
+@media (max-width: 767.98px) {
+  .promo-banner {
+    padding: 10px 15px;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+  }
+
+  .navbar-custom {
+    padding: 0.8rem 1rem;
+  }
+  .navbar-custom .logo strong {
+    font-size: 1.5rem;
+  }
+  .navbar-custom .logo small a {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+  .search-bar {
+    width: 120px;
+    margin-right: 0.5rem;
+    padding: 0.4rem;
+  }
+  .cart-icon, .account-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .icon-wrapper {
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+  }
+  .icon-background {
+    width: 35px;
+    height: 35px;
+  }
+
+  .product-page {
+    padding: 15px;
+    margin: 15px auto;
+    /* *** VALORE CRUCIALE PER MOBILE: Aumenta se c'è sovrapposizione in alto *** */
+    padding-top: 60px; /* Aumentato per mobile */
+  }
+
+  .product-image {
+    max-width: 80%;
+  }
+
+  .product-title {
+    font-size: 1.8rem;
+  }
+  .product-description {
+    font-size: 0.9rem;
+  }
+  .product-price {
+    font-size: 1.2rem;
+  }
+  .btn-add-to-cart {
+    padding: 12px 0;
+    font-size: 14px;
+  }
+
+  /* Posizionamento del cuore per smartphone */
+  .heart-icon-single-product {
+    top: 15px;
+    right: 15px;
+    font-size: 1.6rem;
+  }
+
+  /* Posizionamento della freccia (solo icona) per smartphone */
+  .back-to-catalog-arrow-in-card {
+    top: 15px; /* Allinea con il cuore */
+    left: 15px;
+    font-size: 1.6rem;
+    background: none;
+    padding: 0;
+    /* *** VALORE CHIAVE PER MOBILE: Aumenta per distanziare la freccia dal brand *** */
+    margin-bottom: 25px; /* Aumentato per mobile */
+  }
+
+  /* Rimuovi o riduci molto il margin-top per il brand */
+  .product-brand {
+    margin-top: 0; /* Impostato a 0 per mobile */
+  }
+}
+
+/* --- Smartphone molto piccoli (max-width: 480px) --- */
+@media (max-width: 480px) {
+  .heart-icon-single-product {
+    top: 10px;
+    right: 10px;
+    font-size: 1.4rem;
+  }
+
+  .back-to-catalog-arrow-in-card {
+    top: 10px;
+    left: 10px;
+    font-size: 1.4rem;
+    margin-bottom: 20px; /* Regola per mobile molto piccolo */
+  }
+
+  .product-image {
+    max-width: 90%;
+  }
+  .product-page {
+    padding-top: 50px; /* Regola anche per mobile molto piccolo */
+  }
+  .product-brand {
+    margin-top: 0; /* Impostato a 0 per mobile molto piccolo */
+  }
+}
+
+
+/* Stili barra di navigazione (già presenti, ma qui per completezza) */
 .navbar-custom {
-  background-color: #1c1c1c; /* Colore di sfondo della barra */
+  background-color: #1c1c1c;
   display: flex;
-  justify-content: space-between; /* Spazia gli elementi */
+  justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem; /* Spaziatura */
+  padding: 1rem 2rem;
 }
 
 .navbar-right a {
-  margin-right: 15px; /* Spazio tra carrello e account */
-  position: relative; /* Posizione relativa per il posizionamento del quadrato */
+  margin-right: 15px;
+  position: relative;
 }
 
-.cart-icon{
+.cart-icon {
   filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
 }
-
-.account-icon{
+.account-icon {
   filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
 }
 
@@ -139,14 +335,14 @@ body {
 .navbar-custom .logo small a {
   color: white;
   text-decoration: none;
-  padding: 0.4rem 0.8rem; /* Aggiunge spazio interno */
-  font-size: 1rem;         /* Ingrandisce leggermente il testo */
-  display: inline-block;   /* Rende il padding cliccabile */
-  border-radius: 5px;      /* (Facoltativo) Rende i bordi arrotondati */
-  transition: background-color 0.3s; /* Per un effetto al passaggio del mouse */
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  display: inline-block;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 .navbar-custom .logo small a:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Evidenzia al passaggio */
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar-custom .navbar-right {
@@ -173,12 +369,6 @@ body {
   cursor: pointer;
 }
 
-.cart-icon {
-  width: 25px;
-  height: 25px;
-}
-
-/* Titolo principale */
 .main-title {
   font-size: 1.6rem;
   font-weight: bold;
@@ -186,12 +376,10 @@ body {
   text-align: center;
 }
 
-/* Griglia prodotti */
 .product-grid {
   padding: 1rem;
 }
 
-/* Card personalizzate per i prodotti */
 .card-custom {
   background: rgba(255, 255, 255, 0.06);
   border-radius: 20px;
@@ -217,23 +405,10 @@ body {
   left: 15px;
 }
 
-/* Link per "See more" */
 .see-more {
   text-align: right;
   font-weight: bold;
   padding: 0 1rem 1rem;
-}
-
-
-
-
-
-
-
-
-.navbar-right {
-  display: flex;
-  align-items: center;
 }
 
 .icon-wrapper {
@@ -246,12 +421,10 @@ body {
   justify-content: center;
 }
 
-/* Sposta SOLO il carrello a destra */
 #cart-icon-wrapper {
   margin-left: 15px;
 }
 
-/* Sposta SOLO l'account ancora più a destra */
 #account-icon-wrapper {
   margin-left: 15px;
 }
