@@ -2,19 +2,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const categoryFilter = document.getElementById("category-filter");
   const sortFilter = document.getElementById("sort-filter");
   const searchBar = document.getElementById("search-bar");
-  const productCards = Array.from(document.querySelectorAll(".product-card"));
   const productRow = document.getElementById("product-row");
   const cartCount = document.getElementById("cart-count");
 
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  //Aggiorna conteggio carrello
+  // Aggiorna conteggio carrello
   function updateCartCount() {
     cartCount.textContent = cart.length;
   }
 
-  //Inizializza cuori
+  // Inizializza cuori
   function initHearts() {
     document.querySelectorAll(".heart-icon").forEach(icon => {
       const productId = icon.dataset.productId;
@@ -32,12 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  //Inizializza pulsanti carrello
+  // Inizializza pulsanti carrello
   function initAddToCartButtons() {
     document.querySelectorAll(".add-to-cart-btn").forEach(button => {
       button.addEventListener("click", function () {
-        const card = button.closest(".product-card");
-        const productId = card.id;
+        const productId = button.dataset.productId; // Usa il data-product-id per identificare il prodotto
         if (!cart.includes(productId)) {
           cart.push(productId);
           localStorage.setItem("cart", JSON.stringify(cart));
@@ -47,32 +45,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  //Filtra per categoria
-  categoryFilter.addEventListener("change", () => applyFilters());
-
-  //Ordina prodotti
-  sortFilter.addEventListener("change", () => applyFilters());
-
-  //Cerca nel nome
-  searchBar.addEventListener("input", () => applyFilters());
-
+  // Genera e filtra i prodotti
   function applyFilters() {
     const selectedCategory = categoryFilter.value;
     const selectedSort = sortFilter.value;
     const searchTerm = searchBar.value.toLowerCase();
 
-    let filteredCards = productCards.filter(card => {
-      const category = card.dataset.category;
-      const name = card.dataset.name.toLowerCase();
+    // Filtra direttamente dall'array 'products'
+    let filteredProducts = products.filter(product => {
+      const category = product.category;
+      const name = product.title.toLowerCase();
       return (selectedCategory === "all" || category === selectedCategory) &&
              name.includes(searchTerm);
     });
 
-    filteredCards.sort((a, b) => {
-      const priceA = parseFloat(a.dataset.price);
-      const priceB = parseFloat(b.dataset.price);
-      const nameA = a.dataset.name.toLowerCase();
-      const nameB = b.dataset.name.toLowerCase();
+    // Ordina i prodotti
+    filteredProducts.sort((a, b) => {
+      const priceA = parseFloat(a.price);
+      const priceB = parseFloat(b.price);
+      const nameA = a.title.toLowerCase();
+      const nameB = b.title.toLowerCase();
 
       switch (selectedSort) {
         case "price-asc": return priceA - priceB;
@@ -83,14 +75,41 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+    // Pulisci il contenitore dei prodotti
     productRow.innerHTML = "";
-    filteredCards.forEach(card => productRow.appendChild(card));
+
+    // Aggiungi le schede prodotto filtrate e ordinate
+    filteredProducts.forEach(product => {
+      const productCardHtml = `
+        <div class="col-6 col-md-4 col-lg-3 product-card" id="${product.id}" data-category="${product.category}" data-price="${product.price}" data-name="${product.title}">
+          <div class="card prodotto-card text-white">
+            <a href="singleProduct.html?id=${product.id}" class="text-white text-decoration-none product-link">
+              <img src="${product.image.replace('_singolo', '')}" class="card-img-top product-image" alt="${product.title}">
+              <div class="card-body product-body">
+                <h7 class="card-title material-title">${product.material}</h7>
+                <h5 class="card-title fw-bold product-name">${product.title}</h5>
+                <p class="card-text product-price">$ ${product.price}</p>
+              </div>
+            </a>
+            <i class="fas fa-heart heart-icon" data-product-id="${product.id}"></i>
+            <button class="btn add-to-cart-btn" data-product-id="${product.id}">Aggiungi al carrello</button>
+          </div>
+        </div>
+      `;
+      productRow.innerHTML += productCardHtml;
+    });
+
+    // Re-inizializza gli event listener per i cuori e il carrello dopo aver ricreato le card
+    initHearts();
+    initAddToCartButtons();
   }
 
-  //Inizializzazione
-  updateCartCount();
-  initHearts();
-  initAddToCartButtons();
-  applyFilters();
-});
+  // Event listener per filtri e barra di ricerca
+  categoryFilter.addEventListener("change", () => applyFilters());
+  sortFilter.addEventListener("change", () => applyFilters());
+  searchBar.addEventListener("input", () => applyFilters());
 
+  // Chiamate di inizializzazione
+  updateCartCount();
+  applyFilters(); // Chiama applyFilters inizialmente per popolare il catalogo
+});
