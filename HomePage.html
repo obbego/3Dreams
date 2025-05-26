@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Titolo -->
   <title>3Dreams</title>
+
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+
   <!-- CSS personalizzato -->
   <link href="css/HomePage.css" rel="stylesheet">
+  <link href="css/chiSiamo.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,7 +23,6 @@
   <div class="navbar-custom" id="navbar-custom">
     <div class="logo" id="logo">
       <strong><a class="text-white text-decoration-none">3Dreams</a></strong>
-      <small><a href="chiSiamo.html" class="text-white ms-3" id="link-chi-siamo">Chi siamo</a></small>
       <small><a href="catalogo.html" class="text-white ms-2" id="link-catalogo">Catalogo</a></small>
       <small><a href="aiuto.html" class="text-white ms-2" id="link-aiuto">Aiuto</a></small>
     </div>
@@ -166,5 +172,78 @@
     </div>
   </div>
 
+  <!-- Titolo Chi Siamo -->
+  <div class="container py-5">
+    <div class="section-title-line my-5 d-flex align-items-center">
+      <div class="vertical-line me-3"></div>
+      <h2 class="mb-0 text-white"><strong>Chi siamo</strong></h2>
+    </div>
+
+    <!-- Card: Descrizione Chi Siamo -->
+    <div class="card prodotto-card text-white p-4 founders-card mb-4">
+      <p class="lead text-justify mb-4">
+        Benvenuti su <strong>3Dreams</strong>, un laboratorio creativo all'avanguardia, nato dalla passione per la
+        stampa
+        3D e l'innovazione. Siamo un team giovane, dinamico e altamente qualificato, impegnato a rendere le tecnologie
+        di stampa 3D
+        accessibili a tutti. Ogni nostro progetto è il risultato di un perfetto equilibrio tra tecnologia, design e
+        precisione artigianale.
+      </p>
+
+      <p class="lead text-justify mb-4">
+        La nostra missione è semplice, ma ambiziosa: trasformare idee e concetti in oggetti tangibili. Che si tratti di
+        un
+        regalo personalizzato, di un componente tecnico o di un elemento decorativo, ci impegniamo a portare alla luce
+        ogni
+        visione attraverso la stampa 3D.
+      </p>
+
+      <p class="lead text-justify mb-4">
+        In <strong>3Dreams</strong>, ci distinguiamo per la cura dei dettagli, l'uso di materiali di altissima qualità e
+        per la nostra trasparenza nei confronti dei clienti. Puntiamo a creare un legame diretto e sincero con chi si
+        affida
+        a noi, perché crediamo che la fiducia reciproca sia alla base di ogni successo.
+      </p>
+
+      <p class="lead text-justify mb-0">
+        La stampa 3D è il futuro e noi siamo qui per renderla alla portata di tutti, con un approccio che unisce
+        l'innovazione
+        alla tradizione artigianale.
+      </p>
+    </div>
+
+    <!-- Toggle visibilità -->
+    <input type="checkbox" id="toggle-founders" hidden>
+    <label for="toggle-founders" id="toggle-founders-label">
+      <h1 class="load text-center mb-4" style="cursor: pointer;" id="founders-label">
+        Founders <i class="bi bi-arrow-down" id="arrow-icon"></i>
+      </h1>
+    </label>
+
+    <!-- Card visibile solo quando il checkbox è attivo -->
+    <div class="card prodotto-card text-white p-4 founders-card" id="founders-card">
+      <div class="row" id="founders-row">
+        <div class="col-md-4 text-center" id="founder-1">
+          <img src="https://ui-avatars.com/api/?name=Francesco+Bego&background=0A0A0A&color=ffffff&size=150"
+            alt="Francesco Bego" class="rounded-circle mb-3" id="founder-img-1">
+          <h5 id="founder-name-1">Francesco Bego</h5>
+          <p class="text" id="founder-role-1">Fondatore & CEO</p>
+        </div>
+        <div class="col-md-4 text-center" id="founder-2">
+          <img src="https://ui-avatars.com/api/?name=Noemi+Basaglia&background=0A0A0A&color=ffffff&size=150"
+            alt="Noemi Basaglia" class="rounded-circle mb-3" id="founder-img-2">
+          <h5 id="founder-name-2">Noemi Basaglia</h5>
+          <p class="text" id="founder-role-2">Fondatrice & CEO</p>
+        </div>
+        <div class="col-md-4 text-center" id="founder-3">
+          <img src="https://ui-avatars.com/api/?name=Luigi+Zara&background=0A0A0A&color=ffffff&size=150"
+            alt="Luigi Zara" class="rounded-circle mb-3" id="founder-img-3">
+          <h5 id="founder-name-3">Luigi Zara</h5>
+          <p class="text" id="founder-role-3">Fondatore & CEO</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
