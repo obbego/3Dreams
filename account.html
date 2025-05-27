@@ -22,9 +22,6 @@
     </div>
 
     <div id="navbar-right" class="navbar-right">
-      <!-- Barra di ricerca -->
-      <input type="text" class="search-bar" placeholder="Cerca..." id="search-bar" />
-
       <!-- Carrello -->
       <div id="cart-icon-wrapper" class="icon-wrapper me-2">
         <div id="cart-icon-background" class="icon-background"></div>
@@ -43,42 +40,43 @@
     </div>
   </div>
 
-  <!-- Cart login -->
+  <!-- Login Card -->
   <div class="card-container">
-    <div class="col-12 col-md-4 col-lg-3 product-card" id="product-card-1" data-category="animals" data-price="120"
-      data-name="Bombardilo Crocodilo">
-      <div class="card prodotto-card text-white bg-dark" id="card-1">
-        <div class="card-body product-body" id="product-body-1">
+    <div class="col-12 col-md-4 col-lg-3 login-card" id="login-card-1">
+      <div class="card text-white bg-dark" id="card-1">
+        <div class="card-body login-body" id="login-body-1">
           <p class="lead fw-bold text-center mb-3">
             Accedi
           </p>
           <form action="/login" method="POST">
             <div class="mb-3">
               <label for="email" class="form-label small-text" style="font-size:13px;">Indirizzo e-mail</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="" required>
+              <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label small-text" style="font-size:13px;">Password</label>
-              <input type="password" class="form-control" id="password" name="password" placeholder="" required>
+              <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <div class="mb-3">
-              <a href="/password-reset" class="text-white small" style="font-size: 13px;"> Hai dimenticato la password?
-              </a>
+              <a href="/password-reset" class="text-white small" style="font-size: 13px;">Hai dimenticato la
+                password?</a>
             </div>
             <div class="d-grid">
               <button type="submit" class="btn btn-primary">Accedi</button>
             </div>
             <div class="mb-3 text-center mt-4">
-              <a href="/signup" class="text-white small" style="font-size: 13px;">Crea il tuo account </a>
+              <a href="/signup" class="text-white small" style="font-size: 13px;">Crea il tuo account</a>
             </div>
             <div class="mb-3 text-center mt-2">
-              <a href="/privacy-policy" class="text-white small" style="font-size: 13px;">Informativa sulla privacy </a>
+              <a href="/privacy-policy" class="text-white small" style="font-size: 13px;">Informativa sulla privacy</a>
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
