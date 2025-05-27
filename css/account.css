@@ -98,7 +98,7 @@ body {
 }
 
 /* Card del prodotto con effetto vetro e interazione */
-.prodotto-card {
+.login-card {
   background: rgba(255, 255, 255, 0.1); /* Effetto vetro */
   backdrop-filter: blur(15px); /* Sfocatura maggiore per migliorare l'effetto */
   border-radius: 20px;
@@ -110,13 +110,12 @@ body {
   display: flex;
   flex-direction: column;
   width: 400px;  /* Aumenta la larghezza della card */
-  height: 600px; /* Aumenta l'altezza della card */
   max-width: 100%; /* Assicura che la card non esca fuori dal contenitore */
   max-height: 100%; /* Assicura che la card non esca fuori dal contenitore */
 }
 
 /* Effetto sollevamento al passaggio del mouse */
-.prodotto-card:hover {
+.login-card:hover {
   transform: translateY(-5px);
 }
 
@@ -145,8 +144,10 @@ body {
 }
 
 /* Stile per la sezione del form (accedi) */
-.product-body {
+.login-body {
   padding: 20px;
+  height: 550px; /* Puoi scegliere un'altezza più adatta */
+  overflow: hidden; /* Nasconde eventuali contenuti che escono dalla card */
 }
 
 /* Modifica per il bottone Accedi */
@@ -168,8 +169,8 @@ body {
 
 /* Modifica quando il mouse passa sopra il bottone */
 .btn-primary:hover {
-  background-color: rgba(128, 74, 242, 0.8); /* Sfondo viola più forte al passaggio del mouse */
-  box-shadow: 0 0 8px rgba(128, 74, 242, 0.7); /* Ombra più intensa */
+  background-color: rgba(128, 74, 242, 0.9); /* Sfondo viola più forte al passaggio del mouse */
+  box-shadow: 0 0 8px rgba(128, 74, 242, 0.8); /* Ombra più intensa */
 }
 
 /* Modifica quando il bottone è cliccato (active) */
