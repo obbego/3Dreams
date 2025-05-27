@@ -1,56 +1,52 @@
 /* ===== Banner Promozionale ===== */
 .promo-banner {
-  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
-  color: white;
-  font-weight: bold;
-  padding: 12px 20px;
-  text-align: center;
-  font-size: 16px;
-  margin-bottom: 20px;
-  border-radius: 0 0 8px 8px;
+    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-radius: 0 0 8px 8px;
 }
 
 /* ===== Struttura Base ===== */
 html, body {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  margin: 0;
-  color: #ffffff;
-  position: relative;
-  /* Per il padding-bottom per il pulsante "aggiungi al carrello" fisso su mobile */
-  padding-bottom: 0; /* Default a 0, sarà modificato da media query */
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    color: #ffffff;
+    position: relative;
+    padding-bottom: 0;
 }
 
 body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
-  z-index: -1;
-  background-attachment: fixed;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+    z-index: -1;
+    background-attachment: fixed;
 }
 
 /* ===== Card Prodotto (contenitore principale della pagina del singolo prodotto) ===== */
 .product-page {
-  background-color: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
-  padding: 20px; /* Padding base per desktop */
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-  max-width: 600px; /* Larghezza massima per desktop */
-  margin: 20px auto;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative; /* FONDAMENTALE: per posizionare il cuore e la freccia rispetto a questo contenitore */
-  
-  /* *** VALORE CRUCIALE: Aumenta questo se freccia/cuore si sovrappongono al brand/titolo *** */
-  /* Questo padding crea lo spazio in alto all'interno della card. */
-  padding-top: 70px; /* Aumentato per creare più spazio */
+    background-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    padding-top: 70px;
 }
 
 /* Stile testo prodotto */
@@ -58,393 +54,379 @@ body::before {
 .product-title,
 .product-description,
 .product-price {
-  color: #ffffff;
+    color: #ffffff;
+}
+
+/* NUOVO: Stile per il contenitore del carosello */
+.product-carousel-container {
+    margin: 20px 0; /* Spazio sopra e sotto il carosello */
+    border-radius: 8px; /* Bordi arrotondati per il contenitore del carosello */
+    overflow: hidden; /* Assicura che le immagini rispettino i bordi arrotondati */
+    background-color: #1a1a1a; /* Sfondo scuro per le aree vuote del carosello */
+}
+
+/* NUOVO: Stile per le immagini all'interno del carosello */
+.product-carousel-image {
+    width: 100%;
+    height: 300px; /* Altezza fissa per le immagini del carosello */
+    object-fit: contain; /* L'immagine viene contenuta, letterbox se necessario */
+    border-radius: 8px;
 }
 
 /* === BOTTONE AGGIUNGI AL CARRELLO === */
 .btn-add-to-cart {
-  width: 100%;
-  padding: 16px 0;
-  background-color: #000000;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  margin-top: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+    width: 100%;
+    padding: 16px 0;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .btn-add-to-cart:hover {
-  background-color: #333333;
-  transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-/* Centra e ridimensiona l'immagine */
-.product-image-container {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.product-image {
-  max-width: 60%;
-  height: auto;
-  display: inline-block;
-  border-radius: 8px;
+    background-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 /* Stile per l'icona del cuore nella pagina del singolo prodotto */
 .heart-icon-single-product {
-  position: absolute;
-  top: 20px; /* Distanza dall'alto della card (all'interno del padding-top) */
-  right: 20px; /* Distanza da destra della card */
-  font-size: 2rem;
-  color: #ccc;
-  cursor: pointer;
-  z-index: 10;
-  transition: color 0.2s ease-in-out;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s ease-in-out;
 }
 
 .heart-icon-single-product.text-danger {
-  color: #dc3545;
+    color: #dc3545;
 }
 
 /* Stile per la freccia "Torna al Catalogo" all'interno della card */
 .back-to-catalog-arrow-in-card {
-  position: absolute; /* Posizionamento assoluto rispetto a .product-page */
-  top: 20px; /* Distanza dall'alto della card (all'interno del padding-top) */
-  left: 20px;
-  font-size: 1.8rem;
-  color: #ffffff;
-  text-decoration: none;
-  z-index: 15;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-  display: flex; /* Per allineare icona e testo su desktop */
-  align-items: center;
-  
-  /* *** VALORE CHIAVE: Aumenta questo per distanziare la freccia dal contenuto sottostante (il brand) *** */
-  /* Questo margin-bottom sarà effettivo sul contenuto che segue la freccia nel flusso HTML. */
-  margin-bottom: 20px; /* Aumentato per maggiore spazio sotto la freccia */
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.8rem;
+    color: #ffffff;
+    text-decoration: none;
+    z-index: 15;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .back-to-catalog-arrow-in-card:hover {
-  color: #ccc;
+    color: #ccc;
 }
 
-/* Modifica il product-brand: Impostalo a 0 o un valore molto piccolo */
-/* Se il margin-bottom della freccia crea già lo spazio necessario, questo può essere minimo. */
+/* Modifica il product-brand */
 .product-brand {
-  margin-top: 0; /* Impostato a 0 per evitare doppi margini */
-  color: #ffffff;
+    margin-top: 0;
+    color: #ffffff;
 }
 
+/* Notifica Carrello */
+#cart-notification-message {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #d4edda;
+    color: #155724;
+    margin-top: 15px;
+}
+
+/* Stili barra di navigazione (per coerenza) */
+.navbar-custom {
+    background-color: #1c1c1c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-right a {
+    margin-right: 15px;
+    position: relative;
+}
+
+.navbar-custom .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-custom .logo strong a {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-custom .logo small a {
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    display: inline-block;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-left: 15px;
+}
+.navbar-custom .logo small a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-custom .navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    border-radius: 15px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    margin-right: 1rem;
+    background-color: #333;
+    color: white;
+    width: 200px;
+}
+
+.icon-wrapper {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cart-icon-wrapper {
+    margin-left: 15px;
+}
+
+#account-icon-wrapper {
+    margin-left: 15px;
+}
+
+.icon-background {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #804AF2;
+    border-radius: 8px;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    transform: translateX(-20%);
+    transition: all 0.3s;
+}
+
+.cart-icon,
+.account-icon {
+    width: 25px;
+    height: 25px;
+    filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
+    z-index: 1;
+}
+
+/* Effetto hover per icone navbar */
+.icon-wrapper:hover .icon-background {
+    transform: scale(1.1);
+    background-color: #9060f5;
+}
+
+/* Footer (per coerenza) */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer .footer-content {
+    margin-bottom: 10px;
+}
+
+footer .social-links a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+footer .social-links img {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+}
+
+footer .footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-size: 0.9rem;
+}
 
 /* ===== Responsive Design: MEDIA QUERIES ===== */
 
 /* --- Desktop / Tablet orizzontale (min-width: 768px) --- */
 @media (min-width: 768px) {
-  .promo-banner {
-    font-size: 18px;
-    padding: 15px 20px;
-  }
+    .promo-banner {
+        font-size: 18px;
+        padding: 15px 20px;
+    }
 
-  .product-page {
-    max-width: 900px;
-    margin: 40px auto;
-    padding-top: 60px; /* Regola anche per desktop */
-  }
+    .product-page {
+        max-width: 900px;
+        margin: 40px auto;
+        padding-top: 60px;
+    }
 
-  .product-image {
-    max-width: 50%;
-  }
+    .product-carousel-image {
+        height: 400px; /* Aumenta l'altezza per desktop */
+    }
 
-  .heart-icon-single-product {
-    top: 20px;
-    right: 20px;
-    font-size: 2rem;
-  }
+    .heart-icon-single-product {
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+    }
 
-  .back-to-catalog-arrow-in-card {
-    font-size: 1.1rem;
-    padding: 5px 10px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    top: 20px;
-    left: 20px;
-    /* Margin-bottom anche per desktop, per distanziare dal brand/titolo */
-    margin-bottom: 20px; /* Regola per desktop */
-  }
+    .back-to-catalog-arrow-in-card {
+        font-size: 1.1rem;
+        padding: 5px 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        top: 20px;
+        left: 20px;
+        margin-bottom: 20px;
+    }
 
-  .product-brand {
-    margin-top: 0; /* Assicurati che non ci sia margine top qui */
-  }
+    .product-brand {
+        margin-top: 0;
+    }
 }
 
 /* --- Tablet verticale / Smartphone (max-width: 767.98px) --- */
 @media (max-width: 767.98px) {
-  .promo-banner {
-    padding: 10px 15px;
-    font-size: 0.9em;
-    margin-bottom: 15px;
-  }
+    .promo-banner {
+        padding: 10px 15px;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
 
-  .navbar-custom {
-    padding: 0.8rem 1rem;
-  }
-  .navbar-custom .logo strong {
-    font-size: 1.5rem;
-  }
-  .navbar-custom .logo small a {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
-  }
-  .search-bar {
-    width: 120px;
-    margin-right: 0.5rem;
-    padding: 0.4rem;
-  }
-  .cart-icon, .account-icon {
-    width: 20px;
-    height: 20px;
-  }
-  .icon-wrapper {
-    width: 35px;
-    height: 35px;
-    margin-right: 5px;
-  }
-  .icon-background {
-    width: 35px;
-    height: 35px;
-  }
+    .navbar-custom {
+        padding: 0.8rem 1rem;
+        flex-wrap: wrap; /* Permette alla navbar di avvolgersi */
+    }
+    .navbar-custom .logo strong a {
+        font-size: 1.5rem;
+    }
+    .navbar-custom .logo small a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+        margin-left: 10px;
+    }
+    .search-bar {
+        width: 100%; /* La search bar prende tutta la larghezza sotto il logo */
+        margin-top: 10px;
+        order: 3; /* Sposta in basso */
+    }
+    .navbar-right {
+        order: 2; /* Rimane a destra del logo */
+    }
 
-  .product-page {
-    padding: 15px;
-    margin: 15px auto;
-    /* *** VALORE CRUCIALE PER MOBILE: Aumenta se c'è sovrapposizione in alto *** */
-    padding-top: 60px; /* Aumentato per mobile */
-  }
+    .icon-wrapper {
+        width: 35px;
+        height: 35px;
+        margin-right: 5px;
+    }
+    .icon-background {
+        width: 35px;
+        height: 35px;
+    }
+    .cart-icon, .account-icon {
+        width: 20px;
+        height: 20px;
+    }
 
-  .product-image {
-    max-width: 80%;
-  }
+    .product-page {
+        padding: 15px;
+        margin: 15px auto;
+        padding-top: 60px;
+    }
 
-  .product-title {
-    font-size: 1.8rem;
-  }
-  .product-description {
-    font-size: 0.9rem;
-  }
-  .product-price {
-    font-size: 1.2rem;
-  }
-  .btn-add-to-cart {
-    padding: 12px 0;
-    font-size: 14px;
-  }
+    .product-carousel-image {
+        height: 250px; /* Altezza per mobile */
+    }
 
-  /* Posizionamento del cuore per smartphone */
-  .heart-icon-single-product {
-    top: 15px;
-    right: 15px;
-    font-size: 1.6rem;
-  }
+    .product-title {
+        font-size: 1.8rem;
+    }
+    .product-description {
+        font-size: 0.9rem;
+    }
+    .product-price {
+        font-size: 1.2rem;
+    }
+    .btn-add-to-cart {
+        padding: 12px 0;
+        font-size: 14px;
+    }
 
-  /* Posizionamento della freccia (solo icona) per smartphone */
-  .back-to-catalog-arrow-in-card {
-    top: 15px; /* Allinea con il cuore */
-    left: 15px;
-    font-size: 1.6rem;
-    background: none;
-    padding: 0;
-    /* *** VALORE CHIAVE PER MOBILE: Aumenta per distanziare la freccia dal brand *** */
-    margin-bottom: 25px; /* Aumentato per mobile */
-  }
+    .heart-icon-single-product {
+        top: 15px;
+        right: 15px;
+        font-size: 1.6rem;
+    }
 
-  /* Rimuovi o riduci molto il margin-top per il brand */
-  .product-brand {
-    margin-top: 0; /* Impostato a 0 per mobile */
-  }
+    .back-to-catalog-arrow-in-card {
+        top: 15px;
+        left: 15px;
+        font-size: 1.6rem;
+        background: none;
+        padding: 0;
+        margin-bottom: 25px;
+    }
+
+    .product-brand {
+        margin-top: 0;
+    }
 }
 
 /* --- Smartphone molto piccoli (max-width: 480px) --- */
 @media (max-width: 480px) {
-  .heart-icon-single-product {
-    top: 10px;
-    right: 10px;
-    font-size: 1.4rem;
-  }
+    .heart-icon-single-product {
+        top: 10px;
+        right: 10px;
+        font-size: 1.4rem;
+    }
 
-  .back-to-catalog-arrow-in-card {
-    top: 10px;
-    left: 10px;
-    font-size: 1.4rem;
-    margin-bottom: 20px; /* Regola per mobile molto piccolo */
-  }
+    .back-to-catalog-arrow-in-card {
+        top: 10px;
+        left: 10px;
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
 
-  .product-image {
-    max-width: 90%;
-  }
-  .product-page {
-    padding-top: 50px; /* Regola anche per mobile molto piccolo */
-  }
-  .product-brand {
-    margin-top: 0; /* Impostato a 0 per mobile molto piccolo */
-  }
-}
-
-
-/* Stili barra di navigazione (già presenti, ma qui per completezza) */
-.navbar-custom {
-  background-color: #1c1c1c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-}
-
-.navbar-right a {
-  margin-right: 15px;
-  position: relative;
-}
-
-.cart-icon {
-  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-}
-.account-icon {
-  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-}
-
-.navbar-custom .logo {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-custom .logo strong {
-  font-size: 1.8rem;
-  color: white;
-}
-
-.navbar-custom .logo small {
-  font-size: 0.9rem;
-}
-
-.navbar-custom .logo small a {
-  color: white;
-  text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  font-size: 1rem;
-  display: inline-block;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-.navbar-custom .logo small a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.navbar-custom .navbar-right {
-  display: flex;
-  align-items: center;
-}
-
-.search-bar {
-  border-radius: 15px;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  margin-right: 1rem;
-  background-color: #333;
-  color: white;
-  width: 200px;
-}
-
-.icon-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.3rem;
-  margin-right: 1rem;
-  cursor: pointer;
-}
-
-.main-title {
-  font-size: 1.6rem;
-  font-weight: bold;
-  padding: 1.2rem 1rem;
-  text-align: center;
-}
-
-.product-grid {
-  padding: 1rem;
-}
-
-.card-custom {
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
-  padding: 1rem;
-  color: white;
-  height: 180px;
-  position: relative;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-}
-
-.heart-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.2rem;
-  color: white;
-}
-
-.product-info {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-}
-
-.see-more {
-  text-align: right;
-  font-weight: bold;
-  padding: 0 1rem 1rem;
-}
-
-.icon-wrapper {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#cart-icon-wrapper {
-  margin-left: 15px;
-}
-
-#account-icon-wrapper {
-  margin-left: 15px;
-}
-
-.icon-background {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background-color: #804AF2;
-  border-radius: 8px;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  transform: translateX(-20%);
-}
-
-.cart-icon,
-.account-icon {
-  width: 25px;
-  height: 25px;
-  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-  z-index: 1;
+    .product-carousel-image {
+        height: 200px; /* Ulteriore riduzione per smartphone piccoli */
+    }
+    .product-page {
+        padding-top: 50px;
+    }
+    .product-brand {
+        margin-top: 0;
+    }
 }
