@@ -25,10 +25,11 @@
       <input type="text" class="search-bar" placeholder="Cerca..." id="search-bar" />
 
       <!-- Carrello -->
-      <div id="cart-icon-wrapper" class="icon-wrapper me-2">
-        <div id="cart-icon-background" class="icon-background"></div>
+      <div class="icon-wrapper" id="cart-icon-wrapper">
+        <div class="icon-background" id="cart-icon-background"></div>
         <a href="carrello.html" id="cart-link">
           <img src="assets/icons/cart.svg" alt="Carrello" class="cart-icon" id="cart-icon" />
+          <span class="cart-count" id="cart-count">0</span>
         </a>
       </div>
 
@@ -43,6 +44,10 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script src="JavaScript/productsData.js"></script> 
+  <script src="JavaScript/commonCart.js"></script>
+  <script src="JavaScript/carrello.js"></script>
+
 </body>
 </html>
