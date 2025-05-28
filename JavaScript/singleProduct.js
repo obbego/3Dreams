@@ -4,31 +4,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const productBrandElem = document.getElementById('product-brand');
     const productTitleElem = document.getElementById('product-title');
-    // Rimosso productImageElem perché ora c'è un carosello
-    const carouselInner = document.getElementById('carousel-inner'); // Nuovo riferimento al carosello
+    const carouselInner = document.getElementById('carousel-inner');
     const productDescriptionElem = document.getElementById('product-description');
     const productPriceElem = document.getElementById('product-price');
     const addToCartButton = document.getElementById('add-to-cart-single-product');
-    const cartNotificationMessage = document.getElementById('cart-notification-message');
+    // Rimosso cartNotificationMessage in quanto non più usato per il messaggio
     const heartIconSingleProduct = document.getElementById('heart-icon-single-product');
     const backToCatalogArrowInCard = document.getElementById('back-to-catalog-arrow-in-card');
 
-    function showNotification(message, isSuccess = true) {
-        cartNotificationMessage.textContent = message;
-        cartNotificationMessage.style.display = 'block';
-        cartNotificationMessage.classList.remove('text-success', 'text-warning');
-
-        if (isSuccess) {
-            cartNotificationMessage.classList.add('text-success');
-        } else {
-            cartNotificationMessage.classList.add('text-warning');
+    // Funzione per mostrare feedback direttamente sul bottone
+    function showButtonFeedback(button, message, isAdded) {
+        const originalText = 'AGGIUNGI AL CARRELLO';
+        // Salva il testo originale del bottone per poterlo ripristinare
+        if (!button.dataset.originalText) {
+            button.dataset.originalText = originalText;
         }
 
+        button.innerHTML = isAdded ? `<i class="fas fa-check"></i> ${message}` : message; // Aggiunge icona per "aggiunto"
+        button.disabled = true; // Disabilita il bottone per evitare click multipli
+        button.style.backgroundColor = isAdded ? '#28a745' : '#ffc107'; // Verde per aggiunto, giallo per già presente
+        button.style.color = '#ffffff';
+
+        // Ripristina il bottone dopo un breve periodo
         setTimeout(() => {
-            cartNotificationMessage.style.display = 'none';
-            cartNotificationMessage.textContent = '';
-        }, 3000);
+            button.innerHTML = button.dataset.originalText;
+            button.disabled = false;
+            button.style.backgroundColor = '#000000'; // Colore originale
+            button.style.color = '#ffffff';
+        }, 2000); // 2 secondi
     }
+
 
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
@@ -49,26 +54,24 @@ document.addEventListener('DOMContentLoaded', () => {
             productBrandElem.textContent = product.brand;
             productTitleElem.textContent = product.title;
 
-            // NUOVO: Popola il carosello con le immagini
             if (product.images && product.images.length > 0) {
-                carouselInner.innerHTML = ''; // Pulisci qualsiasi contenuto precedente
+                carouselInner.innerHTML = '';
                 product.images.forEach((imageSrc, index) => {
                     const carouselItem = document.createElement('div');
                     carouselItem.classList.add('carousel-item');
                     if (index === 0) {
-                        carouselItem.classList.add('active'); // La prima immagine è attiva
+                        carouselItem.classList.add('active');
                     }
 
                     const img = document.createElement('img');
                     img.src = imageSrc;
                     img.alt = product.title + ' ' + (index + 1);
-                    img.classList.add('d-block', 'w-100', 'product-carousel-image'); // Aggiunto product-carousel-image per lo stile CSS
+                    img.classList.add('d-block', 'w-100', 'product-carousel-image');
 
                     carouselItem.appendChild(img);
                     carouselInner.appendChild(carouselItem);
                 });
             } else {
-                // Gestisci il caso in cui non ci siano immagini (o fallback)
                 carouselInner.innerHTML = '<div class="text-white text-center">Immagini non disponibili.</div>';
             }
 
@@ -89,14 +92,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
+            // Aggiungi un controllo iniziale sullo stato del carrello al caricamento della pagina
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (cart.includes(productId)) {
+                addToCartButton.innerHTML = `<i class="fas fa-check"></i> GIÀ NEL CARRELLO`;
+                addToCartButton.disabled = true; // Disabilita se già nel carrello
+                addToCartButton.style.backgroundColor = '#ffc107'; // Giallo per "già nel carrello"
+                addToCartButton.style.color = '#000000'; // Testo scuro per visibilità sul giallo
+            } else {
+                // Imposta il testo originale se non è nel carrello
+                addToCartButton.innerHTML = 'AGGIUNGI AL CARRELLO';
+                addToCartButton.disabled = false;
+                addToCartButton.style.backgroundColor = '#000000';
+                addToCartButton.style.color = '#ffffff';
+            }
+
+
             addToCartButton.addEventListener('click', () => {
                 let cart = JSON.parse(localStorage.getItem("cart")) || [];
                 if (!cart.includes(productId)) {
                     cart.push(productId);
                     localStorage.setItem("cart", JSON.stringify(cart));
-                    showNotification(`${product.title} aggiunto al carrello!`, true);
+                    // Chiama la nuova funzione per il feedback del bottone
+                    showButtonFeedback(addToCartButton, 'AGGIUNTO AL CARRELLO', true);
                 } else {
-                    showNotification(`${product.title} è già nel carrello.`, false);
+                    // Chiama la nuova funzione per il feedback del bottone (già aggiunto)
+                    showButtonFeedback(addToCartButton, 'GIÀ NEL CARRELLO', false);
                 }
             });
 
@@ -106,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             productDescriptionElem.textContent = 'Siamo spiacenti, il prodotto richiesto non è stato trovato.';
             addToCartButton.style.display = 'none';
             if (heartIconSingleProduct) heartIconSingleProduct.style.display = 'none';
-            if (backToCatalogArrowInCard) backToCatalogArrowInCard.style.display = 'none';
+            if (backToCatalogArrowInCard) backToCatalogArrowInCard.syle.display = 'none';
         }
     } else {
         console.error('ID del prodotto non trovato nell\'URL o i dati dei prodotti non sono stati caricati.');

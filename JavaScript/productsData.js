@@ -10,8 +10,8 @@ const products = [
         description: `Un adorabile squalo paffuto, catturato nel momento di relax. 
                       La sua forma rotonda e l'espressione giocosa lo rendono il compagno perfetto per la tua scrivania. 
                       Non lasciarti ingannare dal suo status di predatore, è un vero tenerone!`,
-        price: 120,
-        category: 'creature-adorabili', // Nuova categoria
+        price: 12, // Fascia animali: 5-15€
+        category: 'creature-adorabili',
         material: 'PLA'
     },
     {
@@ -24,8 +24,8 @@ const products = [
         ],
         description: `Un simpatico cagnolino seduto, con la lingua di fuori in un'espressione di pura gioia. 
                       Dettagli vivaci e una posa dinamica che porterà un sorriso a chiunque lo guardi.`,
-        price: 150,
-        category: 'creature-adorabili', // Nuova categoria
+        price: 15, // Fascia animali: 5-15€
+        category: 'creature-adorabili',
         material: 'PLA'
     },
     {
@@ -38,8 +38,8 @@ const products = [
         ],
         description: `Un pinguino paffuto e incredibilmente carino, con dettagli che esaltano la sua dolcezza. 
                       Perfetto per aggiungere un tocco di tenerezza alla tua collezione.`,
-        price: 180,
-        category: 'creature-adorabili', // Nuova categoria
+        price: 10, // Fascia animali: 5-15€
+        category: 'creature-adorabili',
         material: 'PLA'
     },
     {
@@ -52,8 +52,8 @@ const products = [
         ],
         description: `Questo coniglietto paffuto è una vera delizia, con le sue orecchie morbide e la sua posa adorabile. 
                       Un pezzo che sprigiona charme e allegria.`,
-        price: 200,
-        category: 'creature-adorabili', // Nuova categoria
+        price: 8, // Fascia animali: 5-15€
+        category: 'creature-adorabili',
         material: 'PLA'
     },
     {
@@ -66,8 +66,8 @@ const products = [
         ],
         description: `Una fedele riproduzione dell'Ankylosaurus, il dinosauro corazzato. 
                       Realizzato in resina di alta qualità per catturare ogni dettaglio della sua imponente armatura.`,
-        price: 220,
-        category: 'dinosauri', // Nuova categoria
+        price: 45, // Fascia dinosauri: 30-60€
+        category: 'dinosauri',
         material: 'Resina'
     },
     {
@@ -80,8 +80,8 @@ const products = [
         ],
         description: `L'iconico Brachiosaurus, con il suo lungo collo che si innalza. 
                       Questa scultura in resina rende giustizia alla sua grandezza e alla sua eleganza preistorica.`,
-        price: 250,
-        category: 'dinosauri', // Nuova categoria
+        price: 58, // Fascia dinosauri: 30-60€
+        category: 'dinosauri',
         material: 'Resina'
     },
     {
@@ -94,8 +94,8 @@ const products = [
         ],
         description: `Il temibile e astuto Velociraptor, catturato in una posa dinamica che ne evidenzia la velocità. 
                       Dettagli realistici in resina per un'esperienza da brivido.`,
-        price: 130,
-        category: 'dinosauri', // Nuova categoria
+        price: 38, // Fascia dinosauri: 30-60€
+        category: 'dinosauri',
         material: 'Resina'
     },
     {
@@ -108,8 +108,8 @@ const products = [
         ],
         description: `Il maestoso Tyrannosaurus Rex, re incontrastato del Cretaceo. 
                       Una scultura in resina che porta la potenza e la ferocia di questo iconico dinosauro direttamente a casa tua.`,
-        price: 210,
-        category: 'dinosauri', // Nuova categoria
+        price: 52, // Fascia dinosauri: 30-60€
+        category: 'dinosauri',
         material: 'Resina'
     },
     {
@@ -122,8 +122,8 @@ const products = [
         ],
         description: `La McLaren MCL38 della stagione 2024, un capolavoro di ingegneria e design. 
                       Ricrea l'emozione della Formula 1 con questa replica dettagliata.`,
-        price: 280,
-        category: 'formula-1', // Nuova categoria
+        price: 105, // Fascia Formula 1: 90-110€
+        category: 'formula-1',
         material: 'PLA Rinforzato'
     },
     {
@@ -136,8 +136,8 @@ const products = [
         ],
         description: `Il design avveniristico della F1 Concept22 del 2022, che anticipa le linee del futuro delle corse. 
                       Un pezzo unico per gli appassionati di design automobilistico.`,
-        price: 300,
-        category: 'formula-1', // Nuova categoria
+        price: 95, // Fascia Formula 1: 90-110€
+        category: 'formula-1',
         material: 'PLA Rinforzato'
     },
     {
@@ -150,8 +150,8 @@ const products = [
         ],
         description: `La potente Aston Martin AMR23, un'elegante espressione di velocità e precisione. 
                       Ideale per i collezionisti che apprezzano le vetture da corsa iconiche.`,
-        price: 170,
-        category: 'formula-1', // Nuova categoria
+        price: 100, // Fascia Formula 1: 90-110€
+        category: 'formula-1',
         material: 'PLA Rinforzato'
     },
     {
@@ -164,8 +164,8 @@ const products = [
         ],
         description: `L'agile Alpine A522 del 2022, con i suoi colori distintivi e il design aerodinamico. 
                       Un modello imperdibile per gli amanti della Formula 1 e del marchio Alpine.`,
-        price: 160,
-        category: 'formula-1', // Nuova categoria
+        price: 92, // Fascia Formula 1: 90-110€
+        category: 'formula-1',
         material: 'PLA Rinforzato'
     }
 ];
