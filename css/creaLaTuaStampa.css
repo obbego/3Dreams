@@ -1,0 +1,332 @@
+/* Stili Generali */
+html, body {
+    height: 100%; /* Importante per lo sfondo fisso */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    color: #ffffff; /* Colore testo predefinito */
+    position: relative;
+    padding-bottom: 0;
+    background-color: transparent; /* Rende il body trasparente per mostrare il ::before */
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #121212 60%, #d946ef 100%); /* Gradiente coerente con le altre sezioni */
+    z-index: -1; /* Posiziona dietro il contenuto */
+    background-attachment: fixed;
+}
+
+/* Navbar Custom (copiata da catalogo.css per coerenza) */
+.navbar-custom {
+    background-color: #1c1c1c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-custom .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-custom .logo strong a {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-custom .logo small a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    padding: 3px 8px;
+    border-radius: 5px;
+}
+
+.navbar-custom .logo small a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-bar {
+    border-radius: 15px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    margin-right: 1rem;
+    background-color: #333;
+    color: white;
+    width: 200px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.icon-wrapper {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-background {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #804AF2;
+    border-radius: 8px;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    transition: all 0.3s;
+}
+
+.cart-icon,
+.account-icon {
+    width: 25px;
+    height: 25px;
+    filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
+    z-index: 1;
+}
+
+.navbar-custom .cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    line-height: 1;
+    z-index: 2;
+}
+
+.navbar-custom .favorite-count { /* Assicurati che questo selettore sia corretto se usi un conteggio preferiti */
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    line-height: 1;
+    z-index: 2;
+}
+
+.icon-wrapper:hover .icon-background {
+    transform: scale(1.1);
+    background-color: #9060f5;
+}
+
+/* Promo Banner (copiato da catalogo.css per coerenza) */
+.promo-banner {
+    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Stili specifici della sezione "Crea la Tua Stampa 3D" */
+.custom-print-section {
+    min-height: calc(100vh - 180px); /* Altezza minima per spingere il footer in basso */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-print-container {
+    background: rgba(255, 255, 255, 0.05); /* Effetto vetro */
+    backdrop-filter: blur(10px); /* Sfocatura */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 900px; /* Larghezza massima del contenitore */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.custom-print-container h2 {
+    color: #804AF2; /* Colore viola acceso per il titolo */
+    font-weight: bold;
+}
+
+.custom-print-container .form-label {
+    color: #f0f0f0;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Stili per gli input e select */
+.custom-print-container .form-control,
+.custom-print-container .form-select {
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white !important; /* Testo bianco per input e select - !important per sovrascrivere */
+    border: 1px solid rgba(221, 221, 221, 0.3);
+    border-radius: 10px;
+    padding: 1rem 1.25rem; /* Aumentato il padding per creare più spazio */
+}
+
+/* Assicurati che il placeholder sia bianco */
+.custom-print-container .form-control::placeholder {
+    color: #ccc !important; /* Colore per il placeholder - !important per sovrascrivere */
+}
+
+/* Assicurati che le opzioni nel dropdown siano sempre visibili */
+.custom-print-container .form-select option {
+    color: #ffffff !important; /* Testo bianco per le opzioni - !important per sovrascrivere */
+    background-color: #333 !important; /* Sfondo scuro per le opzioni, per contrasto - !important per sovrascrivere */
+}
+
+/* Colore del testo per il messaggio "L'immagine caricata apparirà qui." e note sul prezzo */
+.custom-print-container .text-muted {
+    color: #ccc !important; /* Rendi il testo muted più chiaro e leggibile */
+}
+
+.custom-print-container .form-control:focus,
+.custom-print-container .form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(128, 74, 242, 0.25);
+    border-color: #804AF2;
+    background-color: rgba(51, 51, 51, 0.9);
+}
+
+/* NUOVI STILI PER IL CONTENITORE CUSTOM FILE UPLOAD */
+.custom-file-upload {
+    display: flex; /* Per allineare pulsante e nome file */
+    align-items: center;
+    border: 1px solid rgba(221, 221, 221, 0.3); /* Bordo per l'intero contenitore */
+    border-radius: 10px; /* Bordi arrotondati per il contenitore */
+    background-color: rgba(51, 51, 51, 0.8); /* Sfondo del contenitore */
+    padding: 0.5rem; /* Padding interno del contenitore */
+}
+
+.custom-file-upload input[type="file"] {
+    display: none; /* Nasconde l'input file nativo */
+}
+
+.custom-upload-button {
+    background-color: #804AF2; /* Colore di sfondo del pulsante */
+    color: white; /* Colore del testo del pulsante */
+    padding: 0.5rem 1rem;
+    border-radius: 8px; /* Bordi arrotondati per il pulsante */
+    cursor: pointer; /* Indica che è cliccabile */
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+    white-space: nowrap; /* Evita che il testo vada a capo */
+}
+
+.custom-upload-button:hover {
+    background-color: #9060f5; /* Colore al passaggio del mouse */
+}
+
+.file-name {
+    flex-grow: 1; /* Permette al nome del file di occupare lo spazio rimanente */
+    color: #ccc; /* Colore per il testo del nome del file */
+    overflow: hidden; /* Nasconde il testo che supera */
+    text-overflow: ellipsis; /* Aggiunge "..." se il testo è troppo lungo */
+    white-space: nowrap; /* Mantiene il testo su una singola riga */
+    font-size: 0.9rem;
+}
+
+/* Stili per il centraggio dell'immagine di anteprima */
+.image-preview-container img {
+    max-width: 100%;
+    max-height: 250px; /* Limita l'altezza dell'anteprima */
+    object-fit: contain;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: block; /* Assicura che l'immagine sia un blocco */
+    margin: auto; /* Centra l'immagine orizzontalmente */
+}
+
+/* Footer (copiato da catalogo.css per coerenza) */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer .footer-content {
+    margin-bottom: 10px;
+}
+
+footer .social-links a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+footer .social-links img {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+}
+
+footer .footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+    .navbar-custom {
+        padding: 0.8rem 1rem;
+        flex-wrap: wrap;
+    }
+    .navbar-custom .logo strong a {
+        font-size: 1.5rem;
+    }
+    .navbar-custom .logo small a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+        margin-left: 10px;
+    }
+    .search-bar {
+        width: 100%;
+        margin-top: 10px;
+        order: 3;
+    }
+    .navbar-right {
+        order: 2;
+    }
+    .icon-wrapper {
+        width: 35px;
+        height: 35px;
+        margin-right: 5px;
+    }
+    .icon-background {
+        width: 35px;
+        height: 35px;
+    }
+    .cart-icon, .account-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .custom-print-container {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .price-calculation-area #estimatedPrice {
+        font-size: 2.5rem;
+    }
+}
