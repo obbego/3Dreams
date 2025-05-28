@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilo Utente - 3Dreams</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body class="bg-dark text-white">
+
+    <!-- Barra di navigazione -->
+    <div id="navbar-custom" class="navbar-custom">
+        <div id="logo" class="logo">
+            <strong><a href="HomePage.html" class="text-white text-decoration-none" id="home-link">3Dreams</a></strong>
+            <!-- Collegamenti a pagine informative -->
+            <small><a href="catalogo.html" class="text-white ms-2" id="catalogo-link">Catalogo</a></small>
+            <small><a href="aiuto.html" class="text-white ms-2" id="aiuto-link">Aiuto</a></small>
+        </div>
+
+        <div id="navbar-right" class="navbar-right">
+            <!-- Carrello -->
+            <div id="cart-icon-wrapper" class="icon-wrapper me-2">
+                <div id="cart-icon-background" class="icon-background"></div>
+                <a href="carrello.html" id="cart-link">
+                    <img src="assets/icons/cart.svg" alt="Carrello" class="cart-icon" id="cart-icon" />
+                </a>
+            </div>
+
+            <!-- Account -->
+            <div id="account-icon-wrapper" class="icon-wrapper">
+                <div id="account-icon-background" class="icon-background"></div>
+                <a href="account.html" id="account-link">
+                    <img src="assets/icons/person-circle.svg" alt="Account" class="account-icon" id="account-icon" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profilo -->
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="card bg-dark text-white w-75 shadow-lg rounded-3">
+            <div class="card-body">
+                <!-- Sezione immagine del profilo -->
+                <div class="d-flex justify-content-center mb-4">
+                    <img src="assets/profile-placeholder.jpg" alt="Immagine Profilo" class="rounded-circle" width="150"
+                        height="150" id="profile-img">
+                </div>
+
+                <h2 class="text-center mb-3">Il tuo profilo</h2>
+
+                <!-- Dettagli utente -->
+                <div class="mb-3">
+                    <p><strong>Email:</strong> <span id="user-email" class="fw-bold"></span></p>
+                    <p><strong>Nome:</strong> <span id="user-name" class="fw-bold"></span></p>
+                </div>
+
+                <!-- Pulsante per uscire -->
+                <div class="d-grid">
+                    <button class="btn btn-danger btn-lg shadow-sm" onclick="logout()">Esci</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="JavaScript/profile.js"></script>
+</body>
+
+</html>
