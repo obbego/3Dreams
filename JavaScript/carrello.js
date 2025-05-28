@@ -1,105 +1,86 @@
-// JavaScript/carrello.js
-
-// Nota: cart, updateCartCount, saveCart, addToCart sono ora definiti in commonCart.js
-
-document.addEventListener("DOMContentLoaded", () => {
-    const cartItemsContainer = document.getElementById("cart-items");
-    const cartTotalDisplay = document.getElementById("cart-total");
-    const clearCartBtn = document.getElementById("clear-cart");
-
-    // Funzione per disegnare carrello nel DOM
-    function renderCart() {
-        cartItemsContainer.innerHTML = "";
-
-        // products deve essere disponibile globalmente qui (caricato da productsData.js)
-        if (typeof products === 'undefined') {
-            cartItemsContainer.innerHTML = "<p>Errore: Impossibile caricare i dati dei prodotti.</p>";
-            cartTotalDisplay.textContent = "";
-            return;
+// Esempio dati fittizi (da sostituire con dati reali o caricati dal server/localStorage)
+const cartProducts = [
+    {id: 1, nome: "Prodotto A", prezzo: 15.99, quantita: 2},
+    {id: 2, nome: "Prodotto B", prezzo: 9.99, quantita: 1},
+    {id: 3, nome: "Prodotto C", prezzo: 20.50, quantita: 3},
+  ];
+  
+  const cartItemsContainer = document.getElementById('cart-items');
+  const cartTotalElem = document.getElementById('cart-total');
+  const emptyCartBtn = document.getElementById('empty-cart-btn');
+  const checkoutBtn = document.getElementById('checkout-btn');
+  
+  function renderCart() {
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+  
+    cartProducts.forEach((prod, index) => {
+      const row = document.createElement('tr');
+  
+      // prodotto
+      const nomeTd = document.createElement('td');
+      nomeTd.textContent = prod.nome;
+  
+      // prezzo unitario
+      const prezzoTd = document.createElement('td');
+      prezzoTd.textContent = `€ ${prod.prezzo.toFixed(2)}`;
+  
+      // quantità input
+      const quantitaTd = document.createElement('td');
+      const inputQty = document.createElement('input');
+      inputQty.type = 'number';
+      inputQty.min = 1;
+      inputQty.value = prod.quantita;
+      inputQty.className = 'qty-input';
+      inputQty.addEventListener('change', (e) => {
+        const val = parseInt(e.target.value);
+        if (val < 1 || isNaN(val)) {
+          e.target.value = prod.quantita;
+          return;
         }
-
-        if (cart.length === 0) {
-            cartItemsContainer.innerHTML = "<p>Il carrello è vuoto.</p>";
-            cartTotalDisplay.textContent = "";
-            return;
-        }
-
-        cart.forEach(item => {
-            const product = products.find(p => p.id === item.id);
-            if (!product) {
-                console.warn(`Prodotto con ID ${item.id} non trovato nei dati.`);
-                return; // Salta questo articolo se il prodotto non è trovato
-            }
-
-            const itemDiv = document.createElement("div");
-            itemDiv.className = "cart-item d-flex align-items-center mb-3";
-
-            itemDiv.innerHTML = `
-                <img src="${product.image}" alt="${product.title}" style="width:80px; height:auto; margin-right:15px;" />
-                <div class="flex-grow-1">
-                    <h5>${product.title}</h5>
-                    <p>Prezzo unitario: €${product.price.toFixed(2)}</p>
-                    <p>Quantità:
-                        <button class="btn btn-sm btn-secondary decrease-qty" data-id="${item.id}">-</button>
-                        <span class="mx-2">${item.quantity}</span>
-                        <button class="btn btn-sm btn-secondary increase-qty" data-id="${item.id}">+</button>
-                    </p>
-                    <p>Totale: €${(product.price * item.quantity).toFixed(2)}</p>
-                </div>
-                <button class="btn btn-danger btn-sm remove-item" data-id="${item.id}">Rimuovi</button>
-            `;
-
-            cartItemsContainer.appendChild(itemDiv);
-        });
-
-        // Calcola totale carrello
-        const total = cart.reduce((sum, item) => {
-            const product = products.find(p => p.id === item.id);
-            return sum + (product ? product.price * item.quantity : 0);
-        }, 0);
-
-        cartTotalDisplay.textContent = `Totale carrello: €${total.toFixed(2)}`;
-    }
-
-    // Eventi per i bottoni +, -, rimuovi
-    cartItemsContainer.addEventListener("click", (e) => {
-        const id = e.target.dataset.id;
-        if (!id) return;
-
-        if (e.target.classList.contains("increase-qty")) {
-            cart = cart.map(item => item.id === id ? { ...item, quantity: item.quantity + 1 } : item);
-            saveCart();
-            renderCart();
-        }
-
-        if (e.target.classList.contains("decrease-qty")) {
-            cart = cart.map(item => {
-                if (item.id === id) {
-                    const newQty = item.quantity - 1;
-                    return newQty > 0 ? { ...item, quantity: newQty } : null;
-                }
-                return item;
-            }).filter(Boolean); // Rimuove gli elementi null (quantità 0)
-            saveCart();
-            renderCart();
-        }
-
-        if (e.target.classList.contains("remove-item")) {
-            cart = cart.filter(item => item.id !== id);
-            saveCart();
-            renderCart();
-        }
+        prod.quantita = val;
+        renderCart();
+      });
+      quantitaTd.appendChild(inputQty);
+  
+      // totale prodotto
+      const totaleProdotto = prod.prezzo * prod.quantita;
+      total += totaleProdotto;
+      const totaleTd = document.createElement('td');
+      totaleTd.textContent = `€ ${totaleProdotto.toFixed(2)}`;
+  
+      // bottone rimuovi
+      const removeTd = document.createElement('td');
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'remove-btn';
+      removeBtn.innerHTML = '<i class="fas fa-trash"></i>';
+      removeBtn.addEventListener('click', () => {
+        cartProducts.splice(index, 1);
+        renderCart();
+      });
+      removeTd.appendChild(removeBtn);
+  
+      row.append(nomeTd, prezzoTd, quantitaTd, totaleTd, removeTd);
+      cartItemsContainer.appendChild(row);
     });
-
-    // Svuota carrello
-    if (clearCartBtn) {
-        clearCartBtn.addEventListener("click", () => {
-            cart = [];
-            saveCart();
-            renderCart();
-        });
-    }
-
-    // Inizializza il render del carrello quando la pagina è pronta
+  
+    cartTotalElem.textContent = total.toFixed(2);
+  }
+  
+  emptyCartBtn.addEventListener('click', () => {
+    cartProducts.length = 0;
     renderCart();
-});
+  });
+  
+  checkoutBtn.addEventListener('click', () => {
+    if (cartProducts.length === 0) {
+      alert('Il carrello è vuoto!');
+    } else {
+      alert('Procedo all\'acquisto!');
+      // Qui puoi aggiungere la logica di checkout o reindirizzare
+    }
+  });
+  
+  // All'avvio
+  renderCart();
+  
