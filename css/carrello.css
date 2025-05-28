@@ -1,13 +1,13 @@
-/* ===== Body ===== */
+/* Corpo della pagina: imposta margini, font e un gradiente scuro di sfondo */
 body {
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
-  margin: 0;
-  color: #ffffff;
+  color: white;
   min-height: 100vh;
 }
 
-/* ===== Barra di navigazione ===== */
+/* ===== Navbar Custom ===== */
 .navbar-custom {
   background-color: #1c1c1c;
   display: flex;
@@ -17,6 +17,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Stile logo */
 .navbar-custom .logo {
   display: flex;
   align-items: center;
@@ -42,11 +43,7 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.navbar-right {
-  display: flex;
-  align-items: center;
-}
-
+/* Barra di ricerca */
 .search-bar {
   border-radius: 15px;
   padding: 0.5rem;
@@ -55,6 +52,12 @@ body {
   background-color: #333;
   color: white;
   width: 200px;
+}
+
+/* Contenitore per icone carrello e account */
+.navbar-right {
+  display: flex;
+  align-items: center;
 }
 
 .icon-wrapper {
@@ -71,11 +74,12 @@ body {
   position: absolute;
   width: 40px;
   height: 40px;
-  background-color: #804AF2;
+  background-color: #804AF2; /* Viola acceso */
   border-radius: 8px;
   top: 0;
   left: 0;
   z-index: 0;
+  transition: all 0.3s;
 }
 
 .cart-icon,
@@ -85,3 +89,92 @@ body {
   filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
   z-index: 1;
 }
+
+/* Banner promozionale visivo */
+.promo-banner {
+  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5); /* Gradiente rosa-viola-azzurro */
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Sezione catalogo: sfondo colorato diagonale */
+.carrello-section {
+  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* ===== Sezione principale e layout ===== */
+.cart-container {
+  background: rgba(255, 255, 255, 0.05); /* Effetto vetro */
+  backdrop-filter: blur(10px); /* Sfocatura */
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.table {
+  background-color: transparent !important;
+  color: white;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem; /* spazio tra le righe */
+}
+
+.table thead th {
+  background: rgba(56, 56, 56, 0.4); 
+  color: white;
+  border: none;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.table tbody td {
+  background: transparent; 
+  color: white;
+  border: none;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+  margin-bottom: 0.5rem;
+}
+
+/* Rimuovere i bordi default della tabella */
+.table th, .table td {
+  border: none !important;
+}
+
+.cart-footer {
+  color: white; /* colore di base */
+}
+
+.cart-footer .btn-empty {
+  background-color: #804AF2; /* rosa */
+  color: white;
+}
+
+.cart-footer .btn-checkout {
+  background-color: #804AF2; /* blu */
+  color: white;
+}
+
