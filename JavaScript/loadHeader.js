@@ -1,5 +1,3 @@
-// javaScript/loadHeader.js
-
 document.addEventListener('DOMContentLoaded', () => {
     // Funzione per caricare l'header (navbar e promo banner)
     function loadHeader() {
@@ -26,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <div class="icon-wrapper" id="account-icon-wrapper">
                         <div class="icon-background" id="account-icon-background"></div>
-                        <a href="account.html" id="account-link">
+                        <a href="#" id="account-link">
                             <img src="assets/icons/person-circle.svg" alt="Account" class="account-icon" id="account-icon" />
                         </a>
                     </div>
@@ -43,19 +41,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Crea un div temporaneo per contenere l'header
         const headerContainer = document.createElement('div');
-        headerContainer.innerHTML = navbarHtml + promoBannerHtml;
+        headerContainer.innerHTML = navbarHtml;
+
+        // Verifica se dobbiamo mostrare il banner
+        const hideBannerPages = ["account.html", "profile.html", "signup.html"];
+        const currentPage = window.location.pathname.toLowerCase();
+
+        if (!hideBannerPages.some(page => currentPage.includes(page))) {
+            headerContainer.innerHTML += promoBannerHtml;
+        }
 
         // Inserisce l'header all'inizio del body
-        // È importante che questi elementi siano disponibili il prima possibile
-        // per gli altri script che potrebbero farvi affidamento.
         document.body.prepend(headerContainer);
 
-        // Aggiorna il conteggio del carrello dopo che la navbar è stata caricata
-        // Questo è necessario perché l'elemento cart-count viene creato dinamicamente.
+        // Aggiorna il conteggio del carrello
         const cartCountElement = document.getElementById("cart-count");
         if (cartCountElement) {
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
             cartCountElement.textContent = cart.length;
+        }
+
+        // Verifica se l'utente è loggato
+        const isLoggedIn = localStorage.getItem("user") !== null;
+
+        // Cambia dinamicamente il link dell'icona profilo
+        const accountLink = document.getElementById("account-link");
+        if (accountLink) {
+            accountLink.href = isLoggedIn ? "profile.html" : "account.html";
         }
     }
 
