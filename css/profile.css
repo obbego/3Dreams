@@ -1,0 +1,106 @@
+/* Corpo della pagina: imposta margini, font e un gradiente scuro di sfondo */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+    color: white;
+    min-height: 100vh;
+  }
+  
+  /* ===== Navbar Custom ===== */
+  .navbar-custom {
+    background-color: #1c1c1c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Stile logo */
+  .navbar-custom .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-custom .logo strong a {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navbar-custom .logo small a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    padding: 3px 8px;
+    border-radius: 5px;
+  }
+  
+  .navbar-custom .logo small a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Barra di ricerca */
+  .search-bar {
+    border-radius: 15px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    margin-right: 1rem;
+    background-color: #333;
+    color: white;
+    width: 200px;
+  }
+  
+  /* Contenitore per icone carrello e account */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-wrapper {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon-background {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #804AF2; /* Viola acceso */
+    border-radius: 8px;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    transition: all 0.3s;
+  }
+  
+  .cart-icon,
+  .account-icon {
+    width: 25px;
+    height: 25px;
+    filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
+    z-index: 1;
+  }
+  
+  /* Banner promozionale visivo */
+  .promo-banner {
+    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5); /* Gradiente rosa-viola-azzurro */
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  /* Sezione catalogo: sfondo colorato diagonale */
+  .carrello-section {
+    background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+    min-height: 100vh;
+    padding: 2rem;
+  }
