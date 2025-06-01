@@ -1,106 +1,179 @@
 /* Corpo della pagina: imposta margini, font e un gradiente scuro di sfondo */
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
-    color: white;
-    min-height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+  color: white;
+  min-height: 100vh;
+}
+
+/* ===== Navbar Custom ===== */
+.navbar-custom {
+  background-color: #1c1c1c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Stile logo */
+.navbar-custom .logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-custom .logo strong a {
+  font-size: 1.8rem;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-custom .logo small a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+
+.navbar-custom .logo small a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Barra di ricerca */
+.search-bar {
+  border-radius: 15px;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  margin-right: 1rem;
+  background-color: #333;
+  color: white;
+  width: 200px;
+}
+
+/* Contenitore per icone carrello e account */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.icon-wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-background {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #804AF2;
+  /* Viola acceso */
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: all 0.3s;
+}
+
+.cart-icon,
+.account-icon {
+  width: 25px;
+  height: 25px;
+  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
+  z-index: 1;
+}
+
+/* Banner promozionale visivo */
+.promo-banner {
+  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+  /* Gradiente rosa-viola-azzurro */
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Sezione catalogo: sfondo colorato diagonale */
+.carrello-section {
+  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Container per la card (centrato verticalmente e orizzontalmente) */
+.card-container {
+  display: flex;
+  /* Imposta il contenitore come flex */
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+  flex-grow: 1;
+  /* Permette al contenitore di occupare tutto lo spazio disponibile */
+  height: 100%;
+  /* Assicura che il contenitore abbia l'altezza completa della finestra */
+  align-items: flex-start;
+  /* Inizia dall’alto */
+  padding-top: 3rem;
+}
+
+/* Card del prodotto con effetto vetro e interazione */
+.profile-card {
+  background: rgba(255, 255, 255, 0.1);
+  /* Effetto vetro */
+  backdrop-filter: blur(15px);
+  /* Sfocatura maggiore per migliorare l'effetto */
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  /* Aumenta la larghezza della card */
+  max-width: 100%;
+  /* Assicura che la card non esca fuori dal contenitore */
+  max-height: 100%;
+  /* Assicura che la card non esca fuori dal contenitore */
+}
+
+.fade-in {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  /* ===== Navbar Custom ===== */
-  .navbar-custom {
-    background-color: #1c1c1c;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Stile logo */
-  .navbar-custom .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-custom .logo strong a {
-    font-size: 1.8rem;
-    color: white;
-    text-decoration: none;
-  }
-  
-  .navbar-custom .logo small a {
-    color: white;
-    text-decoration: none;
-    margin-left: 15px;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-    padding: 3px 8px;
-    border-radius: 5px;
-  }
-  
-  .navbar-custom .logo small a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Barra di ricerca */
-  .search-bar {
-    border-radius: 15px;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    margin-right: 1rem;
-    background-color: #333;
-    color: white;
-    width: 200px;
-  }
-  
-  /* Contenitore per icone carrello e account */
-  .navbar-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .icon-wrapper {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .icon-background {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: #804AF2; /* Viola acceso */
-    border-radius: 8px;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    transition: all 0.3s;
-  }
-  
-  .cart-icon,
-  .account-icon {
-    width: 25px;
-    height: 25px;
-    filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-    z-index: 1;
-  }
-  
-  /* Banner promozionale visivo */
-  .promo-banner {
-    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5); /* Gradiente rosa-viola-azzurro */
-    font-weight: bold;
-    text-align: center;
-    padding: 10px;
-  }
-  
-  /* Sezione catalogo: sfondo colorato diagonale */
-  .carrello-section {
-    background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
-    min-height: 100vh;
-    padding: 2rem;
-  }
+}
+
+.profile-badge {
+  background-color: #ffc107;
+  color: #212529;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+footer {
+  margin-top: 4rem;
+  padding: 1.5rem 0;
+  background-color: #111;
+  color: #aaa;
+  text-align: center;
+}
