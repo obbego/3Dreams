@@ -13,3 +13,18 @@ function logout() {
     localStorage.removeItem("user");
     window.location.href = "account.html"; // Torna alla pagina di login
 }
+
+
+// Funzione per selezionare un'immagine casuale
+function getRandomImage() {
+    // Array di immagini presenti nella cartella
+    const images = ["profile1.jpg", "profile2.jpg", "profile3.jpg", "profile4.jpg", "profile5.jpg"];
+    const randomIndex = Math.floor(Math.random() * images.length);
+    return `assets/img/${images[randomIndex]}`; // Presupponendo che le immagini siano nella cartella "assets"
+}
+
+// Imposta l'immagine del profilo al caricamento della pagina
+document.addEventListener("DOMContentLoaded", function () {
+    const profileImg = document.getElementById("profile-img");
+    profileImg.src = getRandomImage();
+});
