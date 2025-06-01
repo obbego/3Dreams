@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         headerContainer.innerHTML = navbarHtml;
 
         // Verifica se dobbiamo mostrare il banner
-        const hideBannerPages = ["account.html", "profile.html", "signup.html"];
+        const hideBannerPages = ["account.html", "profile.html", "signup.html", "contact-preferences.html", "security.html", "eula-history.html"];
         const currentPage = window.location.pathname.toLowerCase();
 
         if (!hideBannerPages.some(page => currentPage.includes(page))) {
