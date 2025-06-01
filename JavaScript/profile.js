@@ -59,3 +59,59 @@ function logout() {
     localStorage.removeItem("user");
     window.location.href = "account.html";
 }
+
+// File: profile.js
+function cambiaPassword() {
+    const currentPassword = document.getElementById('current-password').value;
+    const newPassword = document.getElementById('new-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    const allUsers = JSON.parse(localStorage.getItem("allUsers")) || {};
+
+    if (!user || !allUsers[user.email]) {
+        alert("Utente non trovato.");
+        return;
+    }
+
+    // Controlla che la password corrente sia corretta
+    if (user.password !== currentPassword) {
+        alert("La password corrente non è corretta.");
+        return;
+    }
+
+    // Controlla che le nuove password coincidano
+    if (newPassword !== confirmPassword) {
+        alert("Le nuove password non corrispondono.");
+        return;
+    }
+
+    // Aggiorna la password nell'oggetto utente
+    user.password = newPassword;
+    allUsers[user.email] = user;
+
+    // Salva nel localStorage
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("allUsers", JSON.stringify(allUsers));
+
+    alert("Password cambiata con successo!");
+}
+
+// File: profile.js
+
+function salvaPreferenze() {
+    const emailUpdates = document.getElementById('email-updates').checked;
+    const smsAlerts = document.getElementById('sms-alerts').checked;
+    const promoEmails = document.getElementById('promo-emails').checked;
+
+    // Memorizza le preferenze nel localStorage (per esempio)
+    localStorage.setItem('emailUpdates', emailUpdates);
+    localStorage.setItem('smsAlerts', smsAlerts);
+    localStorage.setItem('promoEmails', promoEmails);
+
+    // Simulazione di invio al server
+    console.log("Preferenze salvate:", { emailUpdates, smsAlerts, promoEmails });
+
+    // Mostra messaggio di conferma
+    alert("Preferenze salvate con successo!");
+}
