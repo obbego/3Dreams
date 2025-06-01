@@ -96,22 +96,3 @@ function cambiaPassword() {
 
     alert("Password cambiata con successo!");
 }
-
-// File: profile.js
-
-function salvaPreferenze() {
-    const emailUpdates = document.getElementById('email-updates').checked;
-    const smsAlerts = document.getElementById('sms-alerts').checked;
-    const promoEmails = document.getElementById('promo-emails').checked;
-
-    // Memorizza le preferenze nel localStorage (per esempio)
-    localStorage.setItem('emailUpdates', emailUpdates);
-    localStorage.setItem('smsAlerts', smsAlerts);
-    localStorage.setItem('promoEmails', promoEmails);
-
-    // Simulazione di invio al server
-    console.log("Preferenze salvate:", { emailUpdates, smsAlerts, promoEmails });
-
-    // Mostra messaggio di conferma
-    alert("Preferenze salvate con successo!");
-}
