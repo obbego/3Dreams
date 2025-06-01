@@ -1,30 +1,61 @@
+// Eseguito al caricamento della pagina
 document.addEventListener("DOMContentLoaded", function () {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
-        window.location.href = "account.html"; // Se non autenticato, reindirizza alla login
+        window.location.href = "account.html"; // Se non autenticato, reindirizza
     } else {
-        document.getElementById("user-email").textContent = user.email;
-        document.getElementById("user-name").textContent = user.name;
+        // Popola i campi con i dati dell'utente
+        document.getElementById("user-id").textContent = user.id || "non disponibile";
+        document.getElementById("display-name").value = user.name || "";
+        document.getElementById("email-address").value = user.email || "";
+
+        document.getElementById("first-name").value = user.firstName || "";
+        document.getElementById("last-name").value = user.lastName || "";
+        document.getElementById("address-line1").value = user.address1 || "";
+        document.getElementById("address-line2").value = user.address2 || "";
+        document.getElementById("city").value = user.city || "";
+        document.getElementById("region").value = user.region || "";
+        document.getElementById("postal-code").value = user.postalCode || "";
+        document.getElementById("country").value = user.country || "";
     }
 });
 
+// Funzione per salvare le modifiche dell'utente
+function salvaModifiche() {
+    const user = JSON.parse(localStorage.getItem("user")) || {};
+
+    // Aggiorna i campi
+    user.firstName = document.getElementById("first-name").value;
+    user.lastName = document.getElementById("last-name").value;
+    user.address1 = document.getElementById("address-line1").value;
+    user.address2 = document.getElementById("address-line2").value;
+    user.city = document.getElementById("city").value;
+    user.region = document.getElementById("region").value;
+    user.postalCode = document.getElementById("postal-code").value;
+    user.country = document.getElementById("country").value;
+
+    // Salva nel localStorage 'user'
+    localStorage.setItem("user", JSON.stringify(user));
+
+    // 🔁 Salva anche in allUsers[email]
+    const allUsers = JSON.parse(localStorage.getItem("allUsers")) || {};
+    allUsers[user.email] = user;
+    localStorage.setItem("allUsers", JSON.stringify(allUsers));
+
+    alert("Modifiche salvate con successo!");
+}
+
+// Funzione per effettuare il logout
 function logout() {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user && user.email) {
+        const allUsers = JSON.parse(localStorage.getItem("allUsers")) || {};
+        allUsers[user.email] = user;
+        localStorage.setItem("allUsers", JSON.stringify(allUsers));
+    }
+
     localStorage.removeItem("user");
-    window.location.href = "account.html"; // Torna alla pagina di login
+    window.location.href = "account.html";
 }
-
-
-// Funzione per selezionare un'immagine casuale
-function getRandomImage() {
-    // Array di immagini presenti nella cartella
-    const images = ["profile1.jpg", "profile2.jpg", "profile3.jpg", "profile4.jpg", "profile5.jpg"];
-    const randomIndex = Math.floor(Math.random() * images.length);
-    return `assets/img/${images[randomIndex]}`; // Presupponendo che le immagini siano nella cartella "assets"
-}
-
-// Imposta l'immagine del profilo al caricamento della pagina
-document.addEventListener("DOMContentLoaded", function () {
-    const profileImg = document.getElementById("profile-img");
-    profileImg.src = getRandomImage();
-});

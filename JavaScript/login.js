@@ -4,11 +4,11 @@ document.querySelector("form").addEventListener("submit", function (event) {
     const email = document.getElementById("email").value.trim().toLowerCase();
     const password = document.getElementById("password").value.trim();
 
-    let utentiRegistrati = JSON.parse(localStorage.getItem("utentiRegistrati")) || [];
+    const allUsers = JSON.parse(localStorage.getItem("allUsers")) || {};
 
-    const utente = utentiRegistrati.find(user => user.email === email && user.password === password);
+    const utente = allUsers[email];
 
-    if (utente) {
+    if (utente && utente.password === password) {
         localStorage.setItem("user", JSON.stringify(utente));
         window.location.href = "HomePage.html";
     } else {
