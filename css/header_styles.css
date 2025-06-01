@@ -1,0 +1,131 @@
+/* ===== Barra Navigazione ===== */
+.navbar-custom {
+    background-color: #1c1c1c;
+    display: flex; /* DEVE ESSERE ATTIVO: Rende i figli (logo e navbar-right) allineati orizzontalmente */
+    justify-content: space-between; /* Spinge il logo a sinistra e la sezione destra a destra */
+    align-items: center; /* Centra verticalmente gli elementi nella navbar */
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Stile per il brand e i link piccoli nella navbar desktop */
+.navbar-custom .navbar-brand {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-custom .nav-link-small {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    padding: 3px 8px;
+    border-radius: 5px;
+}
+
+.navbar-custom .nav-link-small:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Stile per il contenitore della navbar a destra (barra di ricerca e icone) */
+.navbar-right {
+    display: flex !important; /* FONDAMENTALE: FORZIAMO IL DISPLAY FLEX */
+    align-items: center; /* Allinea verticalmente gli elementi al centro */
+    gap: 15px; /* Aggiunge uno spazio tra gli elementi. Puoi aggiustare questo valore. */
+}
+
+/* Stile per la barra di ricerca */
+.search-bar {
+    border-radius: 15px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    background-color: #333;
+    color: white;
+    width: 200px;
+}
+
+/* Contenitore per icone carrello e account */
+.icon-wrapper {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex; /* APPLICA FLEXBOX QUI PER CENTRARE */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra orizzontalmente */
+}
+
+.icon-background {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #804AF2; /* Viola acceso */
+    border-radius: 8px;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    transition: all 0.3s;
+}
+
+.cart-icon,
+.account-icon {
+    width: 25px;
+    height: 25px;
+    filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
+    z-index: 1;
+}
+
+/* ===== Banner Promozionale ===== */
+.promo-banner {
+    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Contatore carrello */
+.cart-count {
+    position: absolute;
+    top: -5px; /* Posizione rispetto all'angolo in alto a destra del wrapper */
+    right: -5px;
+    background-color: #FF3CAC;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+/* Stili per l'Offcanvas (menu hamburger) */
+.offcanvas-header {
+    background-color: #1c1c1c;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.offcanvas-body {
+    background-color: #121212;
+}
+
+.offcanvas .nav-link {
+    padding: 0.75rem 1rem;
+    transition: background-color 0.3s;
+}
+
+.offcanvas .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}

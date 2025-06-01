@@ -1,38 +1,21 @@
-/* ===== Banner Promozionale ===== */
-.promo-banner {
-    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
-    color: white;
-    font-weight: bold;
-    padding: 12px 20px;
-    text-align: center;
-    font-size: 16px;
-    margin-bottom: 20px;
-    border-radius: 0 0 8px 8px;
-}
+/* singleProduct.css */
 
-/* ===== Struttura Base ===== */
-html, body {
-    height: 100%;
-}
-
+/* Stili del Body: Controlla che non ci sia padding-top fisso qui. */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
-    color: #ffffff;
-    position: relative;
-    padding-bottom: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(120deg, #121212 60%, #d946ef 100%); /* Il tuo gradiente specifico */
+    background-attachment: fixed;
+    color: white;
+    min-height: 100vh;
+    /* IMPORTANT: Assicurati che NON ci sia padding-top impostato qui. Lo imposterà il JavaScript. */
 }
 
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
-    z-index: -1;
-    background-attachment: fixed;
+/* Regola per il nuovo wrapper del contenuto principale */
+.main-content-wrapper {
+    width: 100%; /* Occupa tutta la larghezza disponibile */
+    box-sizing: border-box; /* Assicurati che padding e border siano inclusi nella larghezza */
+    /* Il padding-top sarà impostato dinamicamente da JavaScript */
 }
 
 /* ===== Card Prodotto (contenitore principale della pagina del singolo prodotto) ===== */
@@ -46,7 +29,7 @@ body::before {
     margin: 20px auto;
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
-    padding-top: 70px;
+    padding-top: 70px; /* Questo è il padding interno della card, lascialo così. */
 }
 
 /* Stile testo prodotto */
@@ -57,19 +40,19 @@ body::before {
     color: #ffffff;
 }
 
-/* NUOVO: Stile per il contenitore del carosello */
+/* Stile per il contenitore del carosello */
 .product-carousel-container {
-    margin: 20px 0; /* Spazio sopra e sotto il carosello */
-    border-radius: 8px; /* Bordi arrotondati per il contenitore del carosello */
-    overflow: hidden; /* Assicura che le immagini rispettino i bordi arrotondati */
-    background-color: #1a1a1a; /* Sfondo scuro per le aree vuote del carosello */
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #1a1a1a;
 }
 
-/* NUOVO: Stile per le immagini all'interno del carosello */
+/* Stile per le immagini all'interno del carosello */
 .product-carousel-image {
     width: 100%;
-    height: 300px; /* Altezza fissa per le immagini del carosello */
-    object-fit: contain; /* L'immagine viene contenuta, letterbox se necessario */
+    height: 300px;
+    object-fit: contain;
     border-radius: 8px;
 }
 
@@ -124,7 +107,6 @@ body::before {
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 .back-to-catalog-arrow-in-card:hover {
@@ -148,145 +130,12 @@ body::before {
     margin-top: 15px;
 }
 
-/* Stili barra di navigazione (per coerenza) */
-.navbar-custom {
-    background-color: #1c1c1c;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
+/* ===== Responsive Design: MEDIA QUERIES (specifiche per la pagina del prodotto) ===== */
 
-.navbar-right a {
-    margin-right: 15px;
-    position: relative;
-}
-
-.navbar-custom .logo {
-    display: flex;
-    align-items: center;
-}
-
-.navbar-custom .logo strong a {
-    font-size: 1.8rem;
-    color: white;
-    text-decoration: none;
-}
-
-.navbar-custom .logo small a {
-    font-size: 0.9rem;
-    color: white;
-    text-decoration: none;
-    padding: 0.4rem 0.8rem;
-    display: inline-block;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    margin-left: 15px;
-}
-.navbar-custom .logo small a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.navbar-custom .navbar-right {
-    display: flex;
-    align-items: center;
-}
-
-.search-bar {
-    border-radius: 15px;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    margin-right: 1rem;
-    background-color: #333;
-    color: white;
-    width: 200px;
-}
-
-.icon-wrapper {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#cart-icon-wrapper {
-    margin-left: 15px;
-}
-
-#account-icon-wrapper {
-    margin-left: 15px;
-}
-
-.icon-background {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: #804AF2;
-    border-radius: 8px;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    transform: translateX(-20%);
-    transition: all 0.3s;
-}
-
-.cart-icon,
-.account-icon {
-    width: 25px;
-    height: 25px;
-    filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-    z-index: 1;
-}
-
-/* Effetto hover per icone navbar */
-.icon-wrapper:hover .icon-background {
-    transform: scale(1.1);
-    background-color: #9060f5;
-}
-
-/* Footer (per coerenza) */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: 50px;
-}
-
-footer .footer-content {
-    margin-bottom: 10px;
-}
-
-footer .social-links a {
-    margin: 0 10px;
-    display: inline-block;
-}
-
-footer .social-links img {
-    width: 24px;
-    height: 24px;
-    filter: invert(1);
-}
-
-footer .footer-bottom {
-    border-top: 1px solid #444;
-    padding-top: 10px;
-    font-size: 0.9rem;
-}
-
-/* ===== Responsive Design: MEDIA QUERIES ===== */
+/* Queste media query non hanno padding-top per .main-content-wrapper perché è gestito da JS */
 
 /* --- Desktop / Tablet orizzontale (min-width: 768px) --- */
 @media (min-width: 768px) {
-    .promo-banner {
-        font-size: 18px;
-        padding: 15px 20px;
-    }
-
     .product-page {
         max-width: 900px;
         margin: 40px auto;
@@ -294,7 +143,7 @@ footer .footer-bottom {
     }
 
     .product-carousel-image {
-        height: 400px; /* Aumenta l'altezza per desktop */
+        height: 400px;
     }
 
     .heart-icon-single-product {
@@ -310,7 +159,6 @@ footer .footer-bottom {
         border-radius: 5px;
         top: 20px;
         left: 20px;
-        margin-bottom: 20px;
     }
 
     .product-brand {
@@ -320,47 +168,6 @@ footer .footer-bottom {
 
 /* --- Tablet verticale / Smartphone (max-width: 767.98px) --- */
 @media (max-width: 767.98px) {
-    .promo-banner {
-        padding: 10px 15px;
-        font-size: 0.9em;
-        margin-bottom: 15px;
-    }
-
-    .navbar-custom {
-        padding: 0.8rem 1rem;
-        flex-wrap: wrap; /* Permette alla navbar di avvolgersi */
-    }
-    .navbar-custom .logo strong a {
-        font-size: 1.5rem;
-    }
-    .navbar-custom .logo small a {
-        font-size: 0.8rem;
-        padding: 0.3rem 0.6rem;
-        margin-left: 10px;
-    }
-    .search-bar {
-        width: 100%; /* La search bar prende tutta la larghezza sotto il logo */
-        margin-top: 10px;
-        order: 3; /* Sposta in basso */
-    }
-    .navbar-right {
-        order: 2; /* Rimane a destra del logo */
-    }
-
-    .icon-wrapper {
-        width: 35px;
-        height: 35px;
-        margin-right: 5px;
-    }
-    .icon-background {
-        width: 35px;
-        height: 35px;
-    }
-    .cart-icon, .account-icon {
-        width: 20px;
-        height: 20px;
-    }
-
     .product-page {
         padding: 15px;
         margin: 15px auto;
@@ -368,7 +175,7 @@ footer .footer-bottom {
     }
 
     .product-carousel-image {
-        height: 250px; /* Altezza per mobile */
+        height: 250px;
     }
 
     .product-title {
@@ -397,7 +204,6 @@ footer .footer-bottom {
         font-size: 1.6rem;
         background: none;
         padding: 0;
-        margin-bottom: 25px;
     }
 
     .product-brand {
@@ -417,11 +223,10 @@ footer .footer-bottom {
         top: 10px;
         left: 10px;
         font-size: 1.4rem;
-        margin-bottom: 20px;
     }
 
     .product-carousel-image {
-        height: 200px; /* Ulteriore riduzione per smartphone piccoli */
+        height: 200px;
     }
     .product-page {
         padding-top: 50px;

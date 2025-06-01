@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Funzione per caricare l'header (navbar e promo banner)
     function loadHeader() {
-        // HTML della Navbar
+        // HTML della Navbar - MODIFICATO PER CORRISPONDERE AI SELETTORI DI header_styles.css
         const navbarHtml = `
             <div class="navbar-custom" id="navbar-custom">
                 <div class="logo" id="logo">
-                    <strong><a href="HomePage.html" class="text-white text-decoration-none" id="home-link">3Dreams</a></strong>
-                    <small><a href="catalogo.html" class="text-white ms-2" id="catalogo-link">Catalogo</a></small>
-                    <small><a href="creaLaTuaStampa.html" class="text-white ms-2" id="custom-print-link">Crea la Tua Stampa 3D</a></small>
-                    <small><a href="aiuto.html" class="text-white ms-2" id="help-link">Aiuto</a></small>
+                    <strong><a href="HomePage.html" class="text-white text-decoration-none navbar-brand" id="home-link">3Dreams</a></strong>
+                    <small><a href="catalogo.html" class="text-white ms-2 nav-link-small" id="catalogo-link">Catalogo</a></small>
+                    <small><a href="creaLaTuaStampa.html" class="text-white ms-2 nav-link-small" id="custom-print-link">Crea la Tua Stampa 3D</a></small>
+                    <small><a href="aiuto.html" class="text-white ms-2 nav-link-small" id="help-link">Aiuto</a></small>
                 </div>
 
                 <div class="navbar-right" id="navbar-right">
@@ -69,8 +69,37 @@ document.addEventListener('DOMContentLoaded', () => {
         if (accountLink) {
             accountLink.href = isLoggedIn ? "profile.html" : "account.html";
         }
+
+        // FUNZIONE CRITICA: Calcola l'altezza dell'header e applica il padding al main content wrapper DOPO che l'header è stato inserito nel DOM
+        adjustMainContentPadding();
+    }
+
+    // Funzione per calcolare l'altezza dell'header e applicare il padding al main content wrapper
+    function adjustMainContentPadding() {
+        const navbar = document.getElementById('navbar-custom');
+        const promoBanner = document.getElementById('promo-banner');
+        const mainContentWrapper = document.querySelector('.main-content-wrapper');
+
+        let totalHeaderHeight = 0;
+
+        // Calcola l'altezza della navbar se esiste
+        if (navbar) {
+            totalHeaderHeight += navbar.offsetHeight;
+        }
+        // Calcola l'altezza del banner promozionale se esiste
+        if (promoBanner) {
+            totalHeaderHeight += promoBanner.offsetHeight;
+        }
+
+        // Applica il padding-top al main-content-wrapper
+        if (mainContentWrapper) {
+            mainContentWrapper.style.paddingTop = `${totalHeaderHeight}px`;
+        }
     }
 
     // Chiama la funzione per caricare l'header
     loadHeader();
+
+    // Aggiungi un listener per ricalcolare il padding in caso di ridimensionamento della finestra
+    window.addEventListener('resize', adjustMainContentPadding);
 });
