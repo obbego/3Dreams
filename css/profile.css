@@ -284,3 +284,71 @@ footer {
   border: 1px solid rgba(128, 74, 242, 1);
   /* Illumina il bordo quando cliccato */
 }
+
+/* Enhanced Table Styles for EULA History */
+.table-dark {
+  border-collapse: separate; /* Use separate borders for a cleaner look */
+  border-spacing: 0; /* No space between borders */
+  width: 100%;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  border-radius: 8px; /* Rounded corners for the table */
+  overflow: hidden; /* Ensure the rounded corners are visible */
+}
+
+.table-dark th,
+.table-dark td {
+  padding: 12px 15px;
+  text-align: left;
+  border: none; /* Remove individual cell borders */
+  vertical-align: middle;
+}
+
+.table-dark thead th {
+  background-color: #4a5568; /* A more sophisticated header color */
+  color: #edf2f7; /* Light text for better contrast */
+  font-weight: 600; /* Semi-bold font */
+  font-size: 16px;
+  text-transform: uppercase; /* Uppercase for headers */
+  letter-spacing: 0.05em; /* Add some letter spacing */
+}
+
+/* Add borders only to the top and bottom of header */
+.table-dark thead tr {
+  border-bottom: 2px solid #718096;
+}
+
+.table-dark tbody tr {
+  background-color: #2d3748; /* Softer background color for rows */
+  color: #e2e8f0; /* Lighter text color */
+  transition: background-color 0.3s ease;
+}
+
+.table-dark tbody tr:last-child {
+  border-bottom: 2px solid #4a5568; /* Add a bottom border to the last row */
+}
+
+.table-dark tbody tr:hover {
+  background-color: #3b485b; /* Slightly lighter on hover */
+}
+
+.table-dark tbody td {
+  font-size: 15px;
+}
+
+.table-dark a {
+  color: #63b3ed; /* A softer blue for links */
+  text-decoration: none;
+  font-weight: 500; /* Medium font weight */
+}
+
+.table-dark a:hover {
+  text-decoration: underline;
+}
+
+.table-dark td img {
+  display: block;
+  margin: 0 auto;
+  width: 25px; /* Ensure the icon size is consistent */
+  height: auto; /* Maintain aspect ratio */
+}
