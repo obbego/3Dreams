@@ -7,11 +7,11 @@
   <title>Cronologia dell’EULA - 3Dreams</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/profile.css">
-  <link href="css/header_styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/header_styles.css">
 </head>
 
 <body class="bg-dark text-white">
-  <script src="JavaScript/loadHeader.js"></script>
+  <script src="javaScript/loadHeader.js"></script>
 
   <div class="card-container">
     <div class="profile-card fade-in">
@@ -19,7 +19,8 @@
         <h4 class="text-white mb-4">Account</h4>
         <ul class="nav flex-column">
           <li class="nav-item"><a class="nav-link text-white" href="profile.html">Impostazioni</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="contact-preferences.html">Preferenze di contatto</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="contact-preferences.html">Preferenze di contatto</a>
+          </li>
           <li class="nav-item"><a class="nav-link text-white" href="security.html">Password e sicurezza</a></li>
           <li class="nav-item"><a class="nav-link text-white" href="eula-history.html">Cronologia dell’EULA</a></li>
         </ul>
@@ -27,13 +28,45 @@
 
       <div class="flex-grow-1 p-4">
         <h2 class="mb-3">Cronologia dell’EULA</h2>
-        <p class="mb-4" style="font-size:14px;">Visualizza le versioni dell'accordo con l'utente finale (EULA) che hai accettato.</p>
+        <p class="mb-4" style="font-size:14px;">Visualizza le versioni dell'accordo con l'utente finale (EULA) che hai
+          accettato.</p>
 
-        <ul class="list-group">
-          <li class="list-group-item bg-dark text-white border-secondary">✅ Accettato il 15/01/2025 - Versione 2.0</li>
-          <li class="list-group-item bg-dark text-white border-secondary">✅ Accettato il 10/07/2024 - Versione 1.5</li>
-          <li class="list-group-item bg-dark text-white border-secondary">✅ Accettato il 01/02/2024 - Versione 1.0</li>
-        </ul>
+        <table class="table table-dark table-bordered border-secondary">
+          <thead>
+            <tr class="table-header-invisible">
+              <th style="width: 40%;">Titolo</th>
+              <th style="width: 20%;">Lingua</th>
+              <th style="width: 20%;">Data</th>
+              <th style="width: 20%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Preferenze di contatto - 3Dreams</td>
+              <td>Italiano</td>
+              <td>01 giugno 2025</td>
+              <td><a href="assets/files/preferenze_contatto.pdf" download>
+                  <img src="assets/icons/download.png" alt="Scarica" width="25">
+                </a></td>
+            </tr>
+            <tr>
+              <td>Password e sicurezza - 3Dreams</td>
+              <td>Italiano</td>
+              <td>01 giugno 2025</td>
+              <td><a href="assets/files/password_sicurezza.pdf" download>
+                  <img src="assets/icons/download.png" alt="Scarica" width="25">
+                </a></td>
+            </tr>
+            <tr>
+              <td>Cronologia dell’EULA - 3Dreams</td>
+              <td>Italiano</td>
+              <td>01 giugno 2025</td>
+              <td><a href="assets/files/cronologia_eula.pdf" download>
+                  <img src="assets/icons/download.png" alt="Scarica" width="25">
+                </a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
