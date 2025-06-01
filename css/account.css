@@ -107,11 +107,19 @@ body {
 
 /* Container per la card (centrato verticalmente e orizzontalmente) */
 .card-container {
-  display: flex; /* Imposta il contenitore come flex */
-  justify-content: center; /* Centra orizzontalmente */
-  align-items: center; /* Centra verticalmente */
-  flex-grow: 1; /* Permette al contenitore di occupare tutto lo spazio disponibile */
-  height: 100%; /* Assicura che il contenitore abbia l'altezza completa della finestra */
+  display: flex;
+  /* Imposta il contenitore come flex */
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+  flex-grow: 1;
+  /* Permette al contenitore di occupare tutto lo spazio disponibile */
+  height: 100%;
+  /* Assicura che il contenitore abbia l'altezza completa della finestra */
+  align-items: flex-start;
+  /* Inizia dall’alto */
+  padding-top: 3rem;
 }
 
 /* Card del prodotto con effetto vetro e interazione */
