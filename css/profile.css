@@ -107,49 +107,62 @@ body {
   padding: 2rem;
 }
 
-/* Container per la card (centrato verticalmente e orizzontalmente) */
+/* Contenitore centrale */
 .card-container {
   display: flex;
-  /* Imposta il contenitore come flex */
   justify-content: center;
-  /* Centra orizzontalmente */
-  align-items: center;
-  /* Centra verticalmente */
-  flex-grow: 1;
-  /* Permette al contenitore di occupare tutto lo spazio disponibile */
-  height: 100%;
-  /* Assicura che il contenitore abbia l'altezza completa della finestra */
   align-items: flex-start;
-  /* Inizia dall’alto */
-  padding-top: 3rem;
+  padding: 3rem 1rem;
+  min-height: 100vh;
 }
 
-/* Card del prodotto con effetto vetro e interazione */
+/* Card principale */
 .profile-card {
-  background: rgba(255, 255, 255, 0.1);
-  /* Effetto vetro */
-  backdrop-filter: blur(15px);
-  /* Sfocatura maggiore per migliorare l'effetto */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   display: flex;
-  flex-direction: column;
-  width: 1000px;
-  /* Aumenta la larghezza della card */
-  max-width: 100%;
-  /* Assicura che la card non esca fuori dal contenitore */
-  max-height: 100%;
-  /* Assicura che la card non esca fuori dal contenitore */
-}
-
-.fade-in {
+  flex-direction: row;
+  max-width: 1000px;
+  width: 100%;
+  gap: 2rem;
+  padding: 2rem;
   animation: fadeIn 1.5s ease-in-out;
 }
 
+/* Sidebar interna */
+.sidebar-inside {
+  min-width: 240px;
+  max-width: 260px;
+  background-color: #000;
+  padding: 1rem;
+  border-radius: 15px;
+  height: fit-content;
+}
+
+/* Badge */
+.profile-badge {
+  background-color: #2d2d2d;
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* Link sidebar */
+.nav-link {
+  padding: 6px 0;
+  font-size: 0.95rem;
+  color: white;
+}
+
+.nav-link:hover {
+  background-color: #222;
+  border-radius: 5px;
+}
+
+/* Effetto fade */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -162,18 +175,112 @@ body {
   }
 }
 
-.profile-badge {
-  background-color: #ffc107;
-  color: #212529;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-}
-
+/* Footer */
 footer {
   margin-top: 4rem;
   padding: 1.5rem 0;
   background-color: #111;
   color: #aaa;
   text-align: center;
+}
+
+/* Responsive: sidebar sopra nei dispositivi piccoli */
+@media (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar-inside {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+/* ===== Stile per i campi di input (email e password) ===== */
+.form-control {
+  background-color: #2c2c2c;
+  /* Sfondo scuro */
+  color: #ffffff;
+  /* Testo bianco */
+  border: 1px solid #444444;
+  /* Bordo scuro */
+  border-radius: 5px;
+  /* Bordo arrotondato */
+  padding: 10px;
+  /* Aggiunge un po' di padding per migliorare la visibilità */
+  font-size: 14px;
+  /* Font di dimensioni leggere */
+}
+
+/* Colore del placeholder */
+.form-control::placeholder {
+  color: #bbbbbb;
+  /* Colore del placeholder chiaro */
+}
+
+/* Stile quando il campo di input è in focus */
+.form-control:focus {
+  background-color: #2c2c2c;
+  color: white;
+  /* Testo bianco */
+  border-color: #804AF2;
+  /* Colore del bordo quando il campo è in focus (violetto) */
+  box-shadow: 0 0 5px rgba(128, 74, 242, 0.5);
+  /* Leggera ombra per indicare il focus */
+  outline: none;
+  /* Rimuove il bordo blu di default */
+}
+
+/* Stile per la sezione del form (accedi) */
+.login-body {
+  padding: 20px;
+  height: 550px;
+  /* Puoi scegliere un'altezza più adatta */
+  overflow: hidden;
+  /* Nasconde eventuali contenuti che escono dalla card */
+}
+
+/* Modifica per il bottone Accedi */
+.btn-primary {
+  background-color: rgba(128, 74, 242, 0.5);
+  /* Colore di sfondo violetto trasparente */
+  color: white;
+  /* Testo bianco */
+  border: 1px solid transparent;
+  /* Bordo trasparente di default */
+  box-shadow: 0 0 5px rgba(128, 74, 242, 0.5);
+  /* Ombra leggera per il bottone */
+  transition: background-color 0.3s, box-shadow 0.3s, border 0.3s;
+  /* Transizioni per l'effetto */
+}
+
+/* Modifica quando il bottone è in focus (cliccato) */
+.btn-primary:focus {
+  background-color: rgba(128, 74, 242, 0.7);
+  /* Sfondo viola più intenso quando in focus */
+  box-shadow: 0 0 5px rgba(128, 74, 242, 0.5);
+  /* Mantiene l'ombra */
+  border: 1px solid rgba(128, 74, 242, 1);
+  /* Bordo illuminato (simile agli input) */
+  outline: none;
+  /* Rimuove il bordo blu di default */
+}
+
+/* Modifica quando il mouse passa sopra il bottone */
+.btn-primary:hover {
+  background-color: rgba(128, 74, 242, 0.9);
+  /* Sfondo viola più forte al passaggio del mouse */
+  box-shadow: 0 0 8px rgba(128, 74, 242, 0.8);
+  /* Ombra più intensa */
+}
+
+/* Modifica quando il bottone è cliccato (active) */
+.btn-primary:active {
+  background-color: rgba(128, 74, 242, 0.9);
+  /* Sfondo viola più intenso quando cliccato */
+  box-shadow: 0 0 10px rgba(128, 74, 242, 0.8);
+  /* Ombra ancora più intensa */
+  border: 1px solid rgba(128, 74, 242, 1);
+  /* Illumina il bordo quando cliccato */
 }
