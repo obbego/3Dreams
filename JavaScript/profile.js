@@ -21,9 +21,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+function mostraMessaggio(div, testo, tipo) {
+    div.textContent = testo;
+    div.className = "alert mt-3 text-center"; // reset
+    div.classList.add(tipo === "successo" ? "alert-success" : "alert-danger");
+    div.style.display = "block";
+}
+
 // Funzione per salvare le modifiche dell'utente
 function salvaModifiche() {
     const user = JSON.parse(localStorage.getItem("user")) || {};
+    const messageDiv = document.getElementById('profile-message-salvamodifiche');
 
     // Aggiorna i campi
     user.firstName = document.getElementById("first-name").value;
@@ -38,12 +46,12 @@ function salvaModifiche() {
     // Salva nel localStorage 'user'
     localStorage.setItem("user", JSON.stringify(user));
 
-    // 🔁 Salva anche in allUsers[email]
+    // Salva anche in allUsers[email]
     const allUsers = JSON.parse(localStorage.getItem("allUsers")) || {};
     allUsers[user.email] = user;
     localStorage.setItem("allUsers", JSON.stringify(allUsers));
 
-    alert("Modifiche salvate con successo!");
+    mostraMessaggio(messageDiv, "Modifiche salvate con successo!", "successo");
 }
 
 // Funzione per effettuare il logout
@@ -65,24 +73,25 @@ function cambiaPassword() {
     const currentPassword = document.getElementById('current-password').value;
     const newPassword = document.getElementById('new-password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
+    const messageDiv = document.getElementById('profile-message-password');
 
     const user = JSON.parse(localStorage.getItem("user"));
     const allUsers = JSON.parse(localStorage.getItem("allUsers")) || {};
 
     if (!user || !allUsers[user.email]) {
-        alert("Utente non trovato.");
+        mostraMessaggio(messageDiv, "Utente non trovato.", "errore");
         return;
     }
 
     // Controlla che la password corrente sia corretta
     if (user.password !== currentPassword) {
-        alert("La password corrente non è corretta.");
+        mostraMessaggio(messageDiv, "La password corrente non è corretta.", "errore");
         return;
     }
 
     // Controlla che le nuove password coincidano
     if (newPassword !== confirmPassword) {
-        alert("Le nuove password non corrispondono.");
+        mostraMessaggio(messageDiv, "Le nuove password non corrispondono.", "errore");
         return;
     }
 
@@ -94,5 +103,5 @@ function cambiaPassword() {
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("allUsers", JSON.stringify(allUsers));
 
-    alert("Password cambiata con successo!");
+    mostraMessaggio(messageDiv, "Password cambiata con successo!", "successo");
 }
