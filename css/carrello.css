@@ -132,6 +132,10 @@ body {
   display: inline-block;
 }
 
+.cart-title {
+  margin-top: 10px; /* Puoi aumentare o ridurre questo valore */
+}
+
 .table {
   background-color: transparent !important;
   color: white;
@@ -178,3 +182,42 @@ body {
   color: white;
 }
 
+.cart-table input[type="number"] {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* bordo semi-trasparente */
+  color: white;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  text-align: center;
+  width: 60px;
+  -webkit-appearance: none; /* rimuove le freccette su WebKit */
+  -moz-appearance: textfield; /* rimuove le freccette su Firefox */
+}
+
+.cart-table input[type="number"]::-webkit-inner-spin-button,
+.cart-table input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Bottone "Rimuovi" stile vetro */
+.remove-btn {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+/* Cestino bianco */
+.remove-btn i {
+  color: white;
+  font-size: 1rem;
+}
+
+/* Hover effetto leggero */
+.remove-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
