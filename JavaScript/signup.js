@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
+    const messageDiv = document.getElementById("signup-message");
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -8,21 +9,28 @@ document.addEventListener("DOMContentLoaded", function () {
         const password = document.getElementById("password").value.trim();
         const confirmPassword = document.getElementById("confirm-password").value.trim();
 
+        // Nasconde eventuali messaggi precedenti
+        messageDiv.style.display = "none";
+        messageDiv.textContent = "";
+        messageDiv.className = "alert mt-3 text-center";
+
         if (password !== confirmPassword) {
-            alert("Le password non corrispondono!");
+            messageDiv.textContent = "Le password non corrispondono!";
+            messageDiv.classList.add("alert-danger");
+            messageDiv.style.display = "block";
             return;
         }
 
-        // Controlla che non esista già in allUsers
         const allUsers = JSON.parse(localStorage.getItem("allUsers")) || {};
         if (allUsers[email]) {
-            alert("Questo indirizzo e-mail è già registrato!");
+            messageDiv.textContent = "Questo indirizzo e-mail è già registrato!";
+            messageDiv.classList.add("alert-warning");
+            messageDiv.style.display = "block";
             return;
         }
 
-        // Crea oggetto utente
         const nuovoUtente = {
-            id: Date.now(), // ID univoco (opzionale)
+            id: Date.now(),
             email,
             password,
             name: "",
@@ -36,16 +44,20 @@ document.addEventListener("DOMContentLoaded", function () {
             country: ""
         };
 
-        // Salva in allUsers
         allUsers[email] = nuovoUtente;
         localStorage.setItem("allUsers", JSON.stringify(allUsers));
 
-        // (Facoltativo) Salva anche in utentiRegistrati
         let utentiRegistrati = JSON.parse(localStorage.getItem("utentiRegistrati")) || [];
         utentiRegistrati.push({ email, password });
         localStorage.setItem("utentiRegistrati", JSON.stringify(utentiRegistrati));
 
-        alert("Registrazione completata! Ora puoi accedere.");
-        window.location.href = "account.html";
+        messageDiv.textContent = "Registrazione completata! Ora puoi accedere.";
+        messageDiv.classList.add("alert-success");
+        messageDiv.style.display = "block";
+
+        // Reindirizza dopo 2 secondi
+        setTimeout(() => {
+            window.location.href = "account.html";
+        }, 2000);
     });
 });
