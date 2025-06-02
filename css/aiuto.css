@@ -1,87 +1,88 @@
-/* ===== Body ===== */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
   margin: 0;
-  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+  color: white;
   min-height: 100vh;
 }
 
-/* ===== Barra di navigazione ===== */
-.navbar-custom {
-  background-color: #1c1c1c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+h1.gradient-text {
+  font-weight: 700;
+  font-size: 2.5rem;
 }
 
-.navbar-custom .logo {
-  display: flex;
-  align-items: center;
+.gradient-text {
+  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.navbar-custom .logo strong a {
-  font-size: 1.8rem;
-  color: white;
-  text-decoration: none;
-}
-
-.navbar-custom .logo small a {
-  color: white;
-  text-decoration: none;
-  margin-left: 15px;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-  padding: 3px 8px;
-  border-radius: 5px;
-}
-
-.navbar-custom .logo small a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-}
-
-.search-bar {
-  border-radius: 15px;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  margin-right: 1rem;
-  background-color: #333;
-  color: white;
-  width: 200px;
-}
-
-.icon-wrapper {
+.gradient-underline {
   position: relative;
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
 }
 
-.icon-background {
+.gradient-underline::after {
+  content: '';
   position: absolute;
-  width: 40px;
-  height: 40px;
-  background-color: #804AF2;
-  border-radius: 8px;
-  top: 0;
   left: 0;
-  z-index: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+  border-radius: 3px;
 }
 
-.cart-icon,
-.account-icon {
-  width: 25px;
-  height: 25px;
-  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-  z-index: 1;
+.accordion-button {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, transform 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.accordion-button:not(.collapsed) {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.accordion-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.01);
+}
+
+.accordion-body {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-radius: 0 0 10px 10px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  color: #eee;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
+}
+
+.accordion-item {
+  background: transparent !important;
+  border: none;
+}
+
+
+code {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+ol, ul {
+  margin-left: 20px;
+  margin-bottom: 0;
 }
