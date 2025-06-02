@@ -99,27 +99,34 @@ function showButtonFeedback(button, message, isAdded) {
     button.dataset.originalText = originalText;
   }
 
-  button.innerHTML = isAdded ? `<i class="fas fa-check"></i> ${message}` : message;
+  const isFeatured = button.closest("#featured-products");
+
+  // Controllo se è "AGGIUNTO" nei prodotti in evidenza
+  if (isAdded && message === 'AGGIUNTO' && isFeatured) {
+    button.innerHTML = `<i class="fas fa-check"></i> ${message}`;
+    button.style.fontSize = '0.8rem';
+  } else if (message === 'NEL CARRELLO' && isFeatured) {
+    button.innerHTML = `<i class="fas fa-check"></i> NEL<br>CARRELLO`;
+    button.style.fontSize = '0.8rem';
+  } else {
+    button.innerHTML = isAdded ? `<i class="fas fa-check"></i> ${message}` : message;
+    button.style.fontSize = '';
+  }
+
   button.disabled = true;
   button.style.backgroundColor = isAdded ? '#28a745' : '#ffc107';
   button.style.color = isAdded ? '#ffffff' : '#000000';
-
-  // Qui controllo se il bottone è dentro featured-products
-  if (button.closest("#featured-products") && message === 'NEL CARRELLO') {
-    button.style.fontSize = '0.8rem';  // scritta più piccola solo nei prodotti in evidenza
-  } else {
-    button.style.fontSize = '';
-  }
 
   setTimeout(() => {
     button.innerHTML = button.dataset.originalText;
     button.disabled = false;
     button.style.backgroundColor = '';
     button.style.color = '';
-    button.style.fontSize = '';
+    button.style.fontSize = ''; // Reset dopo feedback
     checkButtonCartStatus(button, button.dataset.productId);
   }, 2000);
 }
+
 
 
 // Inizializza i pulsanti Aggiungi al Carrello nella home page
