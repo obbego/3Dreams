@@ -3,7 +3,7 @@
 /* Stili del Body: Controlla che non ci sia padding-top fisso qui. */
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: -apple-system, BlinkMacMacSystemFont, sans-serif;
     background: linear-gradient(120deg, #121212 60%, #d946ef 100%); /* Il tuo gradiente specifico */
     background-attachment: fixed;
     color: white;
