@@ -1,6 +1,4 @@
-/* singleProduct.css */
-
-/* Stili del Body: Controlla che non ci sia padding-top fisso qui. */
+/* Stili del Body */
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacMacSystemFont, sans-serif;
@@ -8,14 +6,15 @@ body {
     background-attachment: fixed;
     color: white;
     min-height: 100vh;
-    /* IMPORTANT: Assicurati che NON ci sia padding-top impostato qui. Lo imposterà il JavaScript. */
+    /* IMPORTANT: Assicurati che NON ci sia padding-top impostato qui. Lo imposterà il JavaScript se fixed. */
 }
 
-/* Regola per il nuovo wrapper del contenuto principale */
-.main-content-wrapper {
+/* Regola per il wrapper del contenuto principale (usa ID) */
+#main-content-wrapper { /* Corretto per usare l'ID */
     width: 100%; /* Occupa tutta la larghezza disponibile */
     box-sizing: border-box; /* Assicurati che padding e border siano inclusi nella larghezza */
-    /* Il padding-top sarà impostato dinamicamente da JavaScript */
+    /* Il padding-top sarà impostato dinamicamente da JavaScript se la navbar/banner è fixed.
+       Se navbar/banner non sono fixed, questo padding non è necessario, o può essere 0. */
 }
 
 /* ===== Card Prodotto (contenitore principale della pagina del singolo prodotto) ===== */
@@ -234,4 +233,17 @@ body {
     .product-brand {
         margin-top: 0;
     }
+}
+
+/* ===== Fix colore link prodotti ===== */
+.product-link,
+.product-link:hover,
+.product-link:focus,
+.product-link:active {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+.card-body a {
+    color: white !important;
 }

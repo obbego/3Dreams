@@ -1,21 +1,37 @@
+/* header_styles.css - Versione con Navbar e Banner che scorrono con la pagina */
+
+/* ===== Body (Stili di base per tutto il sito) ===== */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+    background-attachment: fixed; /* Mantiene lo sfondo fisso durante lo scroll */
+    color: white;
+    min-height: 100vh;
+    /* IMPORTANT: NON impostare padding-top qui. Lo imposterà il JavaScript in loadHeader.js. */
+}
+
 /* ===== Barra Navigazione ===== */
 .navbar-custom {
     background-color: #1c1c1c;
-    display: flex; /* Rende i figli (logo e navbar-right) allineati orizzontalmente */
-    justify-content: space-between; /* Spinge il logo a sinistra e la sezione destra a destra */
-    align-items: center; /* Centra verticalmente gli elementi nella navbar */
-    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:  1.25rem 2rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    /* Rimuovi position: fixed per farla scorrere con la pagina */
+    /* Rimuovi top, left, width, z-index */
 }
 
-/* Stile per il brand e i link piccoli nella navbar desktop */
-.navbar-custom .navbar-brand {
+/* Stile per il brand (testo "3Dreams") */
+.navbar-custom .logo strong a {
     font-size: 1.8rem;
     color: white;
     text-decoration: none;
 }
 
-.navbar-custom .nav-link-small {
+/* Stile per i link piccoli (Catalogo, Crea la tua stampa) */
+.navbar-custom .logo small a {
     color: white;
     text-decoration: none;
     margin-left: 15px;
@@ -25,15 +41,21 @@
     border-radius: 5px;
 }
 
-.navbar-custom .nav-link-small:hover {
+.navbar-custom .logo small a:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Contenitore per il logo e i link piccoli (se il tuo HTML è ancora così) */
+.navbar-custom .logo {
+    display: flex;
+    align-items: center;
 }
 
 /* Stile per il contenitore della navbar a destra (barra di ricerca e icone) */
 .navbar-right {
-    display: flex; /* FONDAMENTALE: FORZIAMO IL DISPLAY FLEX */
-    align-items: center; /* Allinea verticalmente gli elementi al centro */
-    gap: 15px; /* Aggiunge uno spazio tra gli elementi. Puoi aggiustare questo valore. */
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Aggiunge uno spazio tra gli elementi: ICONE NON ATTACCATE */
 }
 
 /* Stile per la barra di ricerca - Stato predefinito (nascosta) */
@@ -42,6 +64,7 @@
     background-color: #333;
     color: white;
     border: 1px solid #ddd;
+    box-sizing: border-box; /* Assicura che padding e border siano inclusi nella larghezza */
 
     /* Proprietà per nasconderla e farla "collassare" per default */
     padding: 0;
@@ -64,9 +87,9 @@
     visibility: visible; /* Rende l'elemento visibile */
 }
 
-/* Stile per il focus della barra di ricerca (indipendente dalla visibilità) */
+/* Stile per il focus della barra di ricerca */
 .search-bar:focus {
-    outline: none; /* Rimuove l'outline di default del browser */
+    outline: none;
     box-shadow: 0 0 0 0.25rem rgba(128, 74, 242, 0.25);
     border-color: #804AF2;
 }
@@ -76,9 +99,11 @@
     position: relative;
     width: 40px;
     height: 40px;
-    display: flex; /* APPLICA FLEXBOX QUI PER CENTRARE */
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra orizzontalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 .icon-background {
@@ -102,22 +127,14 @@
 .account-icon {
     width: 25px;
     height: 25px;
-    filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
+    filter: invert(1) grayscale(100%) contrast(100%) brightness(100%); /* Rende le icone bianche */
     z-index: 1;
-}
-
-/* ===== Banner Promozionale ===== */
-.promo-banner {
-    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
-    font-weight: bold;
-    text-align: center;
-    padding: 10px;
 }
 
 /* Contatore carrello */
 .cart-count {
     position: absolute;
-    top: -5px; /* Posizione rispetto all'angolo in alto a destra del wrapper */
+    top: -5px;
     right: -5px;
     background-color: #FF3CAC;
     color: white;
@@ -130,6 +147,18 @@
     font-size: 0.7rem;
     font-weight: bold;
     z-index: 2;
+}
+
+/* ===== Banner Promozionale ===== */
+.promo-banner {
+    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    color: white; /* Assicura che il testo del banner sia bianco */
+    /* Rimuovi position: fixed per farlo scorrere con la pagina */
+    /* Rimuovi top, left, width, z-index */
+    box-sizing: border-box;
 }
 
 /* Stili per l'Offcanvas (menu hamburger) */
@@ -145,6 +174,7 @@
 
 .offcanvas .nav-link {
     padding: 0.75rem 1rem;
+    color: white; /* Assicura che i link siano bianchi */
     transition: background-color 0.3s;
 }
 
@@ -158,4 +188,42 @@
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Media Queries per la navbar responsiva */
+
+/* Nasconde gli elementi desktop su schermi piccoli (mobile) */
+@media (max-width: 991.98px) {
+    .navbar-custom .logo small a { /* Nasconde i link "Catalogo", "Crea la tua Stampa" su mobile */
+        display: none;
+    }
+
+    .navbar-right {
+         display: none; /* Nasconde l'intera sezione destra su mobile, sarà nell'offcanvas */
+    }
+
+    /* Regole per il toggle button (hamburger) che appare su mobile */
+    .navbar-toggler {
+        display: block; /* Mostra il toggler */
+        margin-left: auto; /* Sposta il toggler a destra */
+    }
+
+    .navbar-custom .logo {
+        margin-right: auto; /* Per spingere il brand a sinistra rispetto al toggler */
+    }
+}
+
+/* Mostra gli elementi desktop su schermi grandi */
+@media (min-width: 992px) {
+    .navbar-custom .logo small a { /* Mostra i link "Catalogo", "Crea la tua Stampa" su desktop */
+        display: inline-block;
+    }
+
+    .navbar-toggler {
+        display: none; /* Nasconde il toggler su desktop */
+    }
+
+    .navbar-right {
+        display: flex; /* Assicura che la sezione destra sia visibile su desktop */
+    }
 }

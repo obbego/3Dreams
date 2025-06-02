@@ -1,292 +1,159 @@
-/* ===== Body ===== */
+/* HomePage.css - Versione pulita e consolidata */
+
+/* ===== Body (Stili globali della pagina) ===== */
 body {
-  margin: 0; 
-  font-family: 'Arial', sans-serif; 
-  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
-  color: white; 
-  min-height: 100vh; 
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+    color: white;
+    min-height: 100vh;
 }
 
-/* ===== Barra Navigazione ===== */
-.navbar-custom {
-  background-color: #1c1c1c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-.navbar-custom .logo {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-custom .logo strong a {
-  font-size: 1.8rem;
-  color: white;
-  text-decoration: none;
-}
-
-.navbar-custom .logo small a {
-  color: white;
-  text-decoration: none;
-  margin-left: 15px;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-  padding: 3px 8px;
-  border-radius: 5px;
-}
-
-.navbar-custom .logo small a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-}
-
-.search-bar {
-  border-radius: 15px;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  margin-right: 1rem;
-  background-color: #333;
-  color: white;
-  width: 200px;
-}
-
-.icon-wrapper {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-background {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background-color: #804AF2;
-  border-radius: 8px;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-
-.cart-icon,
-.account-icon {
-  width: 25px;
-  height: 25px;
-  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-  z-index: 1;
-}
-
-/* ===== Banner Promozionale ===== */
-.promo-banner {
-  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
-  font-weight: bold;
-}
-
-/* ===== Sezione principale e layout ===== */
+/* ===== Sezione principale e layout (Homepage Hero Section) ===== */
 #col-texts {
-  display: flex;
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: flex-start;  /* Allinea il contenuto a sinistra */
-  height: 50vh; 
-  text-align: left;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Allinea il contenuto al centro orizzontalmente */
+    height: 50vh;
+    text-align: center; /* Centra il testo */
+    padding-left: 15px; /* Mantieni se serve per allineamenti specifici */
+    padding-right: 15px; /* Aggiungi padding a destra per simmetria se necessario */
 }
 
 #text-start h4 {
-  font-size: 1.8rem; /* più grande del normale h4 */
-  font-weight: 500;
-  font-family: 'Arial', sans-serif;
+    font-size: 1.6rem; /* Dimensione del titolo più piccolo */
+    font-weight: 500;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 #text-start h2 {
-  font-size: 2.5rem; /* ingrandisce il titolo principale */
-  font-weight: 700;
-  font-family: 'Arial', sans-serif;
-}
-
-
-#text-start h4, #text-start h2 {
-  margin: 0; 
-  padding: 0; 
+    font-size: 2.0rem; /* Dimensione del titolo principale */
+    font-weight: 700;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .small-text {
-  font-size: 0.75rem;
+    font-size: 0.75rem;
 }
 
-/* ===== Sezione catalogo e card prodotto ===== */
+/* ===== Sezione catalogo e card prodotto (per prodotti in evidenza sulla Home) ===== */
 .catalogo-section {
-  background: linear-gradient(120deg, #121212 60%, #d946ef 100%); 
-  min-height: 100vh;
+    background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+    min-height: 100vh;
+    /* Considera di usare `padding-top` per distanziare il contenuto dalla navbar/banner
+       se non lo fai tramite #main-content-wrapper e il tuo layout lo richiede qui */
 }
 
 /* Card prodotto */
 .prodotto-card {
-  background: rgba(255, 255, 255, 0.05); 
-  backdrop-filter: blur(10px); 
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.5); 
-  transition: transform 0.3s;
-
-  height: 100%; /* estendibile */
-  min-height: 350px; /* 🔺 AUMENTA ALTEZZA */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card-body {
-  flex-grow: 1;
-}
-
-.prodotto-card img.card-img-top {
-  height: 200px; 
-  object-fit: cover; 
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+    height: 100%; /* estendibile */
+    min-height: 350px; /* Altezza minima della card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .prodotto-card:hover {
-  transform: translateY(-5px); 
+    transform: translateY(-5px);
 }
 
 .prodotto-card img.card-img-top {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
-  padding: 10px;
+    width: 100%;
+    height: 200px;
+    object-fit: contain; /* Cambiato da cover a contain per evitare ritagli */
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+.card-body {
+    flex-grow: 1;
 }
 
 /* Icona "cuore" */
 .heart-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 20px;
-  opacity: 0.8;
-  color: white !important;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    opacity: 0.8;
+    color: white !important;
 }
 
-/* ===== Testo con gradiente ===== */
+.heart-icon.liked {
+    color: #FF3CAC !important;
+}
+
+/* ===== Testo con gradiente (utilità) ===== */
 .gradient-text {
-  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .gradient-underline {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .gradient-underline::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5 );
-  border-radius: 2px;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+    border-radius: 2px;
 }
 
-/* ===== Sezione 'altri prodotti' ===== */
+/* ===== Sezione 'altri prodotti' / Titolo Sezione ===== */
 .see-more {
-  text-align: right;
-  font-weight: bold;
-  padding: 0 1rem 1rem;
+    text-align: right;
+    font-weight: bold;
+    padding: 0 1rem 1rem;
 }
 
 .section-title-line .vertical-line {
-  width: 5px;
-  height: 40px;
-  background: linear-gradient(#FF3CAC, #784BA0);
-  border-radius: 3px;
+    width: 5px;
+    height: 40px;
+    background: linear-gradient(#FF3CAC, #784BA0);
+    border-radius: 3px;
 }
 
-/* ===== Colonna sinistra testi: centratura verticale e orizzontale ===== */
-#col-texts {
-  display: flex;
-  justify-content: center;   
-  align-items: center;        
-  height: 50vh;
-  text-align: center;          
-  flex-direction: column;
-  padding-left: 15px;         
-}
-
-#text-start h4 {
-  font-size: 1.6rem;  
-  font-weight: 500;
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-#text-start h2 {
-  font-size: 2.0rem; 
-  font-weight: 700;
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-
-/* ===== Prodotti in evidenta ===== */
+/* ===== Pulsanti "Aggiungi al carrello" (per prodotti in evidenza) ===== */
 .add-to-cart-btn {
-  background-color: #804AF2;
-  color: white;
-  border: none;
-  border-radius: 15px;
-  padding: 0.5rem 1rem;
-  width: calc(100% - 2rem);
-  margin: 10px auto 15px auto;
-  transition: all 0.3s;
-  opacity: 0;
-  transform: translateY(8px);
+    background-color: #804AF2;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 0.5rem 1rem;
+    width: calc(100% - 2rem);
+    margin: 10px auto 15px auto;
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(8px);
 }
+
 .prodotto-card:hover .add-to-cart-btn {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
-
-
-.heart-icon.liked {
-  color: #FF3CAC !important;
-}
-
 
 .add-to-cart-btn:hover {
-  background-color: #9060f5;
-  transform: translateY(-2px);
-}
-
-/* Contatore carrello */
-.cart-count {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: #FF3CAC;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  font-weight: bold;
-  z-index: 2;
+    background-color: #9060f5;
+    transform: translateY(-2px);
 }
