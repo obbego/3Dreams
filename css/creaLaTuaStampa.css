@@ -255,7 +255,58 @@ body::before {
     margin: auto; /* Centra l'immagine orizzontalmente */
 }
 
-/* Footer (copiato da catalogo.css per coerenza) */
+/* Stili per il bottone "Aggiungi al Carrello" */
+.btn-add-to-cart {
+    /* Stile comune per tutti gli stati */
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Rende il bottone a tutta larghezza come da HTML */
+}
+
+/* Stile quando il bottone è DISABILITATO (default) */
+.btn-add-to-cart:disabled {
+    background-color: #555555; /* Grigio scuro per disabilitato */
+    color: #aaaaaa; /* Testo più chiaro per indicare disabilitazione */
+    cursor: not-allowed; /* Cursore "non permesso" */
+    box-shadow: none; /* Nessuna ombra quando disabilitato */
+}
+
+/* Stile quando il bottone è ABILITATO (ma non in stato di feedback) */
+.btn-add-to-cart.active-button {
+    background-color: #804AF2; /* Viola del titolo */
+    color: #ffffff; /* Testo bianco */
+    cursor: pointer; /* Cursore puntatore per indicare cliccabilità */
+    box-shadow: 0 0 15px rgba(128, 74, 242, 0.5); /* Ombra luminosa viola per risaltare */
+}
+
+/* Stile quando il bottone è ABILITATO e ci passi sopra con il mouse */
+.btn-add-to-cart.active-button:hover {
+    background-color: #9060f5; /* Viola leggermente più chiaro al hover */
+    box-shadow: 0 0 20px rgba(128, 74, 242, 0.7); /* Ombra più intensa al hover */
+}
+
+/* Stile per il feedback "AGGIUNTO" */
+.btn-add-to-cart.added { /* Questa classe verrà aggiunta dal JS */
+    background-color: #28a745 !important; /* Verde di successo */
+    color: #ffffff !important;
+    box-shadow: none !important; /* Rimuovi ombra viola per il feedback */
+    cursor: default !important; /* Rimuovi cursore pointer durante il feedback */
+}
+
+/* Stile per il feedback "GIÀ NEL CARRELLO" (se decidessi di usarlo) */
+.btn-add-to-cart.in-cart { /* Questa classe verrà aggiunta dal JS */
+    background-color: #ffc107 !important; /* Giallo di avviso */
+    color: #000000 !important;
+    box-shadow: none !important; /* Rimuovi ombra viola per il feedback */
+    cursor: default !important; /* Rimuovi cursore pointer durante il feedback */
+}
+
+
+/* Footer (copiata da catalogo.css per coerenza) */
 footer {
     background-color: #333;
     color: white;
