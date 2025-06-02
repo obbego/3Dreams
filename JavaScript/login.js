@@ -1,6 +1,7 @@
 document.querySelector("form").addEventListener("submit", function (event) {
     event.preventDefault();
 
+    const errorMessage = document.getElementById("error-message");
     const email = document.getElementById("email").value.trim().toLowerCase();
     const password = document.getElementById("password").value.trim();
 
@@ -12,6 +13,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
         localStorage.setItem("user", JSON.stringify(utente));
         window.location.href = "HomePage.html";
     } else {
-        alert("Credenziali errate! Riprova.");
+        errorMessage.textContent = "Credenziali errate! Riprova.";
+        errorMessage.style.display = "block";
     }
 });
