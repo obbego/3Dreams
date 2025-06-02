@@ -1,7 +1,7 @@
 /* ===== Barra Navigazione ===== */
 .navbar-custom {
     background-color: #1c1c1c;
-    display: flex; /* DEVE ESSERE ATTIVO: Rende i figli (logo e navbar-right) allineati orizzontalmente */
+    display: flex; /* Rende i figli (logo e navbar-right) allineati orizzontalmente */
     justify-content: space-between; /* Spinge il logo a sinistra e la sezione destra a destra */
     align-items: center; /* Centra verticalmente gli elementi nella navbar */
     padding: 1rem 2rem;
@@ -31,19 +31,44 @@
 
 /* Stile per il contenitore della navbar a destra (barra di ricerca e icone) */
 .navbar-right {
-    display: flex !important; /* FONDAMENTALE: FORZIAMO IL DISPLAY FLEX */
+    display: flex; /* FONDAMENTALE: FORZIAMO IL DISPLAY FLEX */
     align-items: center; /* Allinea verticalmente gli elementi al centro */
     gap: 15px; /* Aggiunge uno spazio tra gli elementi. Puoi aggiustare questo valore. */
 }
 
-/* Stile per la barra di ricerca */
+/* Stile per la barra di ricerca - Stato predefinito (nascosta) */
 .search-bar {
     border-radius: 15px;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
     background-color: #333;
     color: white;
-    width: 200px;
+    border: 1px solid #ddd;
+
+    /* Proprietà per nasconderla e farla "collassare" per default */
+    padding: 0;
+    width: 0;
+    margin-right: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden; /* Nasconde il testo quando la larghezza è 0 */
+
+    /* Transizione per un effetto fluido tra i due stati */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Stile per quando la barra di ricerca è visibile (solo su catalogo.html) */
+.search-bar.visible-on-catalog {
+    padding: 0.5rem; /* Ripristina il padding normale */
+    width: 200px; /* Ripristina la larghezza normale */
+    margin-right: 1rem; /* Ripristina il margine destro */
+    opacity: 1; /* Rende visibile */
+    visibility: visible; /* Rende l'elemento visibile */
+}
+
+/* Stile per il focus della barra di ricerca (indipendente dalla visibilità) */
+.search-bar:focus {
+    outline: none; /* Rimuove l'outline di default del browser */
+    box-shadow: 0 0 0 0.25rem rgba(128, 74, 242, 0.25);
+    border-color: #804AF2;
 }
 
 /* Contenitore per icone carrello e account */
@@ -66,6 +91,11 @@
     left: 0;
     z-index: 0;
     transition: all 0.3s;
+}
+
+.icon-wrapper:hover .icon-background {
+    transform: scale(1.1);
+    background-color: #9060f5; /* Viola leggermente più chiaro al hover */
 }
 
 .cart-icon,

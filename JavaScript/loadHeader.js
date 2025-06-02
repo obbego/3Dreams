@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div class="navbar-right" id="navbar-right">
-                    <input type="text" class="search-bar" placeholder="Cerca..." id="search-bar" />
+                    <!-- IMPORTANTE: L'ID è "search-input-bar" per coerenza con il JS -->
+                    <input type="text" class="search-bar" placeholder="Cerca..." id="search-input-bar" /> 
 
                     <div class="icon-wrapper" id="cart-icon-wrapper">
                         <div class="icon-background" id="cart-icon-background"></div>
@@ -45,20 +46,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Verifica se dobbiamo mostrare il banner
         const hideBannerPages = ["account.html", "profile.html", "signup.html", "contact-preferences.html", "security.html", "eula-history.html"];
-        const currentPage = window.location.pathname.toLowerCase();
+        const currentPagePath = window.location.pathname.toLowerCase(); // Percorso completo
+        const currentPageFileName = currentPagePath.split('/').pop(); // Solo il nome del file
 
-        if (!hideBannerPages.some(page => currentPage.includes(page))) {
+        if (!hideBannerPages.some(page => currentPagePath.includes(page))) {
             headerContainer.innerHTML += promoBannerHtml;
         }
 
         // Inserisce l'header all'inizio del body
         document.body.prepend(headerContainer);
 
+        // --- LOGICA PER LA VISIBILITÀ DELLA SEARCH BAR ---
+        const searchBar = document.getElementById('search-input-bar'); // Usa l'ID specifico della barra di ricerca
+        if (searchBar) {
+            if (currentPageFileName === 'catalogo.html') { // Se la pagina è catalogo.html
+                searchBar.classList.add('visible-on-catalog'); // Aggiungi la classe per renderla visibile
+            } else {
+                searchBar.classList.remove('visible-on-catalog'); // Rimuovi la classe per nasconderla
+            }
+        }
+        // --- FINE LOGICA ---
+
         // Aggiorna il conteggio del carrello
         const cartCountElement = document.getElementById("cart-count");
         if (cartCountElement) {
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            cartCountElement.textContent = cart.length;
+            cartCountElement.textContent = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
         }
 
         // Verifica se l'utente è loggato

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const categoryFilter = document.getElementById("category-filter");
     const sortFilter = document.getElementById("sort-filter");
-    const searchBar = document.getElementById("search-bar");
+    const searchBar = document.getElementById("search-input-bar"); 
     const productRow = document.getElementById("product-row");
     const cartCountElement = document.getElementById("cart-count"); 
     // Rimuoviamo favoriteFilterToggle in quanto non usiamo più la checkbox separata
