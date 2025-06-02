@@ -7,99 +7,6 @@ body {
   min-height: 100vh;
 }
 
-/* ===== Navbar Custom ===== */
-.navbar-custom {
-  background-color: #1c1c1c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Stile logo */
-.navbar-custom .logo {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-custom .logo strong a {
-  font-size: 1.8rem;
-  color: white;
-  text-decoration: none;
-}
-
-.navbar-custom .logo small a {
-  color: white;
-  text-decoration: none;
-  margin-left: 15px;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-  padding: 3px 8px;
-  border-radius: 5px;
-}
-
-.navbar-custom .logo small a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Barra di ricerca */
-.search-bar {
-  border-radius: 15px;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  margin-right: 1rem;
-  background-color: #333;
-  color: white;
-  width: 200px;
-}
-
-/* Contenitore per icone carrello e account */
-.navbar-right {
-  display: flex;
-  align-items: center;
-}
-
-.icon-wrapper {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-background {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background-color: #804AF2;
-  /* Viola acceso */
-  border-radius: 8px;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  transition: all 0.3s;
-}
-
-.cart-icon,
-.account-icon {
-  width: 25px;
-  height: 25px;
-  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-  z-index: 1;
-}
-
-/* Banner promozionale visivo */
-.promo-banner {
-  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
-  /* Gradiente rosa-viola-azzurro */
-  font-weight: bold;
-  text-align: center;
-  padding: 10px;
-}
-
 /* Sezione catalogo: sfondo colorato diagonale */
 .carrello-section {
   background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
@@ -287,30 +194,41 @@ footer {
 
 /* Enhanced Table Styles for EULA History */
 .table-dark {
-  border-collapse: separate; /* Use separate borders for a cleaner look */
-  border-spacing: 0; /* No space between borders */
+  border-collapse: separate;
+  /* Use separate borders for a cleaner look */
+  border-spacing: 0;
+  /* No space between borders */
   width: 100%;
   margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  border-radius: 8px; /* Rounded corners for the table */
-  overflow: hidden; /* Ensure the rounded corners are visible */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add a subtle shadow */
+  border-radius: 8px;
+  /* Rounded corners for the table */
+  overflow: hidden;
+  /* Ensure the rounded corners are visible */
 }
 
 .table-dark th,
 .table-dark td {
   padding: 12px 15px;
   text-align: left;
-  border: none; /* Remove individual cell borders */
+  border: none;
+  /* Remove individual cell borders */
   vertical-align: middle;
 }
 
 .table-dark thead th {
-  background-color: #4a5568; /* A more sophisticated header color */
-  color: #edf2f7; /* Light text for better contrast */
-  font-weight: 600; /* Semi-bold font */
+  background-color: #4a5568;
+  /* A more sophisticated header color */
+  color: #edf2f7;
+  /* Light text for better contrast */
+  font-weight: 600;
+  /* Semi-bold font */
   font-size: 16px;
-  text-transform: uppercase; /* Uppercase for headers */
-  letter-spacing: 0.05em; /* Add some letter spacing */
+  text-transform: uppercase;
+  /* Uppercase for headers */
+  letter-spacing: 0.05em;
+  /* Add some letter spacing */
 }
 
 /* Add borders only to the top and bottom of header */
@@ -319,17 +237,21 @@ footer {
 }
 
 .table-dark tbody tr {
-  background-color: #2d3748; /* Softer background color for rows */
-  color: #e2e8f0; /* Lighter text color */
+  background-color: #2d3748;
+  /* Softer background color for rows */
+  color: #e2e8f0;
+  /* Lighter text color */
   transition: background-color 0.3s ease;
 }
 
 .table-dark tbody tr:last-child {
-  border-bottom: 2px solid #4a5568; /* Add a bottom border to the last row */
+  border-bottom: 2px solid #4a5568;
+  /* Add a bottom border to the last row */
 }
 
 .table-dark tbody tr:hover {
-  background-color: #3b485b; /* Slightly lighter on hover */
+  background-color: #3b485b;
+  /* Slightly lighter on hover */
 }
 
 .table-dark tbody td {
@@ -337,9 +259,11 @@ footer {
 }
 
 .table-dark a {
-  color: #63b3ed; /* A softer blue for links */
+  color: #63b3ed;
+  /* A softer blue for links */
   text-decoration: none;
-  font-weight: 500; /* Medium font weight */
+  font-weight: 500;
+  /* Medium font weight */
 }
 
 .table-dark a:hover {
@@ -349,6 +273,8 @@ footer {
 .table-dark td img {
   display: block;
   margin: 0 auto;
-  width: 25px; /* Ensure the icon size is consistent */
-  height: auto; /* Maintain aspect ratio */
+  width: 25px;
+  /* Ensure the icon size is consistent */
+  height: auto;
+  /* Maintain aspect ratio */
 }
