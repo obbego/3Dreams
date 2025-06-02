@@ -140,13 +140,16 @@ body {
   border: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 4px 30px rgba(0,0,0,0.5); 
   transition: transform 0.3s;
+
+  height: 100%; /* estendibile */
+  min-height: 350px; /* 🔺 AUMENTA ALTEZZA */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.prodotto-card {
-  height: 300px; 
-  display: flex;
-  flex-direction: column; 
-  justify-content: space-between; 
+.card-body {
+  flex-grow: 1;
 }
 
 .prodotto-card img.card-img-top {
@@ -248,19 +251,22 @@ body {
   border: none;
   border-radius: 15px;
   padding: 0.5rem 1rem;
-  margin-top: auto;
-  margin-bottom: auto;
   width: calc(100% - 2rem);
+  margin: 10px auto 15px auto;
   transition: all 0.3s;
   opacity: 0;
-  transform: translateY(10px);
-  align-self: center;
+  transform: translateY(8px);
 }
-
 .prodotto-card:hover .add-to-cart-btn {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+.heart-icon.liked {
+  color: #FF3CAC !important;
+}
+
 
 .add-to-cart-btn:hover {
   background-color: #9060f5;
