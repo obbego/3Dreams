@@ -5,19 +5,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchBar = document.getElementById("search-input-bar");
     const productRow = document.getElementById("product-row");
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('categoria');
+    if (initialCategory) categoryFilter.value = initialCategory;
+
     function initHearts() {
         document.querySelectorAll(".heart-icon").forEach(icon => {
             const productId = icon.dataset.productId;
-            // AGGIORNATO: Usa getUserFavorites() per leggere i preferiti
             let favorites = window.getUserFavorites();
-
-            // AGGIORNATO: Usa la classe 'liked' per coerenza con homepage
             icon.classList.toggle("liked", favorites.includes(productId));
 
             icon.addEventListener("click", function (event) {
-                event.stopPropagation(); // Evita che il click si propaghi alla card intera
-                // AGGIORNATO: Usa getUserFavorites() e saveUserFavorites()
-                favorites = window.getUserFavorites(); // Rileggi i preferiti per l'ultimo stato
+                event.stopPropagation();
+                favorites = window.getUserFavorites();
                 if (favorites.includes(productId)) {
                     favorites = favorites.filter(id => id !== productId);
                     icon.classList.remove("liked");
@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     favorites.push(productId);
                     icon.classList.add("liked");
                 }
-                window.saveUserFavorites(favorites); // Salva i preferiti aggiornati
-                applyFilters(); // Ri-applica i filtri quando i preferiti cambiano (se il filtro preferiti è attivo)
+                window.saveUserFavorites(favorites);
+                applyFilters();
             });
         });
     }
@@ -34,64 +34,53 @@ document.addEventListener("DOMContentLoaded", function () {
     function initAddToCartButtons() {
         document.querySelectorAll(".add-to-cart-btn").forEach(button => {
             const productId = button.dataset.productId;
-
             checkButtonCartStatus(button, productId);
 
             button.addEventListener("click", function (event) {
-                event.stopPropagation(); // Evita che il click si propaghi alla card intera
-                // AGGIORNATO: Usa getUserCart() e saveUserCart()
+                event.stopPropagation();
                 let cart = window.getUserCart();
                 const product = products.find(p => p.id === productId);
 
                 if (product) {
                     const existingProductIndex = cart.findIndex(item => item.id === productId);
-
                     if (existingProductIndex === -1) {
                         const productToAdd = {
                             id: product.id,
                             name: product.title,
                             price: product.price,
                             quantity: 1,
-                            image: product.images && product.images.length > 0 ? product.images[0] : 'assets/placeholder.jpg'
+                            image: product.images?.[0] || 'assets/placeholder.jpg'
                         };
                         cart.push(productToAdd);
-                        window.saveUserCart(cart); // Salva il carrello aggiornato
-                        showButtonFeedback(button, 'Aggiunto', true); // Passa 'Aggiunto' come messaggio
+                        window.saveUserCart(cart);
+                        showButtonFeedback(button, 'Aggiunto', true);
                     } else {
-                        showButtonFeedback(button, 'Nel carrello', false); // Passa 'Nel carrello' come messaggio
+                        showButtonFeedback(button, 'Nel carrello', false);
                     }
-                    window.updateCartCount(); // Chiama la funzione globale per aggiornare il contatore
+                    window.updateCartCount();
                 } else {
-                    console.error("Prodotto non trovato nell'array 'products' per ID:", productId);
+                    console.error("Prodotto non trovato per ID:", productId);
                 }
             });
         });
     }
 
-    // Mostra feedback sul bottone dopo il click
     function showButtonFeedback(button, message, isAdded) {
         const originalText = 'Aggiungi al carrello';
         if (!button.dataset.originalText) {
             button.dataset.originalText = originalText;
         }
 
-        let feedbackMessage = '';
-        if (isAdded) {
-            feedbackMessage = 'Aggiunto!'; // Testo conciso
-        } else {
-            feedbackMessage = 'Nel carrello'; // Testo conciso
-        }
-
-        button.innerHTML = `<i class="fas fa-check"></i> ${feedbackMessage}`;
+        button.innerHTML = `<i class="fas fa-check"></i> ${message}`;
         button.disabled = true;
 
         if (isAdded) {
-            button.style.backgroundColor = '#28a745'; // Verde per "Aggiunto"
+            button.style.backgroundColor = '#28a745';
             button.style.color = '#ffffff';
             button.classList.add('added');
             button.classList.remove('in-cart');
         } else {
-            button.style.backgroundColor = '#f7d04d'; // Giallo per "Già nel carrello"
+            button.style.backgroundColor = '#f7d04d';
             button.style.color = '#333';
             button.classList.add('in-cart');
             button.classList.remove('added');
@@ -100,53 +89,49 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
             button.innerHTML = button.dataset.originalText;
             button.disabled = false;
-            button.style.backgroundColor = '#804AF2'; // VIOLA: Ripristina al colore originale del bottone catalogo
-            button.style.color = '#ffffff'; // Ripristina testo bianco
-            button.classList.remove('added', 'in-cart'); // Rimuovi le classi di stato
-            checkButtonCartStatus(button, button.dataset.productId); // Ricontrolla lo stato effettivo
+            button.style.backgroundColor = '#804AF2';
+            button.style.color = '#ffffff';
+            button.classList.remove('added', 'in-cart');
+            checkButtonCartStatus(button, button.dataset.productId);
         }, 2000);
     }
 
-    // Controlla lo stato del bottone in base al carrello
     function checkButtonCartStatus(button, productId) {
-        const cart = window.getUserCart(); // Usa la funzione globale
+        const cart = window.getUserCart();
         const productInCart = cart.find(item => item.id === productId);
 
         if (productInCart) {
-            button.innerHTML = `<i class="fas fa-check"></i> Nel carrello`; // Testo su una riga
+            button.innerHTML = `<i class="fas fa-check"></i> Nel carrello`;
             button.disabled = true;
-            button.style.backgroundColor = '#f7d04d'; // Giallo per "Nel Carrello"
+            button.style.backgroundColor = '#f7d04d';
             button.style.color = '#333';
             button.classList.add('in-cart');
             button.classList.remove('added');
         } else {
-            button.innerHTML = 'Aggiungi al carrello'; // Testo con capitalizzazione corretta
+            button.innerHTML = 'Aggiungi al carrello';
             button.disabled = false;
-            button.style.backgroundColor = '#804AF2'; // VIOLA: Colore predefinito per il catalogo
+            button.style.backgroundColor = '#804AF2';
             button.style.color = '#ffffff';
             button.classList.remove('in-cart', 'added');
         }
     }
 
-    // Genera e filtra i prodotti
     function applyFilters() {
         const selectedCategory = categoryFilter.value;
         const selectedSort = sortFilter.value;
         const searchTerm = searchBar.value.toLowerCase();
-
-        // AGGIORNATO: Usa getUserFavorites() per ottenere i preferiti
         const favorites = window.getUserFavorites();
 
         let filteredProducts = products.filter(product => {
             const category = product.category;
             const name = product.title.toLowerCase();
 
-            const matchesCategory = (selectedCategory === "all" ||
-                                     (selectedCategory === "favorites" && favorites.includes(product.id)) ||
-                                     (selectedCategory !== "favorites" && category === selectedCategory));
+            const matchesCategory =
+                selectedCategory === "all" ||
+                (selectedCategory === "favorites" && favorites.includes(product.id)) ||
+                (selectedCategory !== "favorites" && category === selectedCategory);
 
             const matchesSearch = name.includes(searchTerm);
-
             return matchesCategory && matchesSearch;
         });
 
@@ -157,26 +142,20 @@ document.addEventListener("DOMContentLoaded", function () {
             const nameB = b.title.toLowerCase();
 
             switch (selectedSort) {
-                case "price-asc":
-                    return priceA - priceB;
-                case "price-desc":
-                    return priceB - priceA;
-                case "name-asc":
-                    return nameA.localeCompare(nameB);
-                case "name-desc":
-                    return nameB.localeCompare(nameA);
-                default:
-                    return 0;
+                case "price-asc": return priceA - priceB;
+                case "price-desc": return priceB - priceA;
+                case "name-asc": return nameA.localeCompare(nameB);
+                case "name-desc": return nameB.localeCompare(nameA);
+                default: return 0;
             }
         });
 
         productRow.innerHTML = "";
 
         if (filteredProducts.length === 0) {
-            let message = "Nessun prodotto trovato con i filtri selezionati.";
-            if (selectedCategory === "favorites") {
-                message = "Non hai ancora aggiunto prodotti ai preferiti.";
-            }
+            const message = selectedCategory === "favorites"
+                ? "Non hai ancora aggiunto prodotti ai preferiti."
+                : "Nessun prodotto trovato con i filtri selezionati.";
             productRow.innerHTML = `<div class="col-12 text-center text-white py-5"><h3>${message}</h3></div>`;
         } else {
             filteredProducts.forEach(product => {
@@ -194,8 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <i class="fas fa-heart heart-icon" data-product-id="${product.id}"></i>
                             <button class="btn add-to-cart-btn" data-product-id="${product.id}">Aggiungi al carrello</button>
                         </div>
-                    </div>
-                `;
+                    </div>`;
                 productRow.innerHTML += productCardHtml;
             });
         }
@@ -204,13 +182,10 @@ document.addEventListener("DOMContentLoaded", function () {
         initAddToCartButtons();
     }
 
-    // Event listener per filtri e barra di ricerca
     categoryFilter.addEventListener("change", () => applyFilters());
     sortFilter.addEventListener("change", () => applyFilters());
     searchBar.addEventListener("input", () => applyFilters());
 
-    // Chiamate di inizializzazione
-    window.updateCartCount(); // Chiama la funzione globale per aggiornare il contatore
+    window.updateCartCount();
     applyFilters();
-
 });
