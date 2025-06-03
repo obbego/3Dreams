@@ -221,3 +221,19 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
   transform: scale(1.05);
 }
+
+.cart-table {
+  margin-bottom: 0.5rem; /* o meno */
+}
+
+.cart-empty-message,
+#cart-message {
+  color: #9a5eff; /* Viola acceso un po' più brillante */
+  font-weight: 800; /* Più spesso */
+  font-size: 1.4rem; /* Un po' più grande */
+  text-shadow:
+    0 0 6px rgba(154, 94, 255, 0.7), /* bagliore viola */
+    0 0 10px rgba(154, 94, 255, 0.5); /* bagliore esterno */
+  transition: opacity 0.3s ease;
+}
+
