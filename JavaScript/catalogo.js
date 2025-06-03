@@ -2,50 +2,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const categoryFilter = document.getElementById("category-filter");
     const sortFilter = document.getElementById("sort-filter");
-    const searchBar = document.getElementById("search-input-bar"); 
+    const searchBar = document.getElementById("search-input-bar");
     const productRow = document.getElementById("product-row");
-    const cartCountElement = document.getElementById("cart-count"); 
-    // Rimuoviamo favoriteFilterToggle in quanto non usiamo più la checkbox separata
-
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
-    function updateCartCount() {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        cartCountElement.textContent = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
-    }
 
     function initHearts() {
         document.querySelectorAll(".heart-icon").forEach(icon => {
             const productId = icon.dataset.productId;
-            icon.classList.toggle("text-danger", favorites.includes(productId));
+            // AGGIORNATO: Usa getUserFavorites() per leggere i preferiti
+            let favorites = window.getUserFavorites();
 
-            icon.addEventListener("click", function () {
+            // AGGIORNATO: Usa la classe 'liked' per coerenza con homepage
+            icon.classList.toggle("liked", favorites.includes(productId));
+
+            icon.addEventListener("click", function (event) {
+                event.stopPropagation(); // Evita che il click si propaghi alla card intera
+                // AGGIORNATO: Usa getUserFavorites() e saveUserFavorites()
+                favorites = window.getUserFavorites(); // Rileggi i preferiti per l'ultimo stato
                 if (favorites.includes(productId)) {
                     favorites = favorites.filter(id => id !== productId);
+                    icon.classList.remove("liked");
                 } else {
                     favorites.push(productId);
+                    icon.classList.add("liked");
                 }
-                localStorage.setItem("favorites", JSON.stringify(favorites));
-                icon.classList.toggle("text-danger");
-                applyFilters(); // Aggiunto: ri-applica i filtri quando i preferiti cambiano
+                window.saveUserFavorites(favorites); // Salva i preferiti aggiornati
+                applyFilters(); // Ri-applica i filtri quando i preferiti cambiano (se il filtro preferiti è attivo)
             });
         });
     }
 
     function initAddToCartButtons() {
         document.querySelectorAll(".add-to-cart-btn").forEach(button => {
-            const productId = button.dataset.productId; 
+            const productId = button.dataset.productId;
 
             checkButtonCartStatus(button, productId);
 
-            button.addEventListener("click", function () {
-                let cart = JSON.parse(localStorage.getItem("cart")) || [];
-                const product = products.find(p => p.id === productId); 
+            button.addEventListener("click", function (event) {
+                event.stopPropagation(); // Evita che il click si propaghi alla card intera
+                // AGGIORNATO: Usa getUserCart() e saveUserCart()
+                let cart = window.getUserCart();
+                const product = products.find(p => p.id === productId);
 
                 if (product) {
                     const existingProductIndex = cart.findIndex(item => item.id === productId);
 
-                    if (existingProductIndex === -1) { 
+                    if (existingProductIndex === -1) {
                         const productToAdd = {
                             id: product.id,
                             name: product.title,
@@ -54,12 +55,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             image: product.images && product.images.length > 0 ? product.images[0] : 'assets/placeholder.jpg'
                         };
                         cart.push(productToAdd);
-                        localStorage.setItem("cart", JSON.stringify(cart));
-                        showButtonFeedback(button, 'AGGIUNTO', true); 
+                        window.saveUserCart(cart); // Salva il carrello aggiornato
+                        showButtonFeedback(button, 'Aggiunto', true); // Passa 'Aggiunto' come messaggio
                     } else {
-                        showButtonFeedback(button, 'GIÀ NEL CARRELLO', false); 
+                        showButtonFeedback(button, 'Nel carrello', false); // Passa 'Nel carrello' come messaggio
                     }
-                    updateCartCount(); 
+                    window.updateCartCount(); // Chiama la funzione globale per aggiornare il contatore
                 } else {
                     console.error("Prodotto non trovato nell'array 'products' per ID:", productId);
                 }
@@ -67,63 +68,85 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Mostra feedback sul bottone dopo il click
     function showButtonFeedback(button, message, isAdded) {
         const originalText = 'Aggiungi al carrello';
         if (!button.dataset.originalText) {
             button.dataset.originalText = originalText;
         }
 
-        button.innerHTML = isAdded ? `<i class="fas fa-check"></i> ${message}` : message;
+        let feedbackMessage = '';
+        if (isAdded) {
+            feedbackMessage = 'Aggiunto!'; // Testo conciso
+        } else {
+            feedbackMessage = 'Nel carrello'; // Testo conciso
+        }
+
+        button.innerHTML = `<i class="fas fa-check"></i> ${feedbackMessage}`;
         button.disabled = true;
-        button.style.backgroundColor = isAdded ? '#28a745' : '#ffc107';
-        button.style.color = isAdded ? '#ffffff' : '#000000';
+
+        if (isAdded) {
+            button.style.backgroundColor = '#28a745'; // Verde per "Aggiunto"
+            button.style.color = '#ffffff';
+            button.classList.add('added');
+            button.classList.remove('in-cart');
+        } else {
+            button.style.backgroundColor = '#f7d04d'; // Giallo per "Già nel carrello"
+            button.style.color = '#333';
+            button.classList.add('in-cart');
+            button.classList.remove('added');
+        }
 
         setTimeout(() => {
             button.innerHTML = button.dataset.originalText;
             button.disabled = false;
-            button.style.backgroundColor = ''; 
-            button.style.color = ''; 
-            checkButtonCartStatus(button, button.dataset.productId);
+            button.style.backgroundColor = '#804AF2'; // VIOLA: Ripristina al colore originale del bottone catalogo
+            button.style.color = '#ffffff'; // Ripristina testo bianco
+            button.classList.remove('added', 'in-cart'); // Rimuovi le classi di stato
+            checkButtonCartStatus(button, button.dataset.productId); // Ricontrolla lo stato effettivo
         }, 2000);
     }
 
+    // Controlla lo stato del bottone in base al carrello
     function checkButtonCartStatus(button, productId) {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cart = window.getUserCart(); // Usa la funzione globale
         const productInCart = cart.find(item => item.id === productId);
 
         if (productInCart) {
-            button.innerHTML = `<i class="fas fa-check"></i> NEL CARRELLO`;
+            button.innerHTML = `<i class="fas fa-check"></i> Nel carrello`; // Testo su una riga
             button.disabled = true;
-            button.style.backgroundColor = '#ffc107'; 
-            button.style.color = '#000000'; 
+            button.style.backgroundColor = '#f7d04d'; // Giallo per "Nel Carrello"
+            button.style.color = '#333';
+            button.classList.add('in-cart');
+            button.classList.remove('added');
         } else {
-            button.innerHTML = 'Aggiungi al carrello'; 
+            button.innerHTML = 'Aggiungi al carrello'; // Testo con capitalizzazione corretta
             button.disabled = false;
-            button.style.backgroundColor = ''; 
-            button.style.color = ''; 
+            button.style.backgroundColor = '#804AF2'; // VIOLA: Colore predefinito per il catalogo
+            button.style.color = '#ffffff';
+            button.classList.remove('in-cart', 'added');
         }
     }
 
-
-    // Genera e filtra i prodotti - MODIFICATO PER IL FILTRO PREFERITI NEL DROPDOWN
+    // Genera e filtra i prodotti
     function applyFilters() {
         const selectedCategory = categoryFilter.value;
         const selectedSort = sortFilter.value;
         const searchTerm = searchBar.value.toLowerCase();
-        // Rimuoviamo showFavoritesOnly in quanto non usiamo più la checkbox
+
+        // AGGIORNATO: Usa getUserFavorites() per ottenere i preferiti
+        const favorites = window.getUserFavorites();
 
         let filteredProducts = products.filter(product => {
             const category = product.category;
             const name = product.title.toLowerCase();
-            
-            // Condizione per la categoria selezionata, inclusi "favorites"
-            const matchesCategory = (selectedCategory === "all" || 
+
+            const matchesCategory = (selectedCategory === "all" ||
                                      (selectedCategory === "favorites" && favorites.includes(product.id)) ||
                                      (selectedCategory !== "favorites" && category === selectedCategory));
 
             const matchesSearch = name.includes(searchTerm);
 
-            // Combina le condizioni: categoria (o preferiti) E ricerca
             return matchesCategory && matchesSearch;
         });
 
@@ -149,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         productRow.innerHTML = "";
 
-        // Se non ci sono prodotti filtrati (e non è stato selezionato solo "Preferiti" senza averne), mostra un messaggio
         if (filteredProducts.length === 0) {
             let message = "Nessun prodotto trovato con i filtri selezionati.";
             if (selectedCategory === "favorites") {
@@ -164,9 +186,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <a href="singleProduct.html?id=${product.id}" class="text-white text-decoration-none product-link">
                                 <img src="${product.images[0]}" class="card-img-top product-image" alt="${product.title}">
                                 <div class="card-body product-body">
-                                    <h7 class="card-title material-title">${product.material}</h7>
+                                    <h6 class="card-title material-title">${product.material}</h6>
                                     <h5 class="card-title fw-bold product-name">${product.title}</h5>
-                                    <p class="card-text product-price">$ ${product.price.toFixed(2)}</p>
+                                    <p class="card-text product-price">€ ${product.price.toFixed(2)}</p>
                                 </div>
                             </a>
                             <i class="fas fa-heart heart-icon" data-product-id="${product.id}"></i>
@@ -179,17 +201,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         initHearts();
-        initAddToCartButtons(); 
+        initAddToCartButtons();
     }
 
     // Event listener per filtri e barra di ricerca
     categoryFilter.addEventListener("change", () => applyFilters());
     sortFilter.addEventListener("change", () => applyFilters());
     searchBar.addEventListener("input", () => applyFilters());
-    // Rimuoviamo l'event listener per favoriteFilterToggle
 
     // Chiamate di inizializzazione
-    updateCartCount(); 
-    applyFilters(); 
+    window.updateCartCount(); // Chiama la funzione globale per aggiornare il contatore
+    applyFilters();
 
 });

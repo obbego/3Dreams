@@ -54,7 +54,7 @@ function salvaModifiche() {
     mostraMessaggio(messageDiv, "Modifiche salvate con successo!", "successo");
 }
 
-// Funzione per effettuare il logout
+// Funzione per effettuare il logout - AGGIORNATA per salvare carrello/preferiti
 function logout() {
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -62,9 +62,22 @@ function logout() {
         const allUsers = JSON.parse(localStorage.getItem("allUsers")) || {};
         allUsers[user.email] = user;
         localStorage.setItem("allUsers", JSON.stringify(allUsers));
+
+        // AGGIUNTO: Salva il carrello e i preferiti dell'utente corrente prima del logout
+        // Utilizza le funzioni globali che abbiamo definito in loadHeader.js
+        const currentUserId = user.id; // Ottieni l'ID dell'utente che sta per sloggarsi
+        const currentUserCart = window.getUserCart(); // Ottieni il suo carrello
+        const currentUserFavorites = window.getUserFavorites(); // Ottieni i suoi preferiti
+
+        localStorage.setItem(`cart_${currentUserId}`, JSON.stringify(currentUserCart));
+        localStorage.setItem(`favorites_${currentUserId}`, JSON.stringify(currentUserFavorites));
     }
 
-    localStorage.removeItem("user");
+    localStorage.removeItem("user"); // Rimuovi l'utente corrente
+    // AGGIUNTO: Pulisci il carrello e i preferiti visualizzati (imposta su guest o vuoto)
+    // Questo aggiornerà il carrello visualizzato a quello dell'utente 'guest' o a un carrello vuoto.
+    window.updateCartCount(); // Aggiorna il contatore del carrello nella navbar per l'utente 'guest'
+
     window.location.href = "account.html";
 }
 

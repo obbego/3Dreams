@@ -1,7 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Funzione GLOBALE per ottenere l'ID dell'utente corrente
+    // Se l'utente è loggato, restituisce il suo ID. Altrimenti, restituisce un ID 'guest' di default.
+    window.getCurrentUserId = function() {
+        const user = JSON.parse(localStorage.getItem("user"));
+        return user ? user.id : 'guest'; // Usa l'ID dell'utente o 'guest'
+    };
+
+    // Funzione GLOBALE per ottenere il carrello dell'utente corrente
+    window.getUserCart = function() {
+        const userId = getCurrentUserId();
+        return JSON.parse(localStorage.getItem(`cart_${userId}`)) || [];
+    };
+
+    // Funzione GLOBALE per salvare il carrello dell'utente corrente
+    window.saveUserCart = function(cart) {
+        const userId = getCurrentUserId();
+        localStorage.setItem(`cart_${userId}`, JSON.stringify(cart));
+    };
+
+    // Funzione GLOBALE per ottenere i preferiti dell'utente corrente
+    window.getUserFavorites = function() {
+        const userId = getCurrentUserId();
+        return JSON.parse(localStorage.getItem(`favorites_${userId}`)) || [];
+    };
+
+    // Funzione GLOBALE per salvare i preferiti dell'utente corrente
+    window.saveUserFavorites = function(favorites) {
+        const userId = getCurrentUserId();
+        localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));
+    };
+
+
     // Funzione per caricare l'header (navbar e promo banner)
     function loadHeader() {
-        // HTML della Navbar - MODIFICATO PER CORRISPONDERE AI SELETTORI DI header_styles.css
+        const currentUser = JSON.parse(localStorage.getItem("user"));
+
+        // HTML della Navbar - RIPRISTINATO ALLA VERSIONE ORIGINALE (senza email/logout)
         const navbarHtml = `
             <div class="navbar-custom" id="navbar-custom">
                 <div class="logo" id="logo">
@@ -12,8 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div class="navbar-right" id="navbar-right">
-                    <!-- IMPORTANTE: L'ID è "search-input-bar" per coerenza con il JS -->
-                    <input type="text" class="search-bar" placeholder="Cerca..." id="search-input-bar" /> 
+                    <input type="text" class="search-bar" placeholder="Cerca..." id="search-input-bar" />
 
                     <div class="icon-wrapper" id="cart-icon-wrapper">
                         <div class="icon-background" id="cart-icon-background"></div>
@@ -40,54 +74,44 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // Crea un div temporaneo per contenere l'header
         const headerContainer = document.createElement('div');
         headerContainer.innerHTML = navbarHtml;
 
-        // Verifica se dobbiamo mostrare il banner
         const hideBannerPages = ["account.html", "profile.html", "signup.html", "contact-preferences.html", "security.html", "eula-history.html"];
-        const currentPagePath = window.location.pathname.toLowerCase(); // Percorso completo
-        const currentPageFileName = currentPagePath.split('/').pop(); // Solo il nome del file
+        const currentPagePath = window.location.pathname.toLowerCase();
+        const currentPageFileName = currentPagePath.split('/').pop();
 
         if (!hideBannerPages.some(page => currentPagePath.includes(page))) {
             headerContainer.innerHTML += promoBannerHtml;
         }
 
-        // Inserisce l'header all'inizio del body
         document.body.prepend(headerContainer);
 
         // --- LOGICA PER LA VISIBILITÀ DELLA SEARCH BAR ---
-        const searchBar = document.getElementById('search-input-bar'); // Usa l'ID specifico della barra di ricerca
+        const searchBar = document.getElementById('search-input-bar');
         if (searchBar) {
-            if (currentPageFileName === 'catalogo.html') { // Se la pagina è catalogo.html
-                searchBar.classList.add('visible-on-catalog'); // Aggiungi la classe per renderla visibile
+            if (currentPageFileName === 'catalogo.html') {
+                searchBar.classList.add('visible-on-catalog');
             } else {
-                searchBar.classList.remove('visible-on-catalog'); // Rimuovi la classe per nasconderla
+                searchBar.classList.remove('visible-on-catalog');
             }
         }
-        // --- FINE LOGICA ---
 
-        // Aggiorna il conteggio del carrello
-        const cartCountElement = document.getElementById("cart-count");
-        if (cartCountElement) {
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            cartCountElement.textContent = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
-        }
+        // Aggiornato: Ora usa getUserCart()
+        updateCartCount();
 
-        // Verifica se l'utente è loggato
-        const isLoggedIn = localStorage.getItem("user") !== null;
-
-        // Cambia dinamicamente il link dell'icona profilo
+        // Verifica se l'utente è loggato e cambia dinamicamente il link dell'icona profilo
         const accountLink = document.getElementById("account-link");
+
         if (accountLink) {
-            accountLink.href = isLoggedIn ? "profile.html" : "account.html";
+            accountLink.href = currentUser ? "profile.html" : "account.html";
         }
 
-        // FUNZIONE CRITICA: Calcola l'altezza dell'header e applica il padding al main content wrapper DOPO che l'header è stato inserito nel DOM
+        // Rimosso: logica per aggiungere dinamicamente email utente e bottone logout (su richiesta dell'utente)
+
         adjustMainContentPadding();
     }
 
-    // Funzione per calcolare l'altezza dell'header e applicare il padding al main content wrapper
     function adjustMainContentPadding() {
         const navbar = document.getElementById('navbar-custom');
         const promoBanner = document.getElementById('promo-banner');
@@ -95,24 +119,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let totalHeaderHeight = 0;
 
-        // Calcola l'altezza della navbar se esiste
         if (navbar) {
             totalHeaderHeight += navbar.offsetHeight;
         }
-        // Calcola l'altezza del banner promozionale se esiste
         if (promoBanner) {
             totalHeaderHeight += promoBanner.offsetHeight;
         }
 
-        // Applica il padding-top al main-content-wrapper
         if (mainContentWrapper) {
             mainContentWrapper.style.paddingTop = `${totalHeaderHeight}px`;
         }
     }
 
-    // Chiama la funzione per caricare l'header
-    loadHeader();
+    // AGGIORNATO: updateCartCount ora è una funzione globale
+    window.updateCartCount = function() {
+        const cartCountElement = document.getElementById("cart-count");
+        if (cartCountElement) {
+            const cart = getUserCart(); // Usa la nuova funzione globale
+            cartCountElement.textContent = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+        }
+    };
 
-    // Aggiungi un listener per ricalcolare il padding in caso di ridimensionamento della finestra
+    loadHeader();
     window.addEventListener('resize', adjustMainContentPadding);
 });

@@ -95,30 +95,72 @@ body {
 
 /* Pulsanti "Aggiungi al carrello" */
 .add-to-cart-btn {
-    background-color: #804AF2;
-    color: white;
+    background-color: #804AF2; /* VIOLA: Colore predefinito Catalogo */
+    color: #ffffff; /* Testo bianco */
     border: none;
     border-radius: 15px;
-    padding: 0.5rem 1rem;
-    margin: 20px auto 10px auto;
-    width: calc(100% - 2rem);
+    padding: 0.6rem 1.2rem; /* Aumenta leggermente il padding interno */
+    width: 90%; /* Riduci la larghezza per dare spazio ai lati */
+    margin: 0 auto 10px auto; /* Centra il bottone e aggiungi margine inferiore */
     transition: all 0.3s;
-    opacity: 0;
-    transform: translateY(10px);
-    align-self: center;
-    position: relative;
-    bottom: 15px;
-}
-
-.prodotto-card:hover .add-to-cart-btn {
     opacity: 1;
     transform: translateY(0);
+    align-self: center;
+    position: relative;
+    bottom: 0;
+    font-weight: bold; /* Riaggiunto il bold */
+    letter-spacing: 0.5px;
+    white-space: normal; /* Permette al testo di andare a capo */
+    font-size: 0.85rem; /* Riduci leggermente la dimensione del font */
+    overflow: visible; /* Assicura che il contenuto non sia nascosto */
+    text-overflow: clip; /* Assicura che non ci siano puntini */
+    line-height: 1.2; /* Interlinea pulita per il testo a capo */
+    text-align: center; /* Centra il testo all'interno del bottone */
 }
 
-.add-to-cart-btn:hover {
-    background-color: #9060f5;
-    transform: translateY(-2px);
+/* Stili per il pulsante AGGIUNTO */
+.add-to-cart-btn.added {
+    background-color: #28a745 !important; /* VERDE */
+    color: white !important;
+    font-size: 0.85rem !important;
+    font-weight: bold !important;
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    cursor: default;
 }
+
+/* Stili per il pulsante NEL CARRELLO */
+.add-to-cart-btn.in-cart {
+    background-color: #f7d04d !important; /* GIALLO */
+    color: #333 !important;
+    font-size: 0.85rem !important;
+    font-weight: bold !important;
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    cursor: default;
+}
+
+/* Icona cuore in alto a destra */
+.heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.4rem; /* Dimensione come nella homepage */
+    color: rgba(255, 255, 255, 0.7); /* Meno opaca */
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.heart-icon:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+.heart-icon.liked {
+    color: #FF3CAC !important; /* Colore rosa/viola per il cuore "liked" */
+}
+
 
 /* Paginazione - stile glassmorphism */
 .pagination-container {

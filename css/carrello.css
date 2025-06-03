@@ -1,239 +1,284 @@
 /* Corpo della pagina: imposta margini, font e un gradiente scuro di sfondo */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
-  color: white;
-  min-height: 100vh;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+    color: white;
+    min-height: 100vh;
 }
 
 /* ===== Navbar Custom ===== */
 .navbar-custom {
-  background-color: #1c1c1c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: #1c1c1c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Stile logo */
 .navbar-custom .logo {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-custom .logo strong a {
-  font-size: 1.8rem;
-  color: white;
-  text-decoration: none;
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
 }
 
 .navbar-custom .logo small a {
-  color: white;
-  text-decoration: none;
-  margin-left: 15px;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-  padding: 3px 8px;
-  border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    padding: 3px 8px;
+    border-radius: 5px;
 }
 
 .navbar-custom .logo small a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Barra di ricerca */
 .search-bar {
-  border-radius: 15px;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  margin-right: 1rem;
-  background-color: #333;
-  color: white;
-  width: 200px;
+    border-radius: 15px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    margin-right: 1rem;
+    background-color: #333;
+    color: white;
+    width: 200px;
 }
 
 /* Contenitore per icone carrello e account */
 .navbar-right {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .icon-wrapper {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-background {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background-color: #804AF2; /* Viola acceso */
-  border-radius: 8px;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  transition: all 0.3s;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #804AF2; /* Viola acceso */
+    border-radius: 8px;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    transition: all 0.3s;
 }
 
 .cart-icon,
 .account-icon {
-  width: 25px;
-  height: 25px;
-  filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
-  z-index: 1;
+    width: 25px;
+    height: 25px;
+    filter: invert(1) grayscale(100%) contrast(100%) brightness(100%);
+    z-index: 1;
 }
 
 /* Banner promozionale visivo */
 .promo-banner {
-  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5); /* Gradiente rosa-viola-azzurro */
-  font-weight: bold;
-  text-align: center;
-  padding: 10px;
+    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5); /* Gradiente rosa-viola-azzurro */
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
 }
 
-/* Sezione catalogo: sfondo colorato diagonale */
-.carrello-section {
-  background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
-  min-height: 100vh;
-  padding: 2rem;
+/* Sezione carrello: sfondo colorato diagonale */
+.carrello-section { /* Ho corretto il nome della classe se intendevi usarla per il body o un wrapper */
+    background: linear-gradient(120deg, #121212 60%, #d946ef 100%);
+    min-height: 100vh;
+    padding: 2rem;
 }
 
 /* ===== Sezione principale e layout ===== */
 .cart-container {
-  background: rgba(255, 255, 255, 0.05); /* Effetto vetro */
-  backdrop-filter: blur(10px); /* Sfocatura */
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    background: rgba(255, 255, 255, 0.05); /* Effetto vetro */
+    backdrop-filter: blur(10px); /* Sfocatura */
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* MODIFICATO: Stile per il titolo "Il tuo Carrello" */
+.cart-title {
+    margin-top: 40px; /* Margine superiore più generoso */
+    margin-bottom: 50px; /* Margine inferiore per separare dal contenuto */
+    font-size: 3rem; /* Dimensione grande per il titolo */
+    text-align: center; /* Centrato */
+    font-weight: 800; /* Molto spesso */
+    letter-spacing: 1.5px; /* Leggera spaziatura tra le lettere */
+    /* Il gradiente è già applicato tramite .gradient-text */
+    /* Rimosso il text-shadow eccessivo per un look più pulito */
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+    background: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .gradient-underline {
-  position: relative;
-  display: inline-block;
-}
-
-.cart-title {
-  margin-top: 10px; /* Puoi aumentare o ridurre questo valore */
+    position: relative;
+    display: inline-block;
 }
 
 .table {
-  background-color: transparent !important;
-  color: white;
-  border-collapse: separate;
-  border-spacing: 0 0.5rem; /* spazio tra le righe */
+    background-color: transparent !important;
+    color: white;
+    border-collapse: separate;
+    border-spacing: 0 0.5rem; /* spazio tra le righe */
 }
 
 .table thead th {
-  background: rgba(56, 56, 56, 0.4); 
-  color: white;
-  border: none;
-  font-weight: 600;
-  padding: 1rem;
-  text-align: center;
-  border-radius: 10px 10px 0 0;
+    background: rgba(56, 56, 56, 0.4);
+    color: white;
+    border: none;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
 }
 
 .table tbody td {
-  background: transparent; 
-  color: white;
-  border: none;
-  padding: 1rem;
-  text-align: center;
-  border-radius: 0 0 10px 10px;
-  margin-bottom: 0.5rem;
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 0.5rem;
 }
 
 /* Rimuovere i bordi default della tabella */
 .table th, .table td {
-  border: none !important;
+    border: none !important;
 }
 
 .cart-footer {
-  color: white; /* colore di base */
+    color: white; /* colore di base */
 }
 
 .cart-footer .btn-empty {
-  background-color: #804AF2; /* rosa */
-  color: white;
+    background-color: #804AF2; /* viola */
+    color: white;
 }
 
 .cart-footer .btn-checkout {
-  background-color: #804AF2; /* blu */
-  color: white;
+    background-color: #804AF2; /* viola */
+    color: white;
 }
 
 .cart-table input[type="number"] {
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2); /* bordo semi-trasparente */
-  color: white;
-  padding: 0.3rem 0.5rem;
-  border-radius: 5px;
-  text-align: center;
-  width: 60px;
-  -webkit-appearance: none; /* rimuove le freccette su WebKit */
-  -moz-appearance: textfield; /* rimuove le freccette su Firefox */
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* bordo semi-trasparente */
+    color: white;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    text-align: center;
+    width: 60px;
+    -webkit-appearance: none; /* rimuove le freccette su WebKit */
+    -moz-appearance: textfield; /* rimuove le freccette su Firefox */
 }
 
 .cart-table input[type="number"]::-webkit-inner-spin-button,
 .cart-table input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Bottone "Rimuovi" stile vetro */
 .remove-btn {
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-  padding: 0.4rem 0.6rem;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 /* Cestino bianco */
 .remove-btn i {
-  color: white;
-  font-size: 1rem;
+    color: white;
+    font-size: 1rem;
 }
 
 /* Hover effetto leggero */
 .remove-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
 }
 
 .cart-table {
-  margin-bottom: 0.5rem; /* o meno */
+    margin-bottom: 0.5rem; /* o meno */
 }
 
-.cart-empty-message,
-#cart-message {
-  color: #9a5eff; /* Viola acceso un po' più brillante */
-  font-weight: 800; /* Più spesso */
-  font-size: 1.4rem; /* Un po' più grande */
-  text-shadow:
-    0 0 6px rgba(154, 94, 255, 0.7), /* bagliore viola */
-    0 0 10px rgba(154, 94, 255, 0.5); /* bagliore esterno */
-  transition: opacity 0.3s ease;
+/* MODIFICATO: Stile per il messaggio "Il carrello è vuoto." */
+.cart-empty-message {
+    color: rgba(255, 255, 255, 0.7); /* Bianco leggermente opaco per una buona leggibilità */
+    font-weight: 600; /* Semibold */
+    font-size: 1.8rem; /* Dimensione chiara e visibile */
+    text-align: center; /* Centrato */
+    padding: 60px 0; /* Ampio padding per dare respiro al messaggio */
+    /* Rimosso il text-shadow per un look più pulito e meno "glowy" */
 }
 
+/* Stili per il riquadro dei messaggi di feedback del carrello */
+.cart-feedback-box {
+    position: fixed; /* Lo fissa sullo schermo */
+    bottom: 20px; /* Distanza dal fondo */
+    left: 50%; /* Centra orizzontalmente */
+    transform: translateX(-50%); /* Sposta del 50% della sua larghezza a sinistra per centrarlo */
+    background-color: #333; /* Colore di sfondo predefinito (scuro) */
+    color: #ffffff; /* Testo bianco predefinito */
+    padding: 15px 30px;
+    border-radius: 15px; /* Bordi arrotondati */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    opacity: 0; /* Inizialmente invisibile */
+    visibility: hidden; /* Nasconde l'elemento completamente */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    z-index: 1000; /* Assicura che sia sopra altri elementi */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    min-width: 250px; /* Larghezza minima */
+}
+
+/* Stili per il messaggio di successo (es. dopo l'acquisto) */
+.cart-feedback-box.success {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+/* Stili per il messaggio di avviso/errore (es. carrello vuoto) */
+.cart-feedback-box.warning {
+    background-color: #f7d04d; /* Giallo/Arancione */
+    color: #333; /* Testo scuro */
+}
+
+/* Classe per rendere il messaggio visibile */
+.cart-feedback-box.show {
+    opacity: 1;
+    visibility: visible;
+}
