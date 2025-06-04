@@ -2,31 +2,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Funzione GLOBALE per ottenere l'ID dell'utente corrente
     // Se l'utente è loggato, restituisce il suo ID. Altrimenti, restituisce un ID 'guest' di default.
-    window.getCurrentUserId = function() {
+    window.getCurrentUserId = function () {
         const user = JSON.parse(localStorage.getItem("user"));
         return user ? user.id : 'guest'; // Usa l'ID dell'utente o 'guest'
     };
 
     // Funzione GLOBALE per ottenere il carrello dell'utente corrente
-    window.getUserCart = function() {
+    window.getUserCart = function () {
         const userId = getCurrentUserId();
         return JSON.parse(localStorage.getItem(`cart_${userId}`)) || [];
     };
 
     // Funzione GLOBALE per salvare il carrello dell'utente corrente
-    window.saveUserCart = function(cart) {
+    window.saveUserCart = function (cart) {
         const userId = getCurrentUserId();
         localStorage.setItem(`cart_${userId}`, JSON.stringify(cart));
     };
 
     // Funzione GLOBALE per ottenere i preferiti dell'utente corrente
-    window.getUserFavorites = function() {
+    window.getUserFavorites = function () {
         const userId = getCurrentUserId();
         return JSON.parse(localStorage.getItem(`favorites_${userId}`)) || [];
     };
 
     // Funzione GLOBALE per salvare i preferiti dell'utente corrente
-    window.saveUserFavorites = function(favorites) {
+    window.saveUserFavorites = function (favorites) {
         const userId = getCurrentUserId();
         localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));
     };
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // AGGIORNATO: updateCartCount ora è una funzione globale
-    window.updateCartCount = function() {
+    window.updateCartCount = function () {
         const cartCountElement = document.getElementById("cart-count");
         if (cartCountElement) {
             const cart = getUserCart(); // Usa la nuova funzione globale
@@ -145,57 +145,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadFooter(); // Carica il footer dopo l'header
     function loadFooter() {
-        const footerHtml = `
+
+        if (!window.location.pathname.endsWith("carrello.html")) {
+            loadFooter();
+        }
+
+        function loadFooter() {
+            const footerHtml = `
             <!-- Footer -->
-                <footer class="bg-dark text-light pt-5">
-                    <div class="container">
-                        <div class="row">
-                            <!-- Shop -->
-                            <div class="col-md-3 mb-4 text-start">
-                                <h5><strong>Shop</strong></h5>
-                                <ul class="list-unstyled">
-                                    <li><a href="catalogo.html?categoria=creature-adorabili" class="text-light">Creature Adorabili</a></li>
-                                    <li><a href="catalogo.html?categoria=dinosauri" class="text-light">Dinosauri</a></li>
-                                    <li><a href="catalogo.html?categoria=formula-1" class="text-light">Formula 1</a></li>
-                                </ul>
-                            </div>
-
-                            <!-- About us -->
-                            <div class="col-md-3 mb-4 text-start">
-                                <h5><strong>About us</strong></h5>
-                                <ul class="list-unstyled">
-                                    <li><a href="HomePage.html#chi-siamo" class="text-light">Chi siamo</a></li>
-                                </ul>
-                            </div>
-
-                            <!-- Assistenza -->
-                            <div class="col-md-3 mb-4 text-start">
-                                <h5><strong>Assistenza</strong></h5>
-                                <ul class="list-unstyled">
-                                    <li><a href="returns.html" class="text-light">Resi</a></li>
-                                    <li><a href="aiuto.html" class="text-light">FAQ</a></li>
-                                    <li><a href="warranty.html" class="text-light">Garanzia</a></li>
-                                </ul>
-                            </div>
-
-                            <!-- Area legale -->
-                            <div class="col-md-3 mb-4 text-start">
-                                <h5><strong>Area legale</strong></h5>
-                                <ul class="list-unstyled">
-                                    <li><a href="cookie-policy.html" class="text-light">Cookie policy</a></li>
-                                    <li><a href="privacy-policy.html" class="text-light">Privacy policy</a></li>
-                                    <li><a href="terms-and-conditions.html" class="text-light">Termini e condizioni</a></li>
-                                </ul>
-                            </div>
+            <footer class="bg-dark text-light pt-5">
+                <div class="container">
+                    <div class="row">
+                        <!-- Shop -->
+                        <div class="col-md-3 mb-4 text-start">
+                            <h5><strong>Shop</strong></h5>
+                            <ul class="list-unstyled">
+                                <li><a href="catalogo.html?categoria=creature-adorabili" class="text-light">Creature Adorabili</a></li>
+                                <li><a href="catalogo.html?categoria=dinosauri" class="text-light">Dinosauri</a></li>
+                                <li><a href="catalogo.html?categoria=formula-1" class="text-light">Formula 1</a></li>
+                            </ul>
                         </div>
-                        <div class="text-center py-3">
-                            <small>© 2025 3Dreams S.r.l. - Tutti i diritti riservati.</small>
+
+                        <!-- About us -->
+                        <div class="col-md-3 mb-4 text-start">
+                            <h5><strong>About us</strong></h5>
+                            <ul class="list-unstyled">
+                                <li><a href="HomePage.html#chi-siamo" class="text-light">Chi siamo</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Assistenza -->
+                        <div class="col-md-3 mb-4 text-start">
+                            <h5><strong>Assistenza</strong></h5>
+                            <ul class="list-unstyled">
+                                <li><a href="returns.html" class="text-light">Resi</a></li>
+                                <li><a href="aiuto.html" class="text-light">FAQ</a></li>
+                                <li><a href="warranty.html" class="text-light">Garanzia</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Area legale -->
+                        <div class="col-md-3 mb-4 text-start">
+                            <h5><strong>Area legale</strong></h5>
+                            <ul class="list-unstyled">
+                                <li><a href="cookie-policy.html" class="text-light">Cookie policy</a></li>
+                                <li><a href="privacy-policy.html" class="text-light">Privacy policy</a></li>
+                                <li><a href="terms-and-conditions.html" class="text-light">Termini e condizioni</a></li>
+                            </ul>
                         </div>
                     </div>
-                </footer>
+                    <div class="text-center py-3">
+                        <small>© 2025 3Dreams S.r.l. - Tutti i diritti riservati.</small>
+                    </div>
+                </div>
+            </footer>
         `;
 
-        // Inserisci il footer alla fine del body
-        document.body.insertAdjacentHTML('beforeend', footerHtml);
+            // Inserisci il footer alla fine del body
+            document.body.insertAdjacentHTML('beforeend', footerHtml);
+        }
     }
 });
