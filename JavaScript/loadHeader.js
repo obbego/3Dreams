@@ -164,13 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="col-md-3 mb-4 text-start">
                                 <h5><strong>About us</strong></h5>
                                 <ul class="list-unstyled">
-                                    <li><a href="homepage.html#chi-siamo" class="text-light">Chi siamo</a></li>
+                                    <li><a href="HomePage.html#chi-siamo" class="text-light">Chi siamo</a></li>
                                 </ul>
-                                <div class="mt-2">
-                                    <a href="#" class="text-light me-3"><i class="fab fa-tiktok fa-lg"></i></a>
-                                    <a href="#" class="text-light me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                                    <a href="#" class="text-light"><i class="fab fa-instagram fa-lg"></i></a>
-                                </div>
                             </div>
 
                             <!-- Assistenza -->
