@@ -219,4 +219,39 @@ body {
     .card-body a {
         color: white !important;
     }
+    .footer {
+    background: rgba(255, 255, 255, 0.05); /* Stile vetro simile alle card */
+    backdrop-filter: blur(10px); /* Sfocatura */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.footer a {
+    color: #804AF2;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer a:hover {
+    color: #d946ef;
+}
+
+.footer .social-icons {
+    margin-top: 1rem;
+}
+
+.footer .social-icons i {
+    font-size: 1.5rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.footer .social-icons i:hover {
+    color: #804AF2;
+}
+    
 }

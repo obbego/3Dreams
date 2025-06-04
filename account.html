@@ -12,11 +12,30 @@
 
     <link href="css/header_styles.css" rel="stylesheet">
     <link rel="stylesheet" href="css/account.css">
+    <style>
+        /* Aggiunto Flexbox per forzare il footer a rimanere in basso */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-container {
+            flex: 1; /* Espande il contenuto per riempire lo spazio */
+        }
+
+    </style>
 </head>
 
 <body>
     <script src="JavaScript/loadHeader.js"></script>
 
+    <!-- Contenitore principale del contenuto -->
     <div class="card-container">
         <div class="col-12 col-md-4 col-lg-3 login-card" id="login-card-1">
             <div class="card text-white bg-dark" id="card-1">
@@ -65,3 +84,4 @@
 </body>
 
 </html>
+
