@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error('Prodotto non trovato per l\'ID:', productId);
             if (productTitleElem) productTitleElem.textContent = 'Prodotto non disponibile';
-            if (productDescriptionElem) productDescriptionElem.textContent = 'Siamo spiacenti, il prodotto richiesto non è stato trovato.';
+            if (productDescriptionElem) productDescriptionElem.textContent = 'Siamo spiacenti, il prodotto richiesto non è stato trovato.'; 
             if (addToCartButton) addToCartButton.style.display = 'none';
             if (heartIconSingleProduct) heartIconSingleProduct.style.display = 'none';
             if (backToCatalogArrowInCard) backToCatalogArrowInCard.style.display = 'none';
@@ -176,3 +176,4 @@ document.addEventListener('DOMContentLoaded', () => {
         if (backToCatalogArrowInCard) backToCatalogArrowInCard.style.display = 'none';
     }
 });
+

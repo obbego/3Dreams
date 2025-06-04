@@ -84,15 +84,17 @@ body {
     top: 20px;
     right: 20px;
     font-size: 2rem;
-    color: #ccc;
+    color: #ccc;  /* Colore predefinito */
     cursor: pointer;
     z-index: 10;
-    transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, transform 0.3s ease; /* Aggiungi la transizione per il colore e la trasformazione */
 }
 
-.heart-icon-single-product.text-danger {
-    color: #dc3545;
+/* Quando il cuore è "selezionato" (aggiunto ai preferiti) */
+.heart-icon-single-product.liked {
+    color: #FF3CAC;  /* Colore rosso per l'icona preferita */
 }
+
 
 /* Stile per la freccia "Torna al Catalogo" all'interno della card */
 .back-to-catalog-arrow-in-card {
